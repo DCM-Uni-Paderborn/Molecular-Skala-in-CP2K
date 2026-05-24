@@ -18,7 +18,6 @@ cp2k-regtests/regtest-gauxc/NH3_ONEDFT_PBE_REFERENCE.inp
 cp2k-regtests/regtest-gauxc/O_ONEDFT_PBE_UKS_TZV2PX.inp
 cp2k-regtests/regtest-gauxc/TEST_FILES.toml
 metadata/file-list.txt
-metadata/zenodo.json
 processed/begdb-water-hexamers/begdb_hexamer_absolute_energies.tsv
 processed/begdb-water-hexamers/begdb_hexamer_binding_energies.tsv
 processed/begdb-water-hexamers/begdb_hexamer_relative_energies.tsv

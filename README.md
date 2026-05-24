@@ -1,14 +1,13 @@
-# Molecular SKALA in CP2K data package
+# Molecular SKALA in CP2K companion repository
 
-This folder is a Zenodo-preparation data package for the manuscript
+This repository contains the curated companion data for the manuscript
 
 `Molecular SKALA in CP2K: Machine-Learned Exchange-Correlation through a GauXC Atomic-Orbital Interface`.
 
 It contains CP2K input files, selected raw CP2K outputs, extraction scripts, processed benchmark tables, regression-test inputs, and Supplementary Information files used for the molecular GPW/GAPW + GauXC/SKALA validation reported in the manuscript.
 
 The working copy is versioned in the private companion repository
-`DCM-Uni-Paderborn/Molecular-Skala-in-CP2K`.  The public Zenodo archive will
-be generated from this cleaned package before publication.
+`DCM-Uni-Paderborn/Molecular-Skala-in-CP2K`.
 
 ## Folder layout
 
@@ -29,7 +28,7 @@ be generated from this cleaned package before publication.
 - `supplementary/`
   - Current Supplementary Information source and compiled PDF, synchronized with the Overleaf manuscript copy.
 - `metadata/`
-  - File manifest, checksums, and draft Zenodo metadata.
+  - File manifest and checksums.
 
 ## Reproducing the summary table
 
@@ -126,6 +125,6 @@ while IFS= read -r file; do shasum -a 256 "./$file"; done \
   < metadata/file-list.txt > metadata/sha256sums.txt
 ```
 
-## DOI
+## Repository
 
-Zenodo DOI: to be inserted after deposition.
+GitHub repository: `DCM-Uni-Paderborn/Molecular-Skala-in-CP2K`.
