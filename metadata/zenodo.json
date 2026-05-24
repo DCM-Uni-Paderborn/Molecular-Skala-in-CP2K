@@ -1,7 +1,7 @@
 {
   "title": "Data for: Molecular SKALA in CP2K: Machine-Learned Exchange-Correlation through a GauXC Atomic-Orbital Interface",
   "upload_type": "dataset",
-  "description": "CP2K input files, selected raw CP2K outputs, BEGDB water-hexamer benchmark tables, extraction scripts, regression-test inputs, and Supplementary Information files supporting the molecular GPW/GAPW GauXC/SKALA validation study.",
+  "description": "CP2K input files, selected raw CP2K outputs, BEGDB water-hexamer benchmark tables, CPU/GPU timing diagnostics, extraction scripts, regression-test inputs, and Supplementary Information files supporting the molecular GPW/GAPW GauXC/SKALA validation study.",
   "creators": [
     {
       "name": "Poeschl, Franz",

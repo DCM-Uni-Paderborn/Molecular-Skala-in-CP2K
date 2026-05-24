@@ -6,6 +6,10 @@ This folder is a Zenodo-preparation data package for the manuscript
 
 It contains CP2K input files, selected raw CP2K outputs, extraction scripts, processed benchmark tables, regression-test inputs, and Supplementary Information files used for the molecular GPW/GAPW + GauXC/SKALA validation reported in the manuscript.
 
+The working copy is versioned in the private companion repository
+`DCM-Uni-Paderborn/Molecular-Skala-in-CP2K`.  The public Zenodo archive will
+be generated from this cleaned package before publication.
+
 ## Folder layout
 
 - `cp2k-regtests/regtest-gauxc/`
@@ -116,7 +120,7 @@ Regenerate them with
 
 ```bash
 find . -type f ! -name .DS_Store ! -path './metadata/sha256sums.txt' \
-  ! -path '*/__pycache__/*' ! -name '*.pyc' \
+  ! -path './.git/*' ! -path '*/__pycache__/*' ! -name '*.pyc' \
   | sed 's#^./##' | sort > metadata/file-list.txt
 while IFS= read -r file; do shasum -a 256 "./$file"; done \
   < metadata/file-list.txt > metadata/sha256sums.txt
