@@ -1,0 +1,3 @@
+nwater	natoms	cpu_wall_median_s	gpu_wall_median_s	wall_speedup	cpu_ks_matrix_median_s	gpu_ks_matrix_median_s	ks_matrix_speedup	n_repeats_cpu	n_repeats_gpu
+2	6							0	0
+4	12							0	0

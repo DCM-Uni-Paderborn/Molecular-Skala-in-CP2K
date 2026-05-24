@@ -1,0 +1,36 @@
+[
+  {
+    "cp2k_total_s": 2.206,
+    "elapsed_s": 8.052830902859569,
+    "energy_ha": -34.08251016407155,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 1.962,
+    "label": "h2o002_gpu_device_r0",
+    "mode": "gpu_device",
+    "natoms": 6,
+    "nwater": 2,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-gpu-size-test/runs/h2o002_gpu_device_r0",
+    "wall_s": 8.05
+  },
+  {
+    "cp2k_total_s": 3.859,
+    "elapsed_s": 9.726178078912199,
+    "energy_ha": -68.2292524813138,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 3.505,
+    "label": "h2o004_gpu_device_r0",
+    "mode": "gpu_device",
+    "natoms": 12,
+    "nwater": 4,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-gpu-size-test/runs/h2o004_gpu_device_r0",
+    "wall_s": 9.72
+  }
+]

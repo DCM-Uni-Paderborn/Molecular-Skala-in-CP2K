@@ -1,0 +1,768 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51233165-5"></script>
+<script src="gtag.js"></script>
+
+	<TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="MSHTML 6.00.6000.16587" name=GENERATOR>
+<LINK media=all href="data/styly.css" type=text/css rel=stylesheet>
+
+<link rel="shortcut icon" href="data/ico.png" >
+
+<LINK media=all href="data/Autocompleter.css" type=text/css rel=stylesheet>
+
+
+<LINK media=all href="data/jquery/DataTables/media/css/demo_table.css" type=text/css rel=stylesheet>
+<LINK media=all href="data/jquery/DataTables/extras/TableTools/media/css/TableTools.css" type=text/css rel=stylesheet>
+
+
+<!--<LINK media=all href="data/jquery/DataTables/examples/examples_support/themes/smoothness/jquery-ui-1.8.4.custom.css" type=text/css rel=stylesheet>-->
+
+
+
+ <script language="javascript" src="media/js/jquery.js"></script>
+<script language="javascript" src="media/js/jquery.dataTables.js"></script>
+<script language="javascript" src="media/ZeroClipboard/ZeroClipboard.js"></script>
+<script language="javascript" src="media/js/TableTools.js"></script>
+<script language="javascript" src="data/jquery/jquery.tinysort.js"></script>
+
+
+
+<script language="javascript" src="data/jquery.simpletip-1.3.1.js"></script> 
+
+</HEAD>
+<!-- head end -->
+<body class="oneColFixLtHdr">
+<div id="info" class="hiddendiv" style="position:absolute;z-index:2;"></div>
+<div id="container">
+  <div id="header">
+  <a href="index.php" title="Home"><div class="logohead"><div class="heading"><h1>Benchmark Energy & Geometry Database</h1></div></div></a>
+    
+    
+  <!-- end #header --></div> 
+ 
+ <!--
+  <div id="header">
+  <a href="index.php" title="Home"><img src="data/logo.png" border="0"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="heading">Benchmark Energy & Geometry Database</span>
+    
+  </div>
+  -->
+
+
+  <div id="mainContent">
+     
+
+
+		<script type="text/javascript" charset="utf-8">
+
+			var chartlinkvar = "index.php?action=chart&id=42";
+
+			function ordernature(coll,order){
+				if (coll > 1){
+					$("#orderby").val($("#trhead").find("#num"+(coll-1)).val());
+					$("#orderdirection").val(order);
+				}
+				
+				if (coll == 0){
+					$("#orderby").val("name");
+					$("#orderdirection").val(order);
+				}
+				if (coll == 1){
+					$("#orderby").val("optimization");
+					$("#orderdirection").val(order);
+				}
+			}
+
+
+			(function($) { 
+
+
+				
+
+
+				$(document).ready(function() {
+
+					
+
+					//creates an associated array [id of TD with valid energy => value]
+					var envalue = {};
+					
+// 					for (var i = 0; i < oSettings.aoData.length; i++) {
+// 						for (var j = 0; j < (oSettings.aoData.length-2); j++) {
+// 				
+// 							oSettings.aoData[i]._aData[j+2] = (oSettings.aoData[i]._aData[j+2]*multiplier).toFixed(decplace);
+// 						}	
+// 						
+// 					}
+
+
+					$( '.evalue').each(function(){
+					envalue[$(this).attr("id")] =  $(this).text();
+					}); 
+					//sets decimal place for chosen unit
+					$('#uniteselector').change(function(){
+						
+						var unitefactor= $(this).attr("value");
+							 switch(unitefactor)
+								{
+								case "1": var decplace = 2; $('#chartlink').attr("action", chartlinkvar+'&unit=1');
+								break;
+								case "0.001593601": var decplace = 8; $('#chartlink').attr("action", chartlinkvar+'&unit=0.001593601');
+								break;
+								case "4.184": var decplace = 2; $('#chartlink').attr("action", chartlinkvar+'&unit=4.184');
+								break;
+								case "0.043364123": var decplace = 4; $('#chartlink').attr("action", chartlinkvar+'&unit=0.043364123');
+								break;
+								default: var decplace = 2; $('#chartlink').attr("action", chartlinkvar+'&unit=1');
+								}
+						
+
+						$( '.evalue').each(function(){
+							$(this).text((envalue[$(this).attr("id")]*unitefactor).toFixed(decplace));
+							
+						}); 
+ 						
+						oTable.fnScaleValues(unitefactor, decplace, pureoriginal);
+					});
+
+					var tdcolor;
+					$('.evalue').click(function(){
+						 window.location = "index.php?action=oneDataset&id=42&state=info&e_id="+$(this).attr('id'); 
+					});
+
+					$('.evalue').mouseover(function(event){
+						tdcolor = $(this).css('background-color'); 
+						$(this).addClass('td_selected');
+						$(this).css('cursor','pointer');
+						$("#info").removeClass('hiddendiv');
+							$("#info").load('ajax/energytip.php?id='+$(this).attr('id'));
+							
+							var mouseX = mouseY = 0; 
+							
+								mouseX = event.pageX; mouseY = event.pageY;
+								if ($(window).width() - (event.pageX - $(window).scrollLeft()) >= 470) {var horizont = 100;}else{var horizont = -450;}
+								if ($(window).height() - (event.pageY - $(window).scrollTop()) >= 300) {var vertikal = -20;}else{var vertikal = -250;}
+								$("#info").css('top', mouseY+(vertikal)+'px');
+								$("#info").css('left', mouseX+(horizont)+'px');
+			
+					}).mouseout(function(){
+						$("#info").addClass('hiddendiv');
+						$(this).removeClass('td_selected');
+						$(this).css('cursor','arrow');
+					});
+
+
+					$('.hints').mouseover(function(event){
+						
+						$("#info").removeClass('hiddendiv');
+							$("#info").html($(this).attr('title'));
+							$(this).removeAttr("title");
+							
+							var mouseX = mouseY = 0; 
+							
+								mouseX = event.pageX; mouseY = event.pageY;
+								if ($(window).width() - (event.pageX - $(window).scrollLeft()) >= 470) {var horizont = 30;}else{var horizont = -400;}
+								if ($(window).height() - (event.pageY - $(window).scrollTop()) >= 300) {var vertikal = 0;}else{var vertikal = -40;}
+								$("#info").css('top', mouseY+(vertikal)+'px');
+								$("#info").css('left', mouseX+(horizont)+'px');
+			
+					}).mouseout(function(){
+						$("#info").addClass('hiddendiv');
+						$(this).attr("title",$("#info").html());
+
+						
+					});
+                                        var tmpmarkrow = "";
+					$('.markrow2').mouseover(function(event){
+						
+						$("#info").removeClass('hiddendiv');
+						tmpmarkrow = $(this).attr("title");
+                                                $(this).removeAttr("title");
+                                                
+							if (tmpmarkrow!="") {$("#info").html("<div style='border:2px solid #1D96CA;'><table style='width:350px;background-color:#666666;color:#ffffff' cellpadding='2'><tr><td>"+tmpmarkrow+"</td></tr></table></div>");}
+                                                        else{$("#info").html("");}
+							
+							
+							var mouseX = mouseY = 0; 
+							
+								mouseX = event.pageX; mouseY = event.pageY;
+								if ($(window).width() - (event.pageX - $(window).scrollLeft()) >= 470) {var horizont = 30;}else{var horizont = -400;}
+								if ($(window).height() - (event.pageY - $(window).scrollTop()) >= 300) {var vertikal = 0;}else{var vertikal = -40;}
+								$("#info").css('top', mouseY+(vertikal)+'px');
+								$("#info").css('left', mouseX+(horizont)+'px');
+			
+					}).mouseout(function(){
+						$("#info").addClass('hiddendiv');
+						$(this).attr("title",tmpmarkrow);
+
+						
+					});
+			
+					$('#sorttable42 tr td.markrow, #sorttable42 tr td.markrow2').click( function() {
+						if ( $(this).parent().hasClass('row_selected') )
+							$(this).parent().removeClass('row_selected');
+						else
+							$(this).parent().addClass('row_selected');
+					} );
+		
+					var oTable =	$('#sorttable42').dataTable({
+							"bPaginate": false,
+							"bLengthChange": false,
+							"bFilter": true,
+							"bInfo": false,
+							"bStateSave": false,
+							"bJQueryUI": false,
+							"bAutoWidth": false,
+							"sDom": 'T<"clear">lfrtip'
+
+							});
+
+					
+
+
+					$('.idbut').click(function(event){
+						
+						event.preventDefault();
+						var bVis = oTable.fnSettings().aoColumns[$(this).attr('id').substr(1)].bVisible;
+						oTable.fnSetColumnVis( $(this).attr('id').substr(1), bVis ? false : true );
+						$('#showall').show();
+					
+					});
+
+
+					$('#showall').click(function(event){
+						
+						event.preventDefault();
+						for (i=0; i<oTable.fnSettings().aoColumns.length; i++){
+						oTable.fnSetColumnVis(i, true);
+						}
+						$(this).hide();
+					});
+					
+					
+					
+	
+					$('#floatleft').append($('.dataTables_filter'));
+					$('#savecontainer').append($('.TableTools'));
+
+					
+					var originalval = oTable.fnOriginalValues();
+					var pureoriginal = [];
+					for (var i = 0; i < originalval.aoData.length; i++) {
+						pureoriginal[i] = [];
+ 						for (var j = 0; j < (originalval.aoData[i]._aData.length); j++) {
+							
+							pureoriginal[i][j] = originalval.aoData[i]._aData[j];
+						}	
+						
+					}
+					
+					
+				} )
+
+
+
+
+$(window).scroll(function()
+{
+  $('#floatingdiv').animate({"padding-left":$(window).scrollLeft()+"px" },{queue: false, duration: 150});
+});
+
+
+
+			})(jQuery);
+		</script>
+
+
+
+<div id="horizontal" class="simple">
+<form name="chart" action="index.php?action=oneDataset&id=42&state=show&order=ASC&by=value&method=&function=&basisset=&detail=" method="POST" enctype="multipart/form-data">
+
+<table cellpadding="0" cellspacing="0" border="0" class="datasetmenupadding"> 
+  <tbody>
+    <tr>
+      <td style="padding-left:5px;"><a href="index.php?action=home">Back to Datasets</a></td>
+      <td><a href="index.php?action=units">Unit:</a> <select class="form" name="unite" id="uniteselector"> 
+	<option value="1" selected>kcal/mol</option>
+	<option value="0.001593601">a.u.</option>
+	<option value="4.184">kJ/mol</option>
+	<option value="0.043364123">eV</option>
+	</select>
+      </td>
+      <td>Attention: Columns are sorted alphabetically</td>
+      <td><a href="moldown.php?id=42">Save all structures (zip)</a></td>
+      <td><!--<a href="temp/table/.csv">save as CSV file..</a>--> <div id="savecontainer"></div></td>
+      <td><span id="floatleft"></span></td>
+      <td><a href="#" id="showall" style="display:none;color:red;font-weight:bold;">Show all hidden columns</a></td>
+    </tr>
+  </tbody>
+</table>
+<span style="padding-left:5px;">Dataset name: <span class="h2" id="title">Water Clusters - updated</span> </span> 
+  </form><form name="chart" id="chartlink" action="index.php?action=chart&id=42&unit=1" method="POST" enctype="multipart/form-data">
+ <input type="hidden" value="name" name="orderby" id="orderby">
+ <input type="hidden" value="asc" name="orderdirection" id="orderdirection">
+ <input type="hidden" value="4215,4216,4179,4180,4181,4183,4184,4182,4186,4187,4188,4185,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4202,4201,4208,4206,4210,4205,4204,4207,4203,4209,4200,4211,4212,4213,4214" name="molids" id="orderdirection">
+<!--
+<div id="floatingdiv" class="floatingdiv">
+<table>
+  <tbody>
+    <tr>
+	<td><span style="color:#0000ff;">Visible</span> / <span style="color:#ff0000;">Hidden</span></td>
+			<td align="center"><a style="color:#0000ff;" href="#" class="idbut" id="b2">1</a></td>
+			<td align="center"><a style="color:#0000ff;" href="#" class="idbut" id="b3">2</a></td>
+			<td align="center"><a style="color:#0000ff;" href="#" class="idbut" id="b4">3</a></td>
+			<td align="center"><a style="color:#0000ff;" href="#" class="idbut" id="b5">4</a></td>
+			<td align="center"><a style="color:#0000ff;" href="#" class="idbut" id="b6">5</a></td>
+		<TD></TD>
+    </tr>
+    <tr>
+	<td><input type="submit" value="Generate Chart"></td>
+	   <td align="center">
+		<input type="checkbox" name="1" value="16111">
+            	</td>   <td align="center">
+		<input type="checkbox" name="2" value="16108">
+            	</td>   <td align="center">
+		<input type="checkbox" name="3" value="16110">
+            	</td>   <td align="center">
+		<input type="checkbox" name="4" value="16109">
+            	</td>   <td align="center">
+		<input type="checkbox" name="5" value="16107">
+            	</td>	<TD>
+		
+		<span id="floatleft"></span>
+		
+	</TD>
+    </tr>
+  </tbody>
+</table>
+</div>
+-->
+ <table class="display" cellpadding="5" cellspacing="0" border="0" id="sorttable42">
+      <thead>
+
+      <tr class="tab" id="trhead">
+        <th class="tab" style="padding-left:5px;"><SPAN></SPAN><div class="sortbyme"><span title="remove">system name</span></div>
+        </th>
+        <th class="tab" valign="top" style="padding-left:5px;"><SPAN><input type="submit" value="Generate Chart"></SPAN><div class="sortbyme"><span title="remove">optimization level</span></div>
+        </th>
+          
+            <th class="tab" valign="top"><div style="height:100%;color:#999999;"><span><!--#1-->  <input type="checkbox" id="num1" name="1" value="16111"> </SPAN><span ><A href="#" class="idbut" id="a2"> Hide</A></span></div><div id="lib" class="sortbyme">CCSD(T)/CBS
+/CBS noCP<span style="display:none;" title="remove">CCSD(T)/CBS
+/CBS noCP</span></div>
+
+            	
+                 
+                
+</th>  
+            <th class="tab" valign="top"><div style="height:100%;color:#999999;"><span><!--#2-->  <input type="checkbox" id="num2" name="2" value="16108"> </SPAN><span ><A href="#" class="idbut" id="a3"> Hide</A></span></div><div id="lib" class="sortbyme">MP2
+/aug-cc-pVDZ noCP<span style="display:none;" title="remove">MP2
+/aug-cc-pVDZ noCP</span></div>
+
+            	
+                 
+                
+</th>  
+            <th class="tab" valign="top"><div style="height:100%;color:#999999;"><span><!--#3-->  <input type="checkbox" id="num3" name="3" value="16110"> </SPAN><span ><A href="#" class="idbut" id="a4"> Hide</A></span></div><div id="lib" class="sortbyme">MP2
+/aug-cc-pVQZ noCP<span style="display:none;" title="remove">MP2
+/aug-cc-pVQZ noCP</span></div>
+
+            	
+                 
+                
+</th>  
+            <th class="tab" valign="top"><div style="height:100%;color:#999999;"><span><!--#4-->  <input type="checkbox" id="num4" name="4" value="16109"> </SPAN><span ><A href="#" class="idbut" id="a5"> Hide</A></span></div><div id="lib" class="sortbyme">MP2
+/aug-cc-pVTZ noCP<span style="display:none;" title="remove">MP2
+/aug-cc-pVTZ noCP</span></div>
+
+            	
+                 
+                
+</th>  
+            <th class="tab" valign="top"><div style="height:100%;color:#999999;"><span><!--#5-->  <input type="checkbox" id="num5" name="5" value="16107"> </SPAN><span ><A href="#" class="idbut" id="a6"> Hide</A></span></div><div id="lib" class="sortbyme">MP2/CBS
+/CBS noCP<span style="display:none;" title="remove">MP2/CBS
+/CBS noCP</span></div>
+
+            	
+                 
+                
+</th></tr>
+</thead>
+
+<tbody>
+  	 
+      
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4215">water-10-PP1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-46">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16291">-92.89</td>
+<td valign="top" align="center" class="evalue" id="16288">-99.21</td>
+<td valign="top" align="center" class="evalue" id="16290">-95.75</td>
+<td valign="top" align="center" class="evalue" id="16289">-97.89</td>
+<td valign="top" align="center" class="evalue" id="16287">-93.06</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4216">water-10-PP2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-47">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16296">-92.89</td>
+<td valign="top" align="center" class="evalue" id="16293">-99.08</td>
+<td valign="top" align="center" class="evalue" id="16295">-95.65</td>
+<td valign="top" align="center" class="evalue" id="16294">-97.76</td>
+<td valign="top" align="center" class="evalue" id="16292">-93.01</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4179">water-2-Cs</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-10">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16111">-5.03</td>
+<td valign="top" align="center" class="evalue" id="16108">-5.26</td>
+<td valign="top" align="center" class="evalue" id="16110">-5.1</td>
+<td valign="top" align="center" class="evalue" id="16109">-5.19</td>
+<td valign="top" align="center" class="evalue" id="16107">-5</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4180">water-3-UUD</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-11">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16116">-15.7</td>
+<td valign="top" align="center" class="evalue" id="16113">-16.2</td>
+<td valign="top" align="center" class="evalue" id="16115">-15.96</td>
+<td valign="top" align="center" class="evalue" id="16114">-16.14</td>
+<td valign="top" align="center" class="evalue" id="16112">-15.72</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4181">water-3-UUU</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-12">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16121">-15.09</td>
+<td valign="top" align="center" class="evalue" id="16118">-15.63</td>
+<td valign="top" align="center" class="evalue" id="16120">-15.38</td>
+<td valign="top" align="center" class="evalue" id="16119">-15.55</td>
+<td valign="top" align="center" class="evalue" id="16117">-15.17</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4183">water-4-Ci</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-14">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16131">-26.58</td>
+<td valign="top" align="center" class="evalue" id="16128">-27.84</td>
+<td valign="top" align="center" class="evalue" id="16130">-27.32</td>
+<td valign="top" align="center" class="evalue" id="16129">-27.71</td>
+<td valign="top" align="center" class="evalue" id="16127">-26.8</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4184">water-4-Py</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-15">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16136">-23.88</td>
+<td valign="top" align="center" class="evalue" id="16133">-24.94</td>
+<td valign="top" align="center" class="evalue" id="16135">-24.28</td>
+<td valign="top" align="center" class="evalue" id="16134">-24.66</td>
+<td valign="top" align="center" class="evalue" id="16132">-23.81</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4182">water-4-S4</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-13">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16126">-27.43</td>
+<td valign="top" align="center" class="evalue" id="16123">-28.66</td>
+<td valign="top" align="center" class="evalue" id="16125">-28.15</td>
+<td valign="top" align="center" class="evalue" id="16124">-28.54</td>
+<td valign="top" align="center" class="evalue" id="16122">-27.64</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4186">water-5-CA-A</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-17">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16146">-34.54</td>
+<td valign="top" align="center" class="evalue" id="16143">-36.15</td>
+<td valign="top" align="center" class="evalue" id="16145">-35.18</td>
+<td valign="top" align="center" class="evalue" id="16144">-35.75</td>
+<td valign="top" align="center" class="evalue" id="16142">-34.46</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4187">water-5-CA-B</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-18">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16151">-33.82</td>
+<td valign="top" align="center" class="evalue" id="16148">-35.45</td>
+<td valign="top" align="center" class="evalue" id="16150">-34.42</td>
+<td valign="top" align="center" class="evalue" id="16149">-35.04</td>
+<td valign="top" align="center" class="evalue" id="16147">-33.65</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4188">water-5-CA-C</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-19">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16156">-34.69</td>
+<td valign="top" align="center" class="evalue" id="16153">-36.33</td>
+<td valign="top" align="center" class="evalue" id="16155">-35.34</td>
+<td valign="top" align="center" class="evalue" id="16154">-35.94</td>
+<td valign="top" align="center" class="evalue" id="16152">-34.59</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4185">water-5-CYC</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-16">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16141">-36.01</td>
+<td valign="top" align="center" class="evalue" id="16138">-37.68</td>
+<td valign="top" align="center" class="evalue" id="16140">-37.05</td>
+<td valign="top" align="center" class="evalue" id="16139">-37.56</td>
+<td valign="top" align="center" class="evalue" id="16137">-36.38</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4189">water-5-FR-A</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-20">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16161">-33.13</td>
+<td valign="top" align="center" class="evalue" id="16158">-34.87</td>
+<td valign="top" align="center" class="evalue" id="16160">-33.85</td>
+<td valign="top" align="center" class="evalue" id="16159">-34.44</td>
+<td valign="top" align="center" class="evalue" id="16157">-33.11</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4190">water-5-FR-B</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-21">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16166">-34.88</td>
+<td valign="top" align="center" class="evalue" id="16163">-36.47</td>
+<td valign="top" align="center" class="evalue" id="16165">-35.63</td>
+<td valign="top" align="center" class="evalue" id="16164">-36.17</td>
+<td valign="top" align="center" class="evalue" id="16162">-34.95</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4191">water-5-FR-C</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-22">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16171">-32.44</td>
+<td valign="top" align="center" class="evalue" id="16168">-34.07</td>
+<td valign="top" align="center" class="evalue" id="16170">-33.15</td>
+<td valign="top" align="center" class="evalue" id="16169">-33.73</td>
+<td valign="top" align="center" class="evalue" id="16167">-32.42</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4192">water-6-BAG</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-23">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16176">-44.59</td>
+<td valign="top" align="center" class="evalue" id="16173">-47.2</td>
+<td valign="top" align="center" class="evalue" id="16175">-45.86</td>
+<td valign="top" align="center" class="evalue" id="16174">-46.67</td>
+<td valign="top" align="center" class="evalue" id="16172">-44.85</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4193">water-6-BK-1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-24">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16181">-45.51</td>
+<td valign="top" align="center" class="evalue" id="16178">-47.92</td>
+<td valign="top" align="center" class="evalue" id="16180">-46.75</td>
+<td valign="top" align="center" class="evalue" id="16179">-47.52</td>
+<td valign="top" align="center" class="evalue" id="16177">-45.77</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4194">water-6-BK-2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-25">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16186">-45.14</td>
+<td valign="top" align="center" class="evalue" id="16183">-47.67</td>
+<td valign="top" align="center" class="evalue" id="16185">-46.43</td>
+<td valign="top" align="center" class="evalue" id="16184">-47.23</td>
+<td valign="top" align="center" class="evalue" id="16182">-45.4</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4195">water-6-CA</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-26">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16191">-45.93</td>
+<td valign="top" align="center" class="evalue" id="16188">-48.42</td>
+<td valign="top" align="center" class="evalue" id="16190">-47.06</td>
+<td valign="top" align="center" class="evalue" id="16189">-47.91</td>
+<td valign="top" align="center" class="evalue" id="16187">-45.98</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4196">water-6-CB-1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-27">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16196">-43.57</td>
+<td valign="top" align="center" class="evalue" id="16193">-45.61</td>
+<td valign="top" align="center" class="evalue" id="16195">-44.84</td>
+<td valign="top" align="center" class="evalue" id="16194">-45.44</td>
+<td valign="top" align="center" class="evalue" id="16192">-44.06</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4197">water-6-CB-2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-28">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16201">-43.51</td>
+<td valign="top" align="center" class="evalue" id="16198">-45.49</td>
+<td valign="top" align="center" class="evalue" id="16200">-44.76</td>
+<td valign="top" align="center" class="evalue" id="16199">-45.35</td>
+<td valign="top" align="center" class="evalue" id="16197">-43.99</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4198">water-6-CC</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-29">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16206">-44.6</td>
+<td valign="top" align="center" class="evalue" id="16203">-46.59</td>
+<td valign="top" align="center" class="evalue" id="16205">-45.84</td>
+<td valign="top" align="center" class="evalue" id="16204">-46.41</td>
+<td valign="top" align="center" class="evalue" id="16202">-45.09</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4199">water-6-PR</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-30">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16211">-46.14</td>
+<td valign="top" align="center" class="evalue" id="16208">-48.67</td>
+<td valign="top" align="center" class="evalue" id="16210">-47.11</td>
+<td valign="top" align="center" class="evalue" id="16209">-48</td>
+<td valign="top" align="center" class="evalue" id="16207">-46.02</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4202">water-7-BI1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-33">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16226">-53.4</td>
+<td valign="top" align="center" class="evalue" id="16223">-56.32</td>
+<td valign="top" align="center" class="evalue" id="16225">-54.89</td>
+<td valign="top" align="center" class="evalue" id="16224">-55.83</td>
+<td valign="top" align="center" class="evalue" id="16222">-53.68</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4201">water-7-BI2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-32">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16221">-53.33</td>
+<td valign="top" align="center" class="evalue" id="16218">-56.27</td>
+<td valign="top" align="center" class="evalue" id="16220">-54.83</td>
+<td valign="top" align="center" class="evalue" id="16219">-55.78</td>
+<td valign="top" align="center" class="evalue" id="16217">-53.63</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4208">water-7-CA1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-39">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16256">-55.69</td>
+<td valign="top" align="center" class="evalue" id="16253">-58.97</td>
+<td valign="top" align="center" class="evalue" id="16255">-57.2</td>
+<td valign="top" align="center" class="evalue" id="16254">-58.28</td>
+<td valign="top" align="center" class="evalue" id="16252">-55.86</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4206">water-7-CA2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-37">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16246">-54.88</td>
+<td valign="top" align="center" class="evalue" id="16243">-58.13</td>
+<td valign="top" align="center" class="evalue" id="16245">-56.38</td>
+<td valign="top" align="center" class="evalue" id="16244">-57.46</td>
+<td valign="top" align="center" class="evalue" id="16242">-55.04</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4210">water-7-CH1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-41">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16266">-54.38</td>
+<td valign="top" align="center" class="evalue" id="16263">-57.26</td>
+<td valign="top" align="center" class="evalue" id="16265">-55.91</td>
+<td valign="top" align="center" class="evalue" id="16264">-56.82</td>
+<td valign="top" align="center" class="evalue" id="16262">-54.76</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4205">water-7-CH2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-36">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16241">-53.87</td>
+<td valign="top" align="center" class="evalue" id="16238">-56.82</td>
+<td valign="top" align="center" class="evalue" id="16240">-55.42</td>
+<td valign="top" align="center" class="evalue" id="16239">-56.35</td>
+<td valign="top" align="center" class="evalue" id="16237">-54.23</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4204">water-7-CH3</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-35">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16236">-53.08</td>
+<td valign="top" align="center" class="evalue" id="16233">-55.76</td>
+<td valign="top" align="center" class="evalue" id="16235">-54.51</td>
+<td valign="top" align="center" class="evalue" id="16234">-55.37</td>
+<td valign="top" align="center" class="evalue" id="16232">-53.39</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4207">water-7-HM1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-38">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16251">-52.35</td>
+<td valign="top" align="center" class="evalue" id="16248">-54.8</td>
+<td valign="top" align="center" class="evalue" id="16250">-53.64</td>
+<td valign="top" align="center" class="evalue" id="16249">-54.39</td>
+<td valign="top" align="center" class="evalue" id="16247">-52.7</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4203">water-7-PR1</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-34">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16231">-57.37</td>
+<td valign="top" align="center" class="evalue" id="16228">-60.77</td>
+<td valign="top" align="center" class="evalue" id="16230">-58.82</td>
+<td valign="top" align="center" class="evalue" id="16229">-59.97</td>
+<td valign="top" align="center" class="evalue" id="16227">-57.41</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4209">water-7-PR2</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-40">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16261">-57.1</td>
+<td valign="top" align="center" class="evalue" id="16258">-60.44</td>
+<td valign="top" align="center" class="evalue" id="16260">-58.5</td>
+<td valign="top" align="center" class="evalue" id="16259">-59.65</td>
+<td valign="top" align="center" class="evalue" id="16257">-57.09</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4200">water-7-PR3</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-31">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16216">-56.89</td>
+<td valign="top" align="center" class="evalue" id="16213">-60.24</td>
+<td valign="top" align="center" class="evalue" id="16215">-58.34</td>
+<td valign="top" align="center" class="evalue" id="16214">-59.47</td>
+<td valign="top" align="center" class="evalue" id="16212">-56.95</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4211">water-8-D2d</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-42">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16271">-72.55</td>
+<td valign="top" align="center" class="evalue" id="16268">-77.33</td>
+<td valign="top" align="center" class="evalue" id="16270">-74.58</td>
+<td valign="top" align="center" class="evalue" id="16269">-76.18</td>
+<td valign="top" align="center" class="evalue" id="16267">-72.6</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4212">water-8-S4</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-43">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16276">-72.56</td>
+<td valign="top" align="center" class="evalue" id="16273">-77.36</td>
+<td valign="top" align="center" class="evalue" id="16275">-74.6</td>
+<td valign="top" align="center" class="evalue" id="16274">-76.19</td>
+<td valign="top" align="center" class="evalue" id="16272">-72.64</td>
+</tr>
+<tr class="line_b">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4213">water-9-D2dDD</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-44">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16281">-81.7</td>
+<td valign="top" align="center" class="evalue" id="16278">-87.1</td>
+<td valign="top" align="center" class="evalue" id="16280">-84.12</td>
+<td valign="top" align="center" class="evalue" id="16279">-85.9</td>
+<td valign="top" align="center" class="evalue" id="16277">-81.92</td>
+</tr>
+<tr class="line_a">
+<td valign="top" class="markrow"><a href="index.php?action=oneMolecule&state=show&id=4214">water-9-S4DA</a></td>
+<td valign="top" class="markrow2" style="cursor:e-resize ;" title="Actually used RI-MP2, but the difference b/n  RI-MP2 and MP2 binding energies was less than 0.06 kcal/mol for (H2O)n=2-45">MP2/aug-cc-pVDZ noCP</td>
+<td valign="top" align="center" class="evalue" id="16286">-81.46</td>
+<td valign="top" align="center" class="evalue" id="16283">-86.88</td>
+<td valign="top" align="center" class="evalue" id="16285">-83.88</td>
+<td valign="top" align="center" class="evalue" id="16284">-85.65</td>
+<td valign="top" align="center" class="evalue" id="16282">-81.68</td>
+</tr>
+</tbody>
+
+
+
+	</table>
+	</form>
+	<br><br>
+	</div id="horizontal" class="simple">
+     
+    </div>	<!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
+
+
+  
+<!-- end #container --></div>
+
+
+
+
+<!--<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5699158-1");
+pageTracker._trackPageview();
+</script>-->
+
+</body></HTML>

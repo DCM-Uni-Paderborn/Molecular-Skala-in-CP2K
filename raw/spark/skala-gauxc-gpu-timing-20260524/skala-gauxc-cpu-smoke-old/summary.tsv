@@ -1,0 +1,2 @@
+nwater	natoms	mode	repeat	omp_threads	returncode	program_ended	wall_s	cp2k_total_s	ks_matrix_total_s	ks_matrix_calls	energy_ha	run_dir
+1	3	cpu_host	0	1	0	1	4.37	3.623	3.47	1	-17.042112624941	/home/kuehne88/skala-gauxc-cpu-smoke-old/runs/h2o001_cpu_host_r0

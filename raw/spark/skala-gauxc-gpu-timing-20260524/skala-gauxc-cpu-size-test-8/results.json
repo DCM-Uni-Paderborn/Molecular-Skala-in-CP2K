@@ -1,0 +1,19 @@
+[
+  {
+    "cp2k_total_s": 71.713,
+    "elapsed_s": 75.76683372072875,
+    "energy_ha": -136.4228447923257,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 70.855,
+    "label": "h2o008_cpu_host_r0",
+    "mode": "cpu_host",
+    "natoms": 24,
+    "nwater": 8,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-cpu-size-test-8/runs/h2o008_cpu_host_r0",
+    "wall_s": 75.64
+  }
+]

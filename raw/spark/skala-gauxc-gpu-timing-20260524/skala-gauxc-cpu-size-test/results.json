@@ -1,0 +1,36 @@
+[
+  {
+    "cp2k_total_s": 7.389,
+    "elapsed_s": 8.07543459534645,
+    "energy_ha": -34.08251019875909,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 7.146,
+    "label": "h2o002_cpu_host_r0",
+    "mode": "cpu_host",
+    "natoms": 6,
+    "nwater": 2,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-cpu-size-test/runs/h2o002_cpu_host_r0",
+    "wall_s": 8.07
+  },
+  {
+    "cp2k_total_s": 19.108,
+    "elapsed_s": 19.780406771227717,
+    "energy_ha": -68.22925256268124,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 18.76,
+    "label": "h2o004_cpu_host_r0",
+    "mode": "cpu_host",
+    "natoms": 12,
+    "nwater": 4,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-cpu-size-test/runs/h2o004_cpu_host_r0",
+    "wall_s": 19.77
+  }
+]

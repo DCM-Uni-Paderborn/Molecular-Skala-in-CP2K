@@ -1,0 +1,61 @@
+path	project	force_eval_energy_ha	gauxc_molecular_virial_fd	debug_sum_of_differences	program_ended
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_gauxc_pbe_base/cp2k.out	H2O_GAPW_AE_gauxc_pbe	-76.383607860235074	4.78054659660E-01 4.78054658248E-01 1.41191547343E-09		yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_gauxc_pbe_force_minus/cp2k.out	H2O_GAPW_AE_gauxc_pbe	-76.383589373113537			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_gauxc_pbe_force_plus/cp2k.out	H2O_GAPW_AE_gauxc_pbe	-76.383624996773719			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_gauxc_pbe_virial_minus/cp2k.out	H2O_GAPW_AE_gauxc_pbe	-76.383603548245446			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_gauxc_pbe_virial_plus/cp2k.out	H2O_GAPW_AE_gauxc_pbe	-76.383612136390667			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_native_pbe_base/cp2k.out	H2O_GAPW_AE_native_pbe	-76.383578440735477			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_native_pbe_force_minus/cp2k.out	H2O_GAPW_AE_native_pbe	-76.383559839477215			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_native_pbe_force_plus/cp2k.out	H2O_GAPW_AE_native_pbe	-76.383595690413173			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_native_pbe_virial_minus/cp2k.out	H2O_GAPW_AE_native_pbe	-76.383574099702955			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_native_pbe_virial_plus/cp2k.out	H2O_GAPW_AE_native_pbe	-76.383582745878783			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_skala_base/cp2k.out	H2O_GAPW_AE_skala	-76.435665898185519	5.23279334690E-01 5.23274798046E-01 4.53664411904E-06		yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_skala_force_minus/cp2k.out	H2O_GAPW_AE_skala	-76.435667283755222			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_skala_force_plus/cp2k.out	H2O_GAPW_AE_skala	-76.435663155377455			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_skala_virial_minus/cp2k.out	H2O_GAPW_AE_skala	-76.435666002326926			yes
+raw/spark/skala-molopt-bench/runs/H2O_GAPW_AE_skala_virial_plus/cp2k.out	H2O_GAPW_AE_skala	-76.435665774182581			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_gauxc_pbe_base/cp2k.out	H2_GAPW_AE_gauxc_pbe	-1.166147111897230	1.17197154092E-01 1.17197152442E-01 1.65042932099E-09		yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_gauxc_pbe_force_minus/cp2k.out	H2_GAPW_AE_gauxc_pbe	-1.166136270446743			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_gauxc_pbe_force_plus/cp2k.out	H2_GAPW_AE_gauxc_pbe	-1.166156588970261			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_gauxc_pbe_virial_minus/cp2k.out	H2_GAPW_AE_gauxc_pbe	-1.166146356481928			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_gauxc_pbe_virial_plus/cp2k.out	H2_GAPW_AE_gauxc_pbe	-1.166147859840914			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_native_pbe_base/cp2k.out	H2_GAPW_AE_native_pbe	-1.166148218325616			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_native_pbe_force_minus/cp2k.out	H2_GAPW_AE_native_pbe	-1.166137389457431			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_native_pbe_force_plus/cp2k.out	H2_GAPW_AE_native_pbe	-1.166157683483109			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_native_pbe_virial_minus/cp2k.out	H2_GAPW_AE_native_pbe	-1.166147463818180			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_native_pbe_virial_plus/cp2k.out	H2_GAPW_AE_native_pbe	-1.166148965364552			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_skala_base/cp2k.out	H2_GAPW_AE_skala	-1.173104781089150	1.26214480157E-01 1.26211853625E-01 2.62653183802E-06		yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_skala_force_minus/cp2k.out	H2_GAPW_AE_skala	-1.173111474767616			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_skala_force_plus/cp2k.out	H2_GAPW_AE_skala	-1.173096726200781			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_skala_virial_minus/cp2k.out	H2_GAPW_AE_skala	-1.173105323211226			yes
+raw/spark/skala-molopt-bench/runs/H2_GAPW_AE_skala_virial_plus/cp2k.out	H2_GAPW_AE_skala	-1.173104232530231			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_gauxc_pbe_base/cp2k.out	H2_GPW_gauxc_pbe	-1.165609849984749	1.06105376853E-01 1.06105375169E-01 1.68408768875E-09		yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_gauxc_pbe_force_minus/cp2k.out	H2_GPW_gauxc_pbe	-1.165597699744130			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_gauxc_pbe_force_plus/cp2k.out	H2_GPW_gauxc_pbe	-1.165620644233486			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_gauxc_pbe_virial_minus/cp2k.out	H2_GPW_gauxc_pbe	-1.165608997431202			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_gauxc_pbe_virial_plus/cp2k.out	H2_GPW_gauxc_pbe	-1.165610695112896			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_native_pbe_base/cp2k.out	H2_GPW_native_pbe	-1.165609977252694			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_native_pbe_force_minus/cp2k.out	H2_GPW_native_pbe	-1.165597830558270			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_native_pbe_force_plus/cp2k.out	H2_GPW_native_pbe	-1.165620768729882			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_native_pbe_virial_minus/cp2k.out	H2_GPW_native_pbe	-1.165609124935160			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_native_pbe_virial_plus/cp2k.out	H2_GPW_native_pbe	-1.165610822149042			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_skala_base/cp2k.out	H2_GPW_skala	-1.173260791425029	1.11569984386E-01 1.11570696055E-01 -7.11668774911E-07		yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_skala_force_minus/cp2k.out	H2_GPW_skala	-1.173263316970013			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_skala_force_plus/cp2k.out	H2_GPW_skala	-1.173256905148712			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_skala_virial_minus/cp2k.out	H2_GPW_skala	-1.173261024218722			yes
+raw/spark/skala-molopt-bench/runs/H2_GPW_skala_virial_plus/cp2k.out	H2_GPW_skala	-1.173260551479198			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_gauxc_pbe_base/cp2k.out	NH3_GAPW_AE_gauxc_pbe	-56.513726224012487	6.50771941852E-01 6.50771938970E-01 2.88191626119E-09		yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_gauxc_pbe_force_minus/cp2k.out	NH3_GAPW_AE_gauxc_pbe	-56.513730265803488			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_gauxc_pbe_force_plus/cp2k.out	NH3_GAPW_AE_gauxc_pbe	-56.513721938535149			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_gauxc_pbe_virial_minus/cp2k.out	NH3_GAPW_AE_gauxc_pbe	-56.513722587439823			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_gauxc_pbe_virial_plus/cp2k.out	NH3_GAPW_AE_gauxc_pbe	-56.513729810665474			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_native_pbe_base/cp2k.out	NH3_GAPW_AE_native_pbe	-56.513711566859413			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_native_pbe_force_minus/cp2k.out	NH3_GAPW_AE_native_pbe	-56.513715629369770			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_native_pbe_force_plus/cp2k.out	NH3_GAPW_AE_native_pbe	-56.513707260539732			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_native_pbe_virial_minus/cp2k.out	NH3_GAPW_AE_native_pbe	-56.513707908926406			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_native_pbe_virial_plus/cp2k.out	NH3_GAPW_AE_native_pbe	-56.513715174840442			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_skala_base/cp2k.out	NH3_GAPW_AE_skala	-56.563091901674667	7.01941252121E-01 7.01981436126E-01 -4.01840049991E-05		yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_skala_force_minus/cp2k.out	NH3_GAPW_AE_skala	-56.563090254170604			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_skala_force_plus/cp2k.out	NH3_GAPW_AE_skala	-56.563093303383368			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_skala_virial_minus/cp2k.out	NH3_GAPW_AE_skala	-56.563093503629560			yes
+raw/spark/skala-molopt-bench/runs/NH3_GAPW_AE_skala_virial_plus/cp2k.out	NH3_GAPW_AE_skala	-56.563090283718971			yes

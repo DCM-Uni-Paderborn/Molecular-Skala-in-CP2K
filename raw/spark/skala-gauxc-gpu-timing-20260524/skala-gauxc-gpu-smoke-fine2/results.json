@@ -1,0 +1,19 @@
+[
+  {
+    "cp2k_total_s": 1.883,
+    "elapsed_s": 7.748948636464775,
+    "energy_ha": -17.042112614262567,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 1.768,
+    "label": "h2o001_gpu_device_r0",
+    "mode": "gpu_device",
+    "natoms": 3,
+    "nwater": 1,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-gpu-smoke-fine2/runs/h2o001_gpu_device_r0",
+    "wall_s": 7.74
+  }
+]

@@ -1,0 +1,362 @@
+{
+  "H2O/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -17.220105751563665,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "H2O_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "H2O/GPW_PBE_GTH/native_pbe": {
+    "energy": -17.220180789053877,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "H2O_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "H2O/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -17.220540350938954,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "H2O_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "H2O/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -17.2207548186423,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "H2O_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "H2O/GPW_PBE_GTH/skala": {
+    "energy": -17.23209208215163,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "H2O_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-BAG/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.39706141656625,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BAG_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-BAG/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.39701945885429,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BAG_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-BAG/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.4059880572688,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BAG_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-BAG/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.41070740437885,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BAG_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-BAG/GPW_PBE_GTH/skala": {
+    "energy": -103.4494829520086,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BAG_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-BK-1/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.38416466177303,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_1_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-BK-1/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.38411627199329,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_1_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-BK-1/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.39267351701393,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_1_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-BK-1/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.39724847819407,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_1_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-BK-1/GPW_PBE_GTH/skala": {
+    "energy": -103.43672676737174,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_1_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-BK-2/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.39189196551268,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_2_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-BK-2/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.39183937803666,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_2_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-BK-2/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.4005219500575,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_2_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-BK-2/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.40513905390394,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_2_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-BK-2/GPW_PBE_GTH/skala": {
+    "energy": -103.44446766417458,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_BK_2_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-CA/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.40058346553599,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CA_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CA/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.40052110709983,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CA_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CA/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.41042352718958,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CA_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-CA/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.41573895275815,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CA_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-CA/GPW_PBE_GTH/skala": {
+    "energy": -103.4528252287139,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CA_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-CB-1/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.38638346973862,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_1_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CB-1/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.38643471800232,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_1_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CB-1/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.39373859341211,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_1_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-CB-1/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.39762914862324,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_1_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-CB-1/GPW_PBE_GTH/skala": {
+    "energy": -103.4402024157958,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_1_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-CB-2/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.37672763488077,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_2_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CB-2/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.37656387778338,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_2_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CB-2/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.38388687171785,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_2_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-CB-2/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.38778372581821,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_2_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-CB-2/GPW_PBE_GTH/skala": {
+    "energy": -103.43088279297962,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CB_2_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-CC/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.3758094617814,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CC_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CC/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.37594614652559,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CC_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-CC/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.38315776915894,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CC_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-CC/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.38702363400907,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CC_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-CC/GPW_PBE_GTH/skala": {
+    "energy": -103.42955559334101,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_CC_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  },
+  "water-6-PR/GPW_PBE_GTH/gauxc_pbe": {
+    "energy": -103.39870570172519,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_PR_GPW_PBE_GTH_gauxc_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-PR/GPW_PBE_GTH/native_pbe": {
+    "energy": -103.39874991376264,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_PR_GPW_PBE_GTH_native_pbe_sp",
+    "returncode": 0
+  },
+  "water-6-PR/GPW_PBE_GTH/native_pbe_d3bj": {
+    "energy": -103.40898906982888,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_PR_GPW_PBE_GTH_native_pbe_d3bj_sp",
+    "returncode": 0
+  },
+  "water-6-PR/GPW_PBE_GTH/native_pbe_d3bj_b3lyp5": {
+    "energy": -103.41447095114586,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_PR_GPW_PBE_GTH_native_pbe_d3bj_b3lyp5_sp",
+    "returncode": 0
+  },
+  "water-6-PR/GPW_PBE_GTH/skala": {
+    "energy": -103.45135568234818,
+    "forces": [],
+    "gauxc_virial": null,
+    "gauxc_virial_fd": null,
+    "label": "water_6_PR_GPW_PBE_GTH_skala_sp",
+    "returncode": 0
+  }
+}

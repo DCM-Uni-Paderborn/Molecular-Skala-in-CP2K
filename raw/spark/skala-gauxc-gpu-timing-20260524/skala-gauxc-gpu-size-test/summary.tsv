@@ -1,0 +1,3 @@
+nwater	natoms	mode	repeat	omp_threads	returncode	program_ended	wall_s	cp2k_total_s	ks_matrix_total_s	ks_matrix_calls	energy_ha	run_dir
+2	6	gpu_device	0	1	0	1	8.05	2.206	1.962	1	-34.08251016407155	/home/kuehne88/skala-gauxc-gpu-size-test/runs/h2o002_gpu_device_r0
+4	12	gpu_device	0	1	0	1	9.72	3.859	3.505	1	-68.2292524813138	/home/kuehne88/skala-gauxc-gpu-size-test/runs/h2o004_gpu_device_r0

@@ -1,0 +1,19 @@
+[
+  {
+    "cp2k_total_s": 3.623,
+    "elapsed_s": 4.373566816560924,
+    "energy_ha": -17.042112624941,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 3.47,
+    "label": "h2o001_cpu_host_r0",
+    "mode": "cpu_host",
+    "natoms": 3,
+    "nwater": 1,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-cpu-smoke-old/runs/h2o001_cpu_host_r0",
+    "wall_s": 4.37
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "cp2k_total_s": 13.354,
+    "elapsed_s": 25.703734923154116,
+    "energy_ha": -136.42284463748592,
+    "ks_matrix_calls": 1,
+    "ks_matrix_total_s": 12.448,
+    "label": "h2o008_gpu_device_r0",
+    "mode": "gpu_device",
+    "natoms": 24,
+    "nwater": 8,
+    "omp_threads": 1,
+    "program_ended": 1,
+    "repeat": 0,
+    "returncode": 0,
+    "run_dir": "/home/kuehne88/skala-gauxc-gpu-size-test-8/runs/h2o008_gpu_device_r0",
+    "wall_s": 25.62
+  }
+]

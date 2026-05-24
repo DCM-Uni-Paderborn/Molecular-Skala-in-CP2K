@@ -1,0 +1,9 @@
+system	BEGDB_relative_kcal_mol	GAPW_AE_PBE_relative_kcal_mol	GAPW_AE_PBE_D3BJ_relative_kcal_mol	GAPW_AE_GauXC_PBE_relative_kcal_mol	GAPW_AE_SKALA_XC_relative_kcal_mol	GAPW_AE_SKALA_D3BJ_relative_kcal_mol
+water-6-PR	0.00	0.773	0.562	0.781	0.642	0.327
+water-6-CA	0.21	0.000	0.000	0.000	0.000	0.000
+water-6-BK-1	0.63	9.880	10.724	9.882	9.333	10.641
+water-6-BK-2	1.00	4.716	5.482	4.720	4.291	5.495
+water-6-CC	1.54	15.640	17.328	15.640	14.227	16.826
+water-6-BAG	1.55	1.403	1.989	1.405	1.093	2.053
+water-6-CB-1	2.57	8.761	10.392	8.760	7.349	9.874
+water-6-CB-2	2.63	14.859	16.477	14.856	13.248	15.757

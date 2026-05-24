@@ -1,0 +1,9 @@
+system	BEGDB_CCSDT_CBS_noCP_binding_kcal_mol	GAPW_AE_PBE_binding_kcal_mol	GAPW_AE_PBE_D3BJ_binding_kcal_mol	GAPW_AE_GauXC_PBE_binding_kcal_mol	GAPW_AE_SKALA_XC_binding_kcal_mol	GAPW_AE_SKALA_D3BJ_binding_kcal_mol
+water-6-PR	-46.14	-49.986	-55.057	-49.970	-38.092	-45.796
+water-6-CA	-45.93	-50.525	-55.386	-50.519	-38.464	-45.852
+water-6-BK-1	-45.51	-40.274	-44.290	-40.263	-28.639	-34.719
+water-6-BK-2	-45.14	-45.364	-49.458	-45.352	-33.604	-39.789
+water-6-CC	-44.60	-34.317	-37.488	-34.306	-23.543	-28.333
+water-6-BAG	-44.59	-48.630	-52.904	-48.621	-36.766	-43.194
+water-6-CB-1	-43.57	-41.328	-44.557	-41.318	-30.647	-35.510
+water-6-CB-2	-43.51	-35.247	-38.488	-35.238	-24.753	-29.633

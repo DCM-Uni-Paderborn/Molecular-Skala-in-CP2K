@@ -1,0 +1,9 @@
+system	BEGDB_CCSDT_CBS_noCP_binding_kcal_mol	GPW_PBE_GTH_PBE_binding_kcal_mol	GPW_PBE_GTH_PBE_D3BJ_binding_kcal_mol	GPW_PBE_GTH_GauXC_PBE_binding_kcal_mol	GPW_PBE_GTH_SKALA_XC_binding_kcal_mol	GPW_PBE_GTH_SKALA_D3BJ_binding_kcal_mol
+water-6-PR	-46.14	-48.736	-53.807	-48.990	-36.900	-44.603
+water-6-CA	-45.93	-49.847	-54.707	-50.169	-37.822	-45.210
+water-6-BK-1	-45.51	-39.553	-43.569	-39.866	-27.720	-33.799
+water-6-BK-2	-45.14	-44.399	-48.494	-44.715	-32.577	-38.762
+water-6-CC	-44.60	-34.426	-37.598	-34.623	-23.220	-28.010
+water-6-BAG	-44.59	-47.650	-51.924	-47.959	-35.724	-42.152
+water-6-CB-1	-43.57	-41.008	-44.237	-41.258	-29.901	-34.764
+water-6-CB-2	-43.51	-34.814	-38.055	-35.199	-24.053	-28.932

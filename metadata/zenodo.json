@@ -1,0 +1,56 @@
+{
+  "title": "Data for: Molecular SKALA in CP2K: Machine-Learned Exchange-Correlation through a GauXC Atomic-Orbital Interface",
+  "upload_type": "dataset",
+  "description": "CP2K input files, selected raw CP2K outputs, BEGDB water-hexamer benchmark tables, extraction scripts, regression-test inputs, and Supplementary Information files supporting the molecular GPW/GAPW GauXC/SKALA validation study.",
+  "creators": [
+    {
+      "name": "Poeschl, Franz",
+      "affiliation": "Center for Advanced Systems Understanding (CASUS), Helmholtz-Zentrum Dresden-Rossendorf"
+    },
+    {
+      "name": "Pototschnig, Johann",
+      "affiliation": "Center for Advanced Systems Understanding (CASUS), Helmholtz-Zentrum Dresden-Rossendorf"
+    },
+    {
+      "name": "Stein, Frederik",
+      "affiliation": "Center for Advanced Systems Understanding (CASUS), Helmholtz-Zentrum Dresden-Rossendorf"
+    },
+    {
+      "name": "Ehlert, Sebastian",
+      "affiliation": "Microsoft Research AI for Science"
+    },
+    {
+      "name": "Kuehne, Thomas D.",
+      "affiliation": "Center for Advanced Systems Understanding (CASUS), Helmholtz-Zentrum Dresden-Rossendorf; Technische Universitaet Dresden"
+    }
+  ],
+  "keywords": [
+    "CP2K",
+    "GauXC",
+    "SKALA",
+    "OneDFT",
+    "GPW",
+    "GAPW",
+    "density functional theory",
+    "machine-learned exchange-correlation"
+  ],
+  "license": "cc-by-4.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/cp2k/cp2k",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/wavefunction91/GauXC",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/microsoft/skala",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Draft Zenodo metadata. Insert manuscript DOI and final Zenodo DOI after deposition."
+}

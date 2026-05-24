@@ -1,0 +1,3 @@
+nwater	natoms	mode	repeat	omp_threads	returncode	program_ended	wall_s	cp2k_total_s	ks_matrix_total_s	ks_matrix_calls	energy_ha	run_dir
+2	6	cpu_host	0	1	0	1	8.07	7.389	7.146	1	-34.08251019875909	/home/kuehne88/skala-gauxc-cpu-size-test/runs/h2o002_cpu_host_r0
+4	12	cpu_host	0	1	0	1	19.77	19.108	18.76	1	-68.22925256268124	/home/kuehne88/skala-gauxc-cpu-size-test/runs/h2o004_cpu_host_r0
