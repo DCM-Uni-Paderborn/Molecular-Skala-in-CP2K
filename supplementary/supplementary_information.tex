@@ -36,7 +36,7 @@ Cases that would require a different density contract are kept outside the prese
 
 \section{Computational Protocol}
 
-All validation calculations use isolated molecular boundary conditions.  The main-manuscript calculations use all-electron \GAPW{} with \texttt{POTENTIAL ALL} and all-electron \textsc{MOLOPT\_UZH} basis sets.  The small-molecule validation table and the water-hexamer application use QZVPP-quality all-electron \textsc{MOLOPT\_UZH} basis sets.  The complementary pseudopotential checks reported below use \GPW{} with PBE-optimized UZH molecularly optimized \GTH{} basis sets and matching PBE \GTH{} pseudopotentials.
+All validation calculations use isolated molecular boundary conditions.  The main-manuscript calculations use all-electron \GAPW{} with \texttt{POTENTIAL ALL} and all-electron \textsc{MOLOPT\_UZH} basis sets.  The small-molecule validation table and the water-hexamer application use QZVPP-quality all-electron \textsc{MOLOPT\_UZH} basis sets.  The complementary pseudopotential checks reported below use \GPW{} with PBE-optimized UZH molecularly optimized basis sets for \GTH{} calculations combined with matching analytic PBE \GTH{} pseudopotentials.
 
 For native \CPtwoK{} PBE references in all-electron \GAPW{}, \texttt{GAPW\_ACCURATE\_XCINT} is enabled.  This option evaluates the augmented XC contribution with the hard all-electron and soft compensation one-center density terms explicitly included in the XC integration.  It therefore makes the native \CPtwoK{} PBE reference consistent with the all-electron density represented by the AO density matrix passed to \GauXC{}.  Without this setting, one would compare the external all-electron AO-density path to a cheaper native \GAPW{} XC approximation rather than to the most complete native all-electron reference.
 
@@ -178,12 +178,12 @@ Protocol & Max. PBE mismatch & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{} XC & \
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:si_gpw_hexamer} gives the complementary \GPW{}+\GTH{} pseudopotential check for the same water-hexamer workflow.  The calculations use PBE-optimized molecular \GTH{} basis sets and PBE \GTH{} pseudopotentials throughout.  They are not used as the primary benchmark in the main manuscript, but they document that the same \CPtwoK{}--\GauXC{} interface behaves consistently in the pseudopotential representation.
+Table~\ref{tab:si_gpw_hexamer} gives the complementary \GPW{}+\GTH{} pseudopotential check for the same water-hexamer workflow.  The calculations use PBE-optimized molecular basis sets for \GTH{} calculations and PBE \GTH{} pseudopotentials throughout.  They are not used as the primary benchmark in the main manuscript, but they document that the same \CPtwoK{}--\GauXC{} interface behaves consistently in the pseudopotential representation.
 
 \begin{table}[htbp]
 \centering
 \scriptsize
-\caption{Complementary \GPW{}+\GTH{} water-hexamer relative binding energies with PBE \GTH{} basis sets and pseudopotentials.  All values are in kcal mol\(^{-1}\), relative to the lowest isomer within the respective method.}
+\caption{Complementary \GPW{}+\GTH{} water-hexamer relative binding energies with PBE-optimized molecular basis sets and PBE \GTH{} pseudopotentials.  All values are in kcal mol\(^{-1}\), relative to the lowest isomer within the respective method.}
 \label{tab:si_gpw_hexamer}
 \begin{tabular}{lrrrrrr}
 \hline
