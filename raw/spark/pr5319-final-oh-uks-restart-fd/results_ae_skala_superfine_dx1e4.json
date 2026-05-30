@@ -1,0 +1,48 @@
+{
+  "OH/GAPW_AE/skala": {
+    "analytic_virial": 0.0019081062020570297,
+    "base": {
+      "energy": -75.73421578730306,
+      "forces": [
+        [
+          "A1",
+          1.29559827e-06,
+          -3.03042136e-07,
+          0.00312286578
+        ],
+        [
+          "A2",
+          -1.29559704e-06,
+          3.03041695e-07,
+          -0.00312286402
+        ]
+      ],
+      "gauxc_virial": 0.253320799241,
+      "gauxc_virial_fd": {
+        "analytic": 0.253320799241,
+        "diff": 1.36550650343e-06,
+        "fd": 0.253319433735
+      },
+      "label": "OH_GAPW_AE_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.00312286402,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": 1.6794986882324656e-05,
+      "dx_angstrom": 0.0001,
+      "fd": -0.0031396590068823245,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": 0.0019081062020570297,
+      "diff": -7.99276928330748e-06,
+      "dx": 0.0001,
+      "fd": 0.0019160989713403371,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  }
+}

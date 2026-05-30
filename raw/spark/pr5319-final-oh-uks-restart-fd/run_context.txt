@@ -1,0 +1,22 @@
+Date: 2026-05-30
+Host: Spark workstation (kuehne88@192.168.13.61)
+CP2K source tree: /home/kuehne88/cp2k-pr5319-final-20260530
+CP2K revision: 02a0af651c786716c582f7dfee38aa491d0a3a16
+CP2K build: /home/kuehne88/cp2k-pr5319-final-20260530/build-gauxc-final/bin/cp2k.psmp
+SKALA model: /home/kuehne88/cp2k-gauxc-skala-toolchain/gauxc-skala-gpu-torch-cu130-20260524/share/gauxc/onedft_models/skala-1.1.fun
+
+Matrix:
+- Open-shell UKS OH.
+- Methods: GPW/GTH and all-electron GAPW.
+- XC paths: native CP2K PBE, PBE through GauXC, and SKALA through GauXC/OneDFT.
+- Displaced finite-difference calculations restart from the midpoint wavefunction.
+
+Files:
+- results_dx1e3.json: full GPW/GTH and all-electron GAPW matrix with force step 1e-3 Angstrom.
+- results_skala_dx1e4.json: SKALA-only GPW/GTH and all-electron GAPW rerun with force step 1e-4 Angstrom.
+- results_ae_skala_superfine_dx1e4.json: all-electron GAPW/SKALA rerun with GRID SUPERFINE, PRUNING_SCHEME UNPRUNED, and force step 1e-4 Angstrom.
+
+Notes:
+- PBE-native and PBE-through-GauXC UKS force and virial finite-difference checks agree at about 1e-6 Ha/bohr and 1e-8 Ha.
+- GPW/GTH SKALA requires the smaller 1e-4 Angstrom step for a stable open-shell force finite difference and then agrees at about 1e-6 Ha/bohr.
+- All-electron GAPW/SKALA remains more grid/SCF-sensitive for OH/QZVPP, with the conservative SUPERFINE/UNPRUNED run giving about 1.7e-5 Ha/bohr force and 8e-6 Ha virial differences.

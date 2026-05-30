@@ -1,0 +1,94 @@
+{
+  "OH/GAPW_AE/skala": {
+    "analytic_virial": 0.0016540757977057164,
+    "base": {
+      "energy": -75.73421690189878,
+      "forces": [
+        [
+          "A1",
+          -6.36364902e-06,
+          -2.09533419e-06,
+          0.00270711186
+        ],
+        [
+          "A2",
+          6.36364858e-06,
+          2.09533542e-06,
+          -0.0027071101
+        ]
+      ],
+      "gauxc_virial": 0.253080398044,
+      "gauxc_virial_fd": {
+        "analytic": 0.253080398044,
+        "diff": 5.5841013578e-05,
+        "fd": 0.253024557031
+      },
+      "label": "OH_GAPW_AE_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.0027071101,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -2.0942172673856906e-05,
+      "dx_angstrom": 0.0001,
+      "fd": -0.002686167927326143,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": 0.0016540757977057164,
+      "diff": 2.622509014172281e-05,
+      "dx": 0.0001,
+      "fd": 0.0016278507075639936,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  },
+  "OH/GPW/skala": {
+    "analytic_virial": -0.0017242989920044354,
+    "base": {
+      "energy": -16.547000229713134,
+      "forces": [
+        [
+          "A1",
+          4.30489191e-10,
+          -6.28048329e-11,
+          -0.00282203975
+        ],
+        [
+          "A2",
+          -3.72534081e-10,
+          1.22889893e-10,
+          0.00282204106
+        ]
+      ],
+      "gauxc_virial": 0.165259011925,
+      "gauxc_virial_fd": {
+        "analytic": 0.165259011925,
+        "diff": -1.27952573162e-05,
+        "fd": 0.165271807183
+      },
+      "label": "OH_GPW_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.00282204106,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": 1.0057269732529663e-06,
+      "dx_angstrom": 0.0001,
+      "fd": 0.002821035333026747,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": -0.0017242989920044354,
+      "diff": -6.154662971823892e-06,
+      "dx": 0.0001,
+      "fd": -0.0017181443290326115,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  }
+}

@@ -51,6 +51,15 @@ processed/skala-molopt-validation.tsv
 
 It covers GPW/GTH and all-electron GAPW with native CP2K-PBE, PBE through GauXC, and SKALA.  The processed table reports total energies, one representative analytical-versus-finite-difference force component, and the molecular virial finite-difference diagnostic.
 
+The final validation rerun against CP2K revision `02a0af651c786716c582f7dfee38aa491d0a3a16` is retained separately in
+
+```text
+raw/spark/pr5319-final-skala-molopt-bench/
+processed/pr5319-final-skala-molopt-validation.tsv
+```
+
+It repeats the same closed-shell RKS GPW/GTH and all-electron GAPW matrix for H2, NH3, and H2O on the Spark workstation.
+
 The open-shell OH/UKS SKALA force diagnostic is stored separately in
 
 ```text
@@ -59,6 +68,24 @@ processed/oh-uks-skala-restart-fd.tsv
 ```
 
 For this open-shell case, the displaced finite-difference calculations use the converged midpoint wavefunction as a restart.  Independent atomic guesses can converge to a different electronic branch and produce an apparent finite-difference force mismatch that is not a nuclear-gradient error.
+
+The final OH/UKS rerun for the same CP2K revision is stored in
+
+```text
+raw/spark/pr5319-final-oh-uks-restart-fd/
+processed/pr5319-final-oh-uks-restart-fd.tsv
+```
+
+The PBE-native and PBE-through-GauXC rows use a 1e-3 Angstrom finite-difference step.  The GPW/GTH SKALA row uses a 1e-4 Angstrom step to avoid the open-shell branch sensitivity.  The all-electron GAPW/SKALA row uses the conservative GauXC `SUPERFINE`/`UNPRUNED` molecular grid and a 1e-4 Angstrom force step; it remains the most grid- and SCF-sensitive entry in the final molecular validation matrix.
+
+The focused GauXC/SKALA regression-test rerun is stored in
+
+```text
+raw/spark/pr5319-final-regtest-gauxc/
+processed/pr5319-final-regtest-gauxc-summary.tsv
+```
+
+It completed `QS/regtest-gauxc` with 58 correct tests, no failed or wrong tests, and no slow tests flagged.  The retained summary table includes the SKALA, UKS, CDFT, and CDFT-CI smoke checks.
 
 ## Water-hexamer application benchmark
 

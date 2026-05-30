@@ -1,0 +1,7 @@
+RUN OH/GPW/native_pbe
+RUN OH/GPW/gauxc_pbe
+RUN OH/GPW/skala
+RUN OH/GAPW_AE/native_pbe
+RUN OH/GAPW_AE/gauxc_pbe
+RUN OH/GAPW_AE/skala
+/home/kuehne88/molecular-skala-final-20260530-pr5319-clean/OH_UKS_RESTART/oh-uks-restart-fd/results.json

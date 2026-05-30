@@ -1,0 +1,270 @@
+{
+  "OH/GAPW_AE/gauxc_pbe": {
+    "analytic_virial": -0.007483335509956733,
+    "base": {
+      "energy": -75.6862924485902,
+      "forces": [
+        [
+          "A1",
+          8.28977354e-13,
+          8.26088946e-12,
+          -0.0122474547
+        ],
+        [
+          "A2",
+          5.17324417e-13,
+          -8.51396258e-12,
+          0.0122474563
+        ]
+      ],
+      "gauxc_virial": 0.232786806827,
+      "gauxc_virial_fd": {
+        "analytic": 0.232786806827,
+        "diff": 1.00686348148e-09,
+        "fd": 0.23278680582
+      },
+      "label": "OH_GAPW_AE_gauxc_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.0122474563,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -1.07570124958066e-06,
+      "dx_angstrom": 0.001,
+      "fd": 0.012248532001249582,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": -0.007483335509956733,
+      "diff": 1.5128462288460653e-08,
+      "dx": 0.0001,
+      "fd": -0.007483350638419021,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  },
+  "OH/GAPW_AE/native_pbe": {
+    "analytic_virial": -0.007510242071148157,
+    "base": {
+      "energy": -75.6862831706429,
+      "forces": [
+        [
+          "A1",
+          1.19191027e-11,
+          1.33028053e-11,
+          -0.0122912189
+        ],
+        [
+          "A2",
+          1.17195427e-12,
+          1.213728e-12,
+          0.0122917643
+        ]
+      ],
+      "gauxc_virial": null,
+      "gauxc_virial_fd": null,
+      "label": "OH_GAPW_AE_native_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.0122917643,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -1.107256128641057e-06,
+      "dx_angstrom": 0.001,
+      "fd": 0.012292871556128642,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": -0.007510242071148157,
+      "diff": 1.3741655577326206e-08,
+      "dx": 0.0001,
+      "fd": -0.0075102558128037344,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  },
+  "OH/GAPW_AE/skala": {
+    "analytic_virial": 0.0016540757977057164,
+    "base": {
+      "energy": -75.73421690189878,
+      "forces": [
+        [
+          "A1",
+          -6.36364902e-06,
+          -2.09533419e-06,
+          0.00270711186
+        ],
+        [
+          "A2",
+          6.36364858e-06,
+          2.09533542e-06,
+          -0.0027071101
+        ]
+      ],
+      "gauxc_virial": 0.253080398044,
+      "gauxc_virial_fd": {
+        "analytic": 0.253080398044,
+        "diff": 5.5841013578e-05,
+        "fd": 0.253024557031
+      },
+      "label": "OH_GAPW_AE_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.0027071101,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": 0.0003264674860939238,
+      "dx_angstrom": 0.001,
+      "fd": -0.003033577586093924,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": 0.0016540757977057164,
+      "diff": 2.622509014172281e-05,
+      "dx": 0.0001,
+      "fd": 0.0016278507075639936,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  },
+  "OH/GPW/gauxc_pbe": {
+    "analytic_virial": -0.009171435186816032,
+    "base": {
+      "energy": -16.52914625945977,
+      "forces": [
+        [
+          "A1",
+          5.85176839e-11,
+          5.85124383e-11,
+          -0.0150102503
+        ],
+        [
+          "A2",
+          3.3490498e-12,
+          3.34793279e-12,
+          0.0150102517
+        ]
+      ],
+      "gauxc_virial": 0.165635790306,
+      "gauxc_virial_fd": {
+        "analytic": 0.165635790306,
+        "diff": 1.11620629406e-09,
+        "fd": 0.16563578919
+      },
+      "label": "OH_GPW_gauxc_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.0150102517,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -1.0796045730454562e-06,
+      "dx_angstrom": 0.001,
+      "fd": 0.015011331304573045,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": -0.009171435186816032,
+      "diff": 1.4011464575386379e-09,
+      "dx": 0.0001,
+      "fd": -0.00917143658796249,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  },
+  "OH/GPW/native_pbe": {
+    "analytic_virial": -0.009168406952982409,
+    "base": {
+      "energy": -16.529231713767253,
+      "forces": [
+        [
+          "A1",
+          1.67450963e-10,
+          1.67451349e-10,
+          -0.0150295139
+        ],
+        [
+          "A2",
+          5.90909843e-12,
+          5.90949046e-12,
+          0.0149810759
+        ]
+      ],
+      "gauxc_virial": null,
+      "gauxc_virial_fd": null,
+      "label": "OH_GPW_native_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.0149810759,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -1.0979578143801433e-06,
+      "dx_angstrom": 0.001,
+      "fd": 0.01498217385781438,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": -0.009168406952982409,
+      "diff": 2.5985807637629588e-09,
+      "dx": 0.0001,
+      "fd": -0.009168409551563172,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  },
+  "OH/GPW/skala": {
+    "analytic_virial": -0.0017242989920044354,
+    "base": {
+      "energy": -16.547000229713134,
+      "forces": [
+        [
+          "A1",
+          4.30489191e-10,
+          -6.28048329e-11,
+          -0.00282203975
+        ],
+        [
+          "A2",
+          -3.72534081e-10,
+          1.22889893e-10,
+          0.00282204106
+        ]
+      ],
+      "gauxc_virial": 0.165259011925,
+      "gauxc_virial_fd": {
+        "analytic": 0.165259011925,
+        "diff": -1.27952573162e-05,
+        "fd": 0.165271807183
+      },
+      "label": "OH_GPW_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.00282204106,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -4.469587911636302e-05,
+      "dx_angstrom": 0.001,
+      "fd": 0.002866736939116363,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    },
+    "virial_fd": {
+      "analytic": -0.0017242989920044354,
+      "diff": -6.154662971823892e-06,
+      "dx": 0.0001,
+      "fd": -0.0017181443290326115,
+      "minus_returncode": 0,
+      "plus_returncode": 0
+    }
+  }
+}

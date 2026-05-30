@@ -1,0 +1,11 @@
+Date: 2026-05-30
+Host: Spark workstation (kuehne88@192.168.13.61)
+CP2K source tree: /home/kuehne88/cp2k-pr5319-final-20260530
+CP2K revision: 02a0af651c786716c582f7dfee38aa491d0a3a16
+Regtest command:
+  python3 tests/do_regtest.py build-gauxc-final/bin psmp --restrictdir QS/regtest-gauxc --workbasedir /home/kuehne88/molecular-skala-final-20260530-pr5319-clean/regtest-gauxc/work --cp2kdatadir data --mpiranks 1 --ompthreads 1 --maxtasks 4 --timeout 600 --flagslow
+
+Summary:
+- QS/regtest-gauxc completed with 58/58 correct tests.
+- The CDFT and CDFT-CI SKALA/PBE smoke tests are included in this restricted regtest directory.
+- No slow tests were flagged.

@@ -1,0 +1,162 @@
+*************************** Testing started ****************************
+
+----------------------------- Settings ---------------------------------
+MPI ranks:      1
+OpenMP threads: 1
+GPU devices:    1
+Workers:        4
+Timeout [s]:    600
+Work base dir:  /home/kuehne88/molecular-skala-final-20260530-pr5319-clean/regtest-gauxc/work/TEST-2026-05-30_21-04-56
+MPI exec:       mpiexec -n {N} --bind-to none
+Smoke test:     False
+Valgrind:       False
+Keepalive:      False
+Flag slow:      True
+Debug:          False
+Binary dir:     /home/kuehne88/cp2k-pr5319-final-20260530/build-gauxc-final/bin
+CP2K data dir:  /home/kuehne88/cp2k-pr5319-final-20260530/data
+VERSION:        psmp
+Flags:          omp,libint,fftw3,libxc,gauxc,gauxc_mpi,gauxc_onedft,gauxc_host,gauxc_device,gauxc_cuda,parallel,scalapack,xsmm,spglib,libtorch
+------------------------------------------------------------------------
+Copying test files ... done
+Skipping UNIT/gx_ac_unittest because its requirements are not satisfied.
+Skipping QS/regtest-dft-d4-auto-ref because its requirements are not satisfied.
+Skipping MIMIC/regtest-qmmm because its requirements are not satisfied.
+Skipping xTB/regtest-tblite-gfn1-grad because its requirements are not satisfied.
+Skipping xTB/regtest-tblite-gfn1-periodic because its requirements are not satisfied.
+Skipping xTB/regtest-tblite-ipea1 because its requirements are not satisfied.
+Skipping xTB/regtest-tblite-gfn2 because its requirements are not satisfied.
+Skipping xTB/regtest-tblite-gfn1 because its requirements are not satisfied.
+Skipping Fist/regtest-ace because its requirements are not satisfied.
+Skipping QS/regtest-rpa-sigma because its requirements are not satisfied.
+Skipping TMC/regtest_ana_on_the_fly because its requirements are not satisfied.
+Skipping QS/regtest-cusolver because its requirements are not satisfied.
+Skipping QS/regtest-dlaf because its requirements are not satisfied.
+Skipping QS/regtest-dlaf-2 because its requirements are not satisfied.
+Skipping xTB/regtest-gfn0 because its requirements are not satisfied.
+Skipping xTB/regtest-gfn0-d because its requirements are not satisfied.
+Skipping xTB/regtest-gfn0-m1 because its requirements are not satisfied.
+Skipping xTB/regtest-gfn0-m2 because its requirements are not satisfied.
+Skipping xTB/regtest-gfn0-m3 because its requirements are not satisfied.
+Skipping xTB/regtest-gfn0-m4 because its requirements are not satisfied.
+Skipping QS/regtest-ec because its requirements are not satisfied.
+Skipping QS/regtest-gpw-1 because its requirements are not satisfied.
+Skipping QS/regtest-openpmd because its requirements are not satisfied.
+Skipping SIRIUS/regtest-1 because its requirements are not satisfied.
+Skipping QS/regtest-gw-kpoints because its requirements are not satisfied.
+Skipping QS/regtest-mp2-grad-1 because its requirements are not satisfied.
+Skipping QS/regtest-gapw because its requirements are not satisfied.
+Skipping QS/regtest-mp2-block because its requirements are not satisfied.
+Skipping QMMM/QS/regtest-cdft because its requirements are not satisfied.
+Skipping QS/regtest-pexsi because its requirements are not satisfied.
+Skipping QS/regtest-cdft-3 because its requirements are not satisfied.
+Skipping QS/regtest-as-fci because its requirements are not satisfied.
+Skipping QS/regtest-dft-vdw-corr-4 because its requirements are not satisfied.
+Skipping QS/regtest-as-3 because its requirements are not satisfied.
+Skipping QS/regtest-smeagol-2 because its requirements are not satisfied.
+Skipping LIBTEST/libbqb because its requirements are not satisfied.
+Skipping TMC/regtest because its requirements are not satisfied.
+Skipping LIBTEST/libvori because its requirements are not satisfied.
+Skipping xTB/regtest-stda because its requirements are not satisfied.
+Skipping QS/regtest-cdft-hirshfeld-2 because its requirements are not satisfied.
+Skipping TMC/regtest_ana_post_proc because its requirements are not satisfied.
+Skipping QS/regtest-as-qcschema because its requirements are not satisfied.
+Skipping QS/regtest-elpa-qr because its requirements are not satisfied.
+Skipping QS/regtest-elpa-2 because its requirements are not satisfied.
+Skipping Fist/regtest-deepmd because its requirements are not satisfied.
+Skipping QS/regtest-elpa because its requirements are not satisfied.
+Skipping Fist/regtest-plumed2 because its requirements are not satisfied.
+Skipping Fist/regtest-quip because its requirements are not satisfied.
+Skipping QS/regtest-eht-guess because its requirements are not satisfied.
+Skipping QS/regtest-trexio because its requirements are not satisfied.
+Skipping QS/regtest-trexio-2 because its requirements are not satisfied.
+Skipping QS/regtest-rtbse-gxac because its requirements are not satisfied.
+Skipping 390 test directories because of --restrictdir.
+Launched 1 test directories and 4 worker...
+
+>>> /home/kuehne88/molecular-skala-final-20260530-pr5319-clean/regtest-gauxc/work/TEST-2026-05-30_21-04-56/QS/regtest-gauxc
+    1H2_ONEDFT_PBE_REFERENCE.inp                                                          -1.163125608           OK (   0.95 sec)
+    1H2_GAUXC_PBE.inp                                                                     -1.163121772           OK (   0.83 sec)
+    1H2_ONEDFT_PBE.inp                                                                      -1.1631219           OK (   6.25 sec)
+    H2_SKALA_ENERGY.inp                                                                  -0.9793660681           OK (   2.30 sec)
+    H2_SKALA_ENERGY_CHUNKED.inp                                                          -0.9793660681           OK (   2.16 sec)
+    H2_NATIVE_SKALA_GPW.inp                                                               -0.976732567           OK (   5.75 sec)
+    H2_NATIVE_SKALA_GPW_FORCE.inp                                                       0.000303114066           OK (   3.00 sec)
+    H2O_NATIVE_GPW_PBE_REFERENCE.inp                                                      -17.20087371           OK (   0.97 sec)
+    H2O_NATIVE_SKALA_GPW.inp:E_total                                                      -17.06748157           OK (   6.42 sec)
+    H2O_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_electrons                                   8.000087041           OK (   6.42 sec)
+    H2O_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_spin_moment                                           -           OK (   6.42 sec)
+    OH_NATIVE_GPW_PBE_UKS_REFERENCE.inp                                                    -16.5245397           OK (   0.89 sec)
+    OH_NATIVE_SKALA_GPW_UKS.inp:E_total                                                   -16.40820053           OK (   5.53 sec)
+    OH_NATIVE_SKALA_GPW_UKS.inp:SKALA_GPW_feature_electrons                                7.000087026           OK (   5.53 sec)
+    OH_NATIVE_SKALA_GPW_UKS.inp:SKALA_GPW_feature_spin_moment                              1.000012432           OK (   5.53 sec)
+    AR4_NATIVE_GPW_PBE_REFERENCE.inp                                                      -84.25426295           OK (   0.78 sec)
+    AR4_NATIVE_GPW_PBE_WRAPPED_REFERENCE.inp                                              -84.25426295           OK (   0.78 sec)
+    NE4_NATIVE_GPW_PBE_REFERENCE.inp                                                      -139.3613237           OK (   0.74 sec)
+    NE4_NATIVE_SKALA_GPW.inp:E_total                                                      -139.3502416           OK (   3.62 sec)
+    NE4_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_electrons                                   31.99730835           OK (   3.62 sec)
+    NE4_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_spin_moment                                           -           OK (   3.62 sec)
+    NE4_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_weight_sum                                  574.8501331           OK (   3.62 sec)
+    AR4_NATIVE_SKALA_GPW.inp:E_total                                                      -84.34478122           OK (   4.72 sec)
+    AR4_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_electrons                                   31.99999996           OK (   4.72 sec)
+    AR4_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_spin_moment                                           -           OK (   4.72 sec)
+    AR4_NATIVE_SKALA_GPW.inp:SKALA_GPW_feature_weight_sum                                  1004.671808           OK (   4.72 sec)
+    AR4_NATIVE_SKALA_GPW_WRAPPED.inp:E_total                                              -84.34477949           OK (   4.79 sec)
+    AR4_NATIVE_SKALA_GPW_WRAPPED.inp:SKALA_GPW_feature_electrons                           31.99999996           OK (   4.79 sec)
+    AR4_NATIVE_SKALA_GPW_WRAPPED.inp:SKALA_GPW_feature_spin_moment                                   -           OK (   4.79 sec)
+    AR4_NATIVE_SKALA_GPW_WRAPPED.inp:SKALA_GPW_feature_weight_sum                          1004.671808           OK (   4.79 sec)
+    H2O_NATIVE_SKALA_GPW_WRAPPED.inp:E_total                                              -17.05194598           OK (   6.17 sec)
+    H2O_NATIVE_SKALA_GPW_WRAPPED.inp:SKALA_GPW_feature_electrons                           7.999912803           OK (   6.17 sec)
+    H2O_NATIVE_SKALA_GPW_WRAPPED.inp:SKALA_GPW_feature_spin_moment                                   -           OK (   6.17 sec)
+    H2O_NATIVE_SKALA_GPW_WRAPPED.inp:SKALA_GPW_feature_weight_sum                           1457.64027           OK (   6.17 sec)
+    H2O_NATIVE_GPW_PBE_WRAPPED_REFERENCE.inp                                              -17.19012806           OK (   0.95 sec)
+    OH_NATIVE_GPW_PBE_UKS_WRAPPED_REFERENCE.inp                                           -16.51925838           OK (   1.12 sec)
+    OH_NATIVE_SKALA_GPW_UKS_WRAPPED.inp:E_total                                            -16.3976717           OK (   5.83 sec)
+    OH_NATIVE_SKALA_GPW_UKS_WRAPPED.inp:SKALA_GPW_feature_electrons                        7.000000092           OK (   5.83 sec)
+    OH_NATIVE_SKALA_GPW_UKS_WRAPPED.inp:SKALA_GPW_feature_spin_moment                      1.000000013           OK (   5.83 sec)
+    OH_NATIVE_SKALA_GPW_UKS_WRAPPED.inp:SKALA_GPW_feature_weight_sum                        1457.64027           OK (   5.83 sec)
+    H2_GAPW_SKALA_ENERGY.inp                                                             -0.9746378315           OK (   2.23 sec)
+    H2_SKALA_CDFT.inp                                                                     0.2165576473           OK (   3.51 sec)
+    H2_GAPW_SKALA_CDFT.inp                                                                0.2174177578           OK (   3.52 sec)
+    H2_SKALA_CDFT_CI.inp                                                                 -0.7037517464           OK (   5.90 sec)
+    H2_PBE_CDFT_REFERENCE.inp:E_total                                                     -1.157232743           OK (   1.58 sec)
+    H2_PBE_CDFT_REFERENCE.inp:M071                                                         0.197625731           OK (   1.58 sec)
+    H2_ONEDFT_PBE_CDFT.inp:E_total                                                        -1.157229554           OK (   2.45 sec)
+    H2_ONEDFT_PBE_CDFT.inp:M071                                                           0.1976240706           OK (   2.45 sec)
+    H2_PBE_CDFT_CI_REFERENCE.inp:M073                                                      345.3643291           OK (   2.58 sec)
+    H2_PBE_CDFT_CI_REFERENCE.inp:M077                                                     -1.162951818           OK (   2.58 sec)
+    H2_ONEDFT_PBE_CDFT_CI_NGROUPS.inp:M073                                                 345.3254374           OK (   4.22 sec)
+    H2_ONEDFT_PBE_CDFT_CI_NGROUPS.inp:M077                                                 -1.16294823           OK (   4.22 sec)
+    OH_ONEDFT_PBE_UKS.inp                                                                 -16.54158175           OK (   8.31 sec)
+    H2_ONEDFT_PBE_FORCE_DEBUG.inp                                                                    -           OK (   1.98 sec)
+    NH3_ONEDFT_PBE_REFERENCE.inp                                                          -11.72243281           OK (   2.76 sec)
+    NH3_ONEDFT_PBE.inp                                                                    -11.72255857           OK (   3.64 sec)
+    NH3_ONEDFT_PBE_FORCE_DEBUG.inp                                                            4.25e-06           OK (   6.89 sec)
+    CH4_DIMER_GAUXC_PBE_D3.inp                                                         -0.003551237838           OK (   0.88 sec)
+<<< /home/kuehne88/molecular-skala-final-20260530-pr5319-clean/regtest-gauxc/work/TEST-2026-05-30_21-04-56/QS/regtest-gauxc (1 of 1) done in 225.12 sec
+------------------------------- Errors ---------------------------------
+
+
+------------------------------- Timings --------------------------------
+Plot: name="timings", title="Timing Distribution", ylabel="time [s]"
+PlotPoint: name="100th_percentile", plot="timings", label="100th %ile", y=8.31, yerr=0.0
+PlotPoint: name="99th_percentile", plot="timings", label="99th %ile", y=7.50, yerr=0.0
+PlotPoint: name="98th_percentile", plot="timings", label="98th %ile", y=6.82, yerr=0.0
+PlotPoint: name="95th_percentile", plot="timings", label="95th %ile", y=6.42, yerr=0.0
+PlotPoint: name="90th_percentile", plot="timings", label="90th %ile", y=6.20, yerr=0.0
+PlotPoint: name="80th_percentile", plot="timings", label="80th %ile", y=5.83, yerr=0.0
+
+------------------------------ Slow Tests ------------------------------
+Duration threshold (2x 95th %ile): 12.83 sec
+Found 0 slow tests (0 suppressed):
+
+------------------------------- Summary --------------------------------
+Number of FAILED  tests 0
+Number of WRONG   tests 0
+Number of CORRECT tests 58
+Total number of   tests 58
+
+Summary: correct: 58 / 58; 2min
+Status: OK
+
+*************************** Testing ended ******************************
