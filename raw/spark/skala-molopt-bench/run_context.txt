@@ -1,0 +1,5 @@
+host=spark-c86c
+started=2026-05-30T13:55:17+02:00
+cp2k_root=/home/kuehne88/cp2k-periodic-skala-verify
+cp2k_build=build-gauxc-periodic
+branch_context=cp2k/cp2k#5319 current PR head candidate

@@ -18,22 +18,24 @@
  DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
 
 
-  **** **** ******  **  PROGRAM STARTED AT               2026-05-22 00:24:04.608
+  **** **** ******  **  PROGRAM STARTED AT               2026-05-30 14:04:37.175
  ***** ** ***  *** **   PROGRAM STARTED ON                            spark-c86c
  **    ****   ******    PROGRAM STARTED BY                              kuehne88
- ***** **    ** ** **   PROGRAM PROCESS ID                               1958842
-  **** **  *******  **  PROGRAM STARTED IN /home/kuehne88/skala-molopt-bench/run
-                                           s/H2_GPW_skala_base
+ ***** **    ** ** **   PROGRAM PROCESS ID                                 97694
+  **** **  *******  **  PROGRAM STARTED IN /home/kuehne88/molecular-skala-final-
+                                           20260530-prhead/skala-molopt-bench/ru
+                                           ns/H2_GPW_skala_base
 
  CP2K| version string:                 CP2K version 2026.1 (Development Version)
- CP2K| source code revision number:                                   919a8b9f61
+ CP2K| source code revision number:                                   362771334d
  CP2K| cp2kflags: omp libint fftw3 libxc gauxc gauxc_mpi gauxc_onedft gauxc_host
- CP2K|             parallel scalapack xsmm spglib
+ CP2K|             gauxc_device gauxc_cuda parallel scalapack xsmm spglib libtor
+ CP2K|            rch
  CP2K| is freely available from                            https://www.cp2k.org/
- CP2K| Program compiled at                                   2026-05-22 00:16:10
+ CP2K| Program compiled at                                   2026-05-29 22:13:32
  CP2K| Program compiled on                                            spark-c86c
  CP2K| Program compiled for                                              aarch64
- CP2K| Data directory path              /home/kuehne88/cp2k-master-20260520/data
+ CP2K| Data directory path        /home/kuehne88/cp2k-periodic-skala-verify/data
  CP2K| Input file name                                                 input.inp
 
  GLOBAL| Force Environment number                                              1
@@ -74,12 +76,12 @@
  MEMORY| system memory details [Kb]
  MEMORY|                        rank 0           min           max       average
  MEMORY| MemTotal            125508532     125508532     125508532     125508532
- MEMORY| MemFree              16254764      16254764      16254764      16254764
- MEMORY| Buffers               2089128       2089128       2089128       2089128
- MEMORY| Cached               56666292      56666292      56666292      56666292
- MEMORY| Slab                  8457544       8457544       8457544       8457544
- MEMORY| SReclaimable          6932748       6932748       6932748       6932748
- MEMORY| MemLikelyFree        81942932      81942932      81942932      81942932
+ MEMORY| MemFree              60132936      60132936      60132936      60132936
+ MEMORY| Buffers               1394092       1394092       1394092       1394092
+ MEMORY| Cached               56308048      56308048      56308048      56308048
+ MEMORY| Slab                  3247632       3247632       3247632       3247632
+ MEMORY| SReclaimable          2416824       2416824       2416824       2416824
+ MEMORY| MemLikelyFree       120251900     120251900     120251900     120251900
 
 
  GENERATE|  Preliminary Number of Bonds generated:                             0
@@ -152,89 +154,89 @@
   Step     Update method      Time    Convergence         Total energy    Change
   ------------------------------------------------------------------------------
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     1 P_Mix/Diag. 0.40E+00    3.6     1.14699551        -0.9668165799 -9.67E-01
+     1 P_Mix/Diag. 0.40E+00    3.1     1.14699551        -0.9668165796 -9.67E-01
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     2 P_Mix/Diag. 0.40E+00    2.5     0.65317814        -1.0527556309 -8.59E-02
+     2 P_Mix/Diag. 0.40E+00    1.9     0.65317814        -1.0527556309 -8.59E-02
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     3 P_Mix/Diag. 0.40E+00    2.4     0.36287859        -1.1020314501 -4.93E-02
+     3 P_Mix/Diag. 0.40E+00    1.9     0.36287859        -1.1020314503 -4.93E-02
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     4 P_Mix/Diag. 0.40E+00    2.2     0.20315308        -1.1308526736 -2.88E-02
+     4 P_Mix/Diag. 0.40E+00    1.8     0.20315307        -1.1308526736 -2.88E-02
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     5 P_Mix/Diag. 0.40E+00    2.0     0.11471179        -1.1479047084 -1.71E-02
+     5 P_Mix/Diag. 0.40E+00    1.8     0.11471179        -1.1479047086 -1.71E-02
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     6 P_Mix/Diag. 0.40E+00    2.3     0.06534291        -1.1580708854 -1.02E-02
+     6 P_Mix/Diag. 0.40E+00    1.8     0.06534291        -1.1580708853 -1.02E-02
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     7 DIIS/Diag.  0.15E-02    2.3     0.03580286        -1.1641541733 -6.08E-03
+     7 DIIS/Diag.  0.15E-02    1.8     0.03580286        -1.1641541730 -6.08E-03
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     8 DIIS/Diag.  0.21E-03    2.3     0.00006687        -1.1732607692 -9.11E-03
+     8 DIIS/Diag.  0.21E-03    1.8     0.00006687        -1.1732607693 -9.11E-03
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-     9 DIIS/Diag.  0.12E-03    2.3     0.00024478        -1.1732607727 -3.50E-09
+     9 DIIS/Diag.  0.12E-03    1.8     0.00024480        -1.1732607728 -3.47E-09
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-    10 DIIS/Diag.  0.30E-03    2.3     0.00075581        -1.1732607703  2.40E-09
+    10 DIIS/Diag.  0.30E-03    1.8     0.00075594        -1.1732607705  2.27E-09
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-    11 DIIS/Diag.  0.80E-03    2.2     0.00082297        -1.1732605198  2.50E-07
+    11 DIIS/Diag.  0.80E-03    1.8     0.00082309        -1.1732605209  2.50E-07
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-    12 DIIS/Diag.  0.63E-05    2.3     0.00000180        -1.1732607907 -2.71E-07
+    12 DIIS/Diag.  0.63E-05    1.8     0.00000180        -1.1732607905 -2.70E-07
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-    13 DIIS/Diag.  0.26E-06    2.3     0.00000007        -1.1732607915 -8.19E-10
+    13 DIIS/Diag.  0.25E-06    1.8     0.00000007        -1.1732607917 -1.21E-09
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
-    14 DIIS/Diag.  0.44E-08    2.3     7.5553E-10        -1.1732607914  7.67E-11
+    14 DIIS/Diag.  0.61E-08    1.8     1.8257E-09        -1.1732607915  2.65E-10
 
   *** SCF run converged in    14 steps ***
 
@@ -246,37 +248,37 @@
 
   Overlap energy of the core charge distribution:               0.00000058965184
   Self energy of the core charge distribution:                 -2.81260610747607
-  Core Hamiltonian energy:                                      0.98607450462825
-  Hartree energy:                                               1.35547843939251
-  Exchange-correlation energy:                                 -0.70220821760373
+  Core Hamiltonian energy:                                      0.98607450497962
+  Hartree energy:                                               1.35547843920502
+  Exchange-correlation energy:                                 -0.70220821781451
 
-  Total energy:                                                -1.17326079140720
+  Total energy:                                                -1.17326079145409
 
- *** WARNING in xc/xc_gauxc_functional.F:845 :: GauXC OneDFT/SKALA nuclear ***
- *** gradients are sensitive to the GauXC molecular grid. Use GRID         ***
+ *** WARNING in xc/xc_gauxc_functional.F:1154 :: GauXC OneDFT/SKALA        ***
+ *** nuclear gradients are sensitive to the GauXC molecular grid. Use GRID ***
  *** SUPERFINE and PRUNING_SCHEME UNPRUNED for quantitative force checks.  ***
 
 
  GAUXC| Molecular XC gradient virial diagnostic [a.u.]
  GAUXC|            x                   y                   z
- GAUXC| x   9.00589945872E-26   9.00589945872E-26  -1.83377688085E-10
- GAUXC| y   6.35483774688E-26   6.35483774688E-26  -1.19471214034E-10
- GAUXC| z   1.03873081979E-16   1.03873081979E-16   3.34709953157E-01
- GAUXC| Molecular XC gradient virial 1/3 Trace   1.11569984386E-01
- GAUXC| Molecular XC gradient sum   0.00000000000E+00   0.00000000000E+00   0.00000000000E+00
+ GAUXC| x   0.00000000000E+00   0.00000000000E+00   1.96818428112E-11
+ GAUXC| y   0.00000000000E+00   0.00000000000E+00  -4.95797827357E-11
+ GAUXC| z   0.00000000000E+00   0.00000000000E+00   3.34709953184E-01
+ GAUXC| Molecular XC gradient virial 1/3 Trace   1.11569984395E-01
+ GAUXC| Molecular XC gradient sum  -6.93889390391E-18  -6.93889390391E-18   0.00000000000E+00
  GAUXC| Diagnostic only; this is not an analytical periodic stress tensor.
 
  GAUXC| Molecular XC virial finite-difference dx  1.0000E-04
- GAUXC| Molecular XC virial FD 1/3 Trace   1.11569984386E-01   1.11570696055E-01  -7.11668774911E-07
+ GAUXC| Molecular XC virial FD 1/3 Trace   1.11569984395E-01   1.11571293068E-01  -1.30867332318E-06
 
- ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]             -1.173260791425029
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]             -1.173260791437501
 
  FORCES| Atomic forces [hartree/bohr]
  FORCES|   Atom     x               y               z               |f|
- FORCES|      1 -5.21707782E-11 -2.99983071E-11  1.69675448E-03   1.69675448E-03
- FORCES|      2  5.26029745E-11  3.04300039E-11 -1.69675448E-03   1.69675448E-03
- FORCES| Sum     4.32196213E-13  4.31696872E-13  6.59583499E-13
- FORCES| Total atomic force                                       8.99002863E-13
+ FORCES|      1  2.04955051E-11 -3.43420210E-11  1.69675442E-03   1.69675442E-03
+ FORCES|      2 -2.00634265E-11  3.47739600E-11 -1.69675442E-03   1.69675442E-03
+ FORCES| Sum     4.32078581E-13  4.31938997E-13  6.59639010E-13
+ FORCES| Total atomic force                                       8.99103342E-13
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -295,7 +297,7 @@
  marketing flops                    23.520000E+03
  -------------------------------------------------------------------------------
  # multiplications                             15
- max memory usage/rank              18.408931E+09
+ max memory usage/rank              35.096109E+09
  # max total images/rank                        1
  # max 3D layers                                1
  # MPI messages exchanged                       0
@@ -335,7 +337,7 @@
  Host                                                  6          56          56
  -------------------------------------------------------------------------------
 
- MEMORY| Estimated peak process memory [MiB]                                3735
+ MEMORY| Estimated peak process memory [MiB]                                4070
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -451,43 +453,46 @@
  -------------------------------------------------------------------------------
  SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
                                 MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
- CP2K                                 1  1.0    0.131    0.131   44.711   44.711
- qs_forces                            1  2.0    0.000    0.000   40.879   40.879
- rebuild_ks_matrix                   15  6.8    0.000    0.000   36.909   36.909
- qs_ks_build_kohn_sham_matrix        15  7.8   31.018   31.018   36.909   36.909
- qs_energies                          1  3.0    0.000    0.000   33.837   33.837
- scf_env_do_scf                       1  4.0    0.000    0.000   33.257   33.257
- scf_env_do_scf_inner_loop           14  5.0    0.001    0.001   33.257   33.257
- qs_ks_update_qs_env                 14  6.0    0.000    0.000   29.868   29.868
- fft_wrap_pw1pw2                    152 10.1    0.002    0.002    7.380    7.380
- qs_ks_update_qs_env_forces           1  3.0    0.000    0.000    7.041    7.041
- fft_wrap_pw1pw2_300                 61 10.6    0.119    0.119    6.063    6.063
- fft3d_s                            153 12.0    4.459    4.459    4.463    4.463
- qs_rho_update_rho_low               15  6.0    0.000    0.000    3.746    3.746
- calculate_rho_elec                  15  7.0    0.180    0.180    3.746    3.746
- qs_init_subsys                       1  2.0    0.000    0.000    3.694    3.694
- qs_env_setup                         1  3.0    0.000    0.000    3.693    3.693
- qs_env_rebuild_pw_env                3  3.7    0.000    0.000    3.693    3.693
- pw_env_rebuild                       1  5.0    0.000    0.000    3.693    3.693
- pw_grid_setup                        5  6.0    0.000    0.000    3.692    3.692
- pw_grid_setup_internal               5  7.0    0.036    0.036    3.692    3.692
- density_rs2pw                       15  8.0    0.000    0.000    3.488    3.488
- pw_grid_sort                         5  8.0    2.745    2.745    3.315    3.315
- pw_poisson_solve                    15  8.8    0.000    0.000    2.341    2.341
- sum_up_and_integrate                15  8.8    0.000    0.000    2.130    2.130
- integrate_v_rspace                  15  9.8    0.000    0.000    2.130    2.130
- potential_pw2rs                     15 10.8    0.011    0.011    2.079    2.079
- pw_gather_s                         77 11.6    1.910    1.910    1.910    1.910
- pw_poisson_rebuild                  15  9.8    0.023    0.023    1.090    1.090
- MTin_create_screen_fn                1 11.0    0.045    0.045    1.067    1.067
+ CP2K                                 1  1.0    0.106    0.106   35.788   35.788
+ qs_forces                            1  2.0    0.000    0.000   32.224   32.224
+ rebuild_ks_matrix                   15  6.8    0.000    0.000   27.539   27.539
+ qs_ks_build_kohn_sham_matrix        15  7.8   21.056   21.056   27.539   27.539
+ qs_energies                          1  3.0    0.000    0.000   27.184   27.184
+ scf_env_do_scf                       1  4.0    0.000    0.000   26.599   26.599
+ scf_env_do_scf_inner_loop           14  5.0    0.001    0.001   26.599   26.599
+ qs_ks_update_qs_env                 14  6.0    0.000    0.000   22.499   22.499
+ fft_wrap_pw1pw2                    152 10.1    0.001    0.001    8.813    8.813
+ fft_wrap_pw1pw2_300                 61 10.6    1.186    1.186    7.571    7.571
+ qs_ks_update_qs_env_forces           1  3.0    0.000    0.000    5.040    5.040
+ qs_rho_update_rho_low               15  6.0    0.000    0.000    4.463    4.463
+ calculate_rho_elec                  15  7.0    0.181    0.181    4.463    4.463
+ fft3d_s                            153 12.0    4.401    4.401    4.404    4.404
+ density_rs2pw                       15  8.0    0.000    0.000    4.211    4.211
+ qs_init_subsys                       1  2.0    0.000    0.000    3.452    3.452
+ qs_env_setup                         1  3.0    0.000    0.000    3.450    3.450
+ qs_env_rebuild_pw_env                3  3.7    0.000    0.000    3.450    3.450
+ pw_env_rebuild                       1  5.0    0.000    0.000    3.450    3.450
+ pw_grid_setup                        5  6.0    0.000    0.000    3.450    3.450
+ pw_grid_setup_internal               5  7.0    0.036    0.036    3.450    3.450
+ pw_grid_sort                         5  8.0    2.601    2.601    3.143    3.143
+ sum_up_and_integrate                15  8.8    0.000    0.000    2.452    2.452
+ integrate_v_rspace                  15  9.8    0.000    0.000    2.452    2.452
+ potential_pw2rs                     15 10.8    0.011    0.011    2.401    2.401
+ pw_poisson_solve                    15  8.8    0.000    0.000    2.213    2.213
+ pw_gather_s                         77 11.6    1.724    1.724    1.724    1.724
+ pw_scatter_s                        75 12.6    1.204    1.204    1.204    1.204
+ pw_poisson_rebuild                  15  9.8    0.020    0.020    1.041    1.041
+ MTin_create_screen_fn                1 11.0    0.041    0.041    1.021    1.021
+ fft_wrap_pw1pw2_600                  1 13.0    0.086    0.086    0.721    0.721
  -------------------------------------------------------------------------------
 
  The number of warnings for this run is : 15
  
  -------------------------------------------------------------------------------
-  **** **** ******  **  PROGRAM ENDED AT                 2026-05-22 00:24:49.564
+  **** **** ******  **  PROGRAM ENDED AT                 2026-05-30 14:05:13.204
  ***** ** ***  *** **   PROGRAM RAN ON                                spark-c86c
  **    ****   ******    PROGRAM RAN BY                                  kuehne88
- ***** **    ** ** **   PROGRAM PROCESS ID                               1958842
-  **** **  *******  **  PROGRAM STOPPED IN /home/kuehne88/skala-molopt-bench/run
-                                           s/H2_GPW_skala_base
+ ***** **    ** ** **   PROGRAM PROCESS ID                                 97694
+  **** **  *******  **  PROGRAM STOPPED IN /home/kuehne88/molecular-skala-final-
+                                           20260530-prhead/skala-molopt-bench/ru
+                                           ns/H2_GPW_skala_base

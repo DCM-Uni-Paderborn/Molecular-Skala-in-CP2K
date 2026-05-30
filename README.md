@@ -20,7 +20,7 @@ The working copy is versioned in the private companion repository
 - `raw/spark/skala-gauxc-gpu-timing-20260524/`
   - Raw CP2K inputs, outputs, and timing summaries for the Spark CPU/GPU SKALA-through-GauXC timing diagnostic.
 - `processed/`
-  - Machine-readable summaries extracted from raw CP2K outputs, including the BEGDB water-hexamer binding and relative-energy tables.  The top-level water-hexamer tables are the QZVPP all-electron GAPW values reported in the main manuscript; the previous TZVPP set is retained in a `tzvpp/` subfolder, and the complementary GPW/GTH protocol check is retained in a `gth/` subfolder.
+  - Machine-readable summaries extracted from raw CP2K outputs, including the small-molecule force/virial checks and the BEGDB water-hexamer binding and relative-energy tables.  The top-level water-hexamer tables are the QZVPP all-electron GAPW values reported in the main manuscript; the previous TZVPP set is retained in a `tzvpp/` subfolder, and the complementary GPW/GTH protocol check is retained in a `gth/` subfolder.
 - `scripts/`
   - Lightweight extraction scripts used to regenerate the processed summaries.
 - `raw/begdb-water-hexamers/`
@@ -39,6 +39,26 @@ From this folder, run
 ```
 
 The resulting TSV contains one row per retained CP2K output file with the detected project name, total FORCE_EVAL energy, GauXC molecular-virial finite-difference diagnostic, CP2K DEBUG force-difference line, and whether the run reached `PROGRAM ENDED`.
+
+## Small-molecule force and virial validation
+
+The compact H2, NH3, and H2O validation matrix is stored in
+
+```text
+raw/spark/skala-molopt-bench/
+processed/skala-molopt-validation.tsv
+```
+
+It covers GPW/GTH and all-electron GAPW with native CP2K-PBE, PBE through GauXC, and SKALA.  The processed table reports total energies, one representative analytical-versus-finite-difference force component, and the molecular virial finite-difference diagnostic.
+
+The open-shell OH/UKS SKALA force diagnostic is stored separately in
+
+```text
+raw/spark/oh-skala-restart-fd/
+processed/oh-uks-skala-restart-fd.tsv
+```
+
+For this open-shell case, the displaced finite-difference calculations use the converged midpoint wavefunction as a restart.  Independent atomic guesses can converge to a different electronic branch and produce an apparent finite-difference force mismatch that is not a nuclear-gradient error.
 
 ## Water-hexamer application benchmark
 

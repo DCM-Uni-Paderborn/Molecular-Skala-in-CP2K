@@ -18,22 +18,24 @@
  DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
 
 
-  **** **** ******  **  PROGRAM STARTED AT               2026-05-22 00:23:01.011
+  **** **** ******  **  PROGRAM STARTED AT               2026-05-30 14:03:35.640
  ***** ** ***  *** **   PROGRAM STARTED ON                            spark-c86c
  **    ****   ******    PROGRAM STARTED BY                              kuehne88
- ***** **    ** ** **   PROGRAM PROCESS ID                               1958802
-  **** **  *******  **  PROGRAM STARTED IN /home/kuehne88/skala-molopt-bench/run
-                                           s/H2_GPW_gauxc_pbe_force_plus
+ ***** **    ** ** **   PROGRAM PROCESS ID                                 97444
+  **** **  *******  **  PROGRAM STARTED IN /home/kuehne88/molecular-skala-final-
+                                           20260530-prhead/skala-molopt-bench/ru
+                                           ns/H2_GPW_gauxc_pbe_force_plus
 
  CP2K| version string:                 CP2K version 2026.1 (Development Version)
- CP2K| source code revision number:                                   919a8b9f61
+ CP2K| source code revision number:                                   362771334d
  CP2K| cp2kflags: omp libint fftw3 libxc gauxc gauxc_mpi gauxc_onedft gauxc_host
- CP2K|             parallel scalapack xsmm spglib
+ CP2K|             gauxc_device gauxc_cuda parallel scalapack xsmm spglib libtor
+ CP2K|            rch
  CP2K| is freely available from                            https://www.cp2k.org/
- CP2K| Program compiled at                                   2026-05-22 00:16:10
+ CP2K| Program compiled at                                   2026-05-29 22:13:32
  CP2K| Program compiled on                                            spark-c86c
  CP2K| Program compiled for                                              aarch64
- CP2K| Data directory path              /home/kuehne88/cp2k-master-20260520/data
+ CP2K| Data directory path        /home/kuehne88/cp2k-periodic-skala-verify/data
  CP2K| Input file name                                                 input.inp
 
  GLOBAL| Force Environment number                                              1
@@ -74,12 +76,12 @@
  MEMORY| system memory details [Kb]
  MEMORY|                        rank 0           min           max       average
  MEMORY| MemTotal            125508532     125508532     125508532     125508532
- MEMORY| MemFree              16275828      16275828      16275828      16275828
- MEMORY| Buffers               2089120       2089120       2089120       2089120
- MEMORY| Cached               56666196      56666196      56666196      56666196
- MEMORY| Slab                  8457676       8457676       8457676       8457676
- MEMORY| SReclaimable          6932748       6932748       6932748       6932748
- MEMORY| MemLikelyFree        81963892      81963892      81963892      81963892
+ MEMORY| MemFree              60420048      60420048      60420048      60420048
+ MEMORY| Buffers               1394024       1394024       1394024       1394024
+ MEMORY| Cached               56148480      56148480      56148480      56148480
+ MEMORY| Slab                  3241936       3241936       3241936       3241936
+ MEMORY| SReclaimable          2412272       2412272       2412272       2412272
+ MEMORY| MemLikelyFree       120374824     120374824     120374824     120374824
 
 
  GENERATE|  Preliminary Number of Bonds generated:                             0
@@ -163,7 +165,7 @@
     10 DIIS/Diag.  0.25E-04    0.7     0.00002343        -1.1656206439  2.44E-10
     11 DIIS/Diag.  0.54E-05    0.7     0.00000319        -1.1656206442 -2.89E-10
     12 DIIS/Diag.  0.46E-07    0.7     0.00000002        -1.1656206442 -7.71E-12
-    13 DIIS/Diag.  0.13E-08    0.7     2.4305E-10        -1.1656206442  8.88E-16
+    13 DIIS/Diag.  0.13E-08    0.7     2.4304E-10        -1.1656206442 -2.22E-16
 
   *** SCF run converged in    13 steps ***
 
@@ -181,7 +183,7 @@
 
   Total energy:                                                -1.16562064423349
 
- ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]             -1.165620644233486
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]             -1.165620644233487
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -200,7 +202,7 @@
  marketing flops                    20.384000E+03
  -------------------------------------------------------------------------------
  # multiplications                             13
- max memory usage/rank              17.209299E+09
+ max memory usage/rank              33.967456E+09
  # max total images/rank                        1
  # max 3D layers                                1
  # MPI messages exchanged                       0
@@ -238,7 +240,7 @@
  Host                                                  6          56          56
  -------------------------------------------------------------------------------
 
- MEMORY| Estimated peak process memory [MiB]                                2588
+ MEMORY| Estimated peak process memory [MiB]                                2852
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -354,52 +356,52 @@
  -------------------------------------------------------------------------------
  SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
                                 MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
- CP2K                                 1  1.0    0.116    0.116   15.336   15.336
- qs_energies                          1  2.0    0.000    0.000   11.541   11.541
- scf_env_do_scf                       1  3.0    0.000    0.000   10.939   10.939
- scf_env_do_scf_inner_loop           13  4.0    0.001    0.001   10.939   10.939
- fft_wrap_pw1pw2                    137  9.1    0.001    0.001    8.287    8.287
- qs_ks_update_qs_env                 13  5.0    0.000    0.000    7.021    7.021
- rebuild_ks_matrix                   13  6.0    0.000    0.000    7.021    7.021
- qs_ks_build_kohn_sham_matrix        13  7.0    0.842    0.842    7.021    7.021
- fft_wrap_pw1pw2_300                 55  9.7    1.093    1.093    6.990    6.990
- qs_rho_update_rho_low               14  5.0    0.000    0.000    4.294    4.294
- calculate_rho_elec                  14  6.0    0.169    0.169    4.294    4.294
- density_rs2pw                       14  7.0    0.000    0.000    4.053    4.053
- fft3d_s                            138 11.1    4.048    4.048    4.051    4.051
- qs_init_subsys                       1  2.0    0.000    0.000    3.674    3.674
- qs_env_setup                         1  3.0    0.000    0.000    3.672    3.672
- qs_env_rebuild_pw_env                2  3.5    0.000    0.000    3.672    3.672
- pw_env_rebuild                       1  5.0    0.000    0.000    3.672    3.672
- pw_grid_setup                        5  6.0    0.000    0.000    3.671    3.671
- pw_grid_setup_internal               5  7.0    0.036    0.036    3.671    3.671
- pw_grid_sort                         5  8.0    2.719    2.719    3.283    3.283
- pw_poisson_solve                    13  8.0    0.000    0.000    2.382    2.382
- sum_up_and_integrate                13  8.0    0.000    0.000    2.198    2.198
- integrate_v_rspace                  13  9.0    0.000    0.000    2.198    2.198
- potential_pw2rs                     13 10.0    0.009    0.009    2.154    2.154
- pw_gather_s                         71 10.6    1.740    1.740    1.740    1.740
- pw_poisson_rebuild                  13  9.0    0.020    0.020    1.119    1.119
- MTin_create_screen_fn                1 10.0    0.047    0.047    1.099    1.099
- pw_scatter_s                        66 11.8    1.098    1.098    1.098    1.098
- fft_wrap_pw1pw2_600                  1 12.0    0.091    0.091    0.792    0.792
- pw_poisson_set                      14  8.8    0.000    0.000    0.634    0.634
- sort_shells                          5  9.0    0.564    0.564    0.564    0.564
- pw_copy                            130 10.0    0.464    0.464    0.464    0.464
- pw_integral_ab_c1d_c1d_gs           13  9.0    0.436    0.436    0.436    0.436
- fft_wrap_pw1pw2_100                 27 10.4    0.011    0.011    0.435    0.435
- pw_derive                           39 10.0    0.410    0.410    0.410    0.410
- init_scf_run                         1  3.0    0.000    0.000    0.391    0.391
- scf_env_initial_rho_setup            1  4.0    0.000    0.000    0.390    0.390
- pw_grid_assign                       5  8.0    0.352    0.352    0.352    0.352
+ CP2K                                 1  1.0    0.127    0.127   14.832   14.832
+ qs_energies                          1  2.0    0.000    0.000   11.170   11.170
+ scf_env_do_scf                       1  3.0    0.000    0.000   10.607   10.607
+ scf_env_do_scf_inner_loop           13  4.0    0.001    0.001   10.607   10.607
+ fft_wrap_pw1pw2                    137  9.1    0.001    0.001    8.057    8.057
+ fft_wrap_pw1pw2_300                 55  9.7    1.019    1.019    6.837    6.837
+ qs_ks_update_qs_env                 13  5.0    0.000    0.000    6.754    6.754
+ rebuild_ks_matrix                   13  6.0    0.000    0.000    6.754    6.754
+ qs_ks_build_kohn_sham_matrix        13  7.0    0.911    0.911    6.754    6.754
+ qs_rho_update_rho_low               14  5.0    0.000    0.000    4.195    4.195
+ calculate_rho_elec                  14  6.0    0.168    0.168    4.195    4.195
+ fft3d_s                            138 11.1    4.024    4.024    4.028    4.028
+ density_rs2pw                       14  7.0    0.000    0.000    3.959    3.959
+ qs_init_subsys                       1  2.0    0.000    0.000    3.530    3.530
+ qs_env_setup                         1  3.0    0.000    0.000    3.529    3.529
+ qs_env_rebuild_pw_env                2  3.5    0.000    0.000    3.528    3.528
+ pw_env_rebuild                       1  5.0    0.000    0.000    3.528    3.528
+ pw_grid_setup                        5  6.0    0.000    0.000    3.528    3.528
+ pw_grid_setup_internal               5  7.0    0.036    0.036    3.528    3.528
+ pw_grid_sort                         5  8.0    2.629    2.629    3.174    3.174
+ pw_poisson_solve                    13  8.0    0.000    0.000    2.151    2.151
+ sum_up_and_integrate                13  8.0    0.000    0.000    2.104    2.104
+ integrate_v_rspace                  13  9.0    0.000    0.000    2.104    2.104
+ potential_pw2rs                     13 10.0    0.009    0.009    2.060    2.060
+ pw_gather_s                         71 10.6    1.631    1.631    1.631    1.631
+ pw_scatter_s                        66 11.8    1.093    1.093    1.093    1.093
+ pw_poisson_rebuild                  13  9.0    0.020    0.020    1.063    1.063
+ MTin_create_screen_fn                1 10.0    0.045    0.045    1.043    1.043
+ fft_wrap_pw1pw2_600                  1 12.0    0.092    0.092    0.738    0.738
+ pw_poisson_set                      14  8.8    0.000    0.000    0.614    0.614
+ sort_shells                          5  9.0    0.544    0.544    0.544    0.544
+ pw_copy                            130 10.0    0.435    0.435    0.435    0.435
+ fft_wrap_pw1pw2_100                 27 10.4    0.010    0.010    0.413    0.413
+ pw_derive                           39 10.0    0.403    0.403    0.403    0.403
+ init_scf_run                         1  3.0    0.000    0.000    0.357    0.357
+ scf_env_initial_rho_setup            1  4.0    0.000    0.000    0.357    0.357
+ pw_grid_assign                       5  8.0    0.318    0.318    0.318    0.318
  -------------------------------------------------------------------------------
 
  The number of warnings for this run is : 0
  
  -------------------------------------------------------------------------------
-  **** **** ******  **  PROGRAM ENDED AT                 2026-05-22 00:23:16.608
+  **** **** ******  **  PROGRAM ENDED AT                 2026-05-30 14:03:50.714
  ***** ** ***  *** **   PROGRAM RAN ON                                spark-c86c
  **    ****   ******    PROGRAM RAN BY                                  kuehne88
- ***** **    ** ** **   PROGRAM PROCESS ID                               1958802
-  **** **  *******  **  PROGRAM STOPPED IN /home/kuehne88/skala-molopt-bench/run
-                                           s/H2_GPW_gauxc_pbe_force_plus
+ ***** **    ** ** **   PROGRAM PROCESS ID                                 97444
+  **** **  *******  **  PROGRAM STOPPED IN /home/kuehne88/molecular-skala-final-
+                                           20260530-prhead/skala-molopt-bench/ru
+                                           ns/H2_GPW_gauxc_pbe_force_plus
