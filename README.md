@@ -18,7 +18,9 @@ The working copy is versioned in the private companion repository
 - `raw/spark/tau-mgga-gauxc-bench-1200-80/`
   - Raw `results.json` and `summary.tsv` from the closed-shell H2O TPSS/r2SCAN kinetic-energy-density diagnostic rerun with \(E_{\mathrm{cut}}=1200\) Ry and \(E_{\mathrm{rel}}=80\) Ry.
 - `raw/spark/skala-gauxc-gpu-timing-20260524/`
-  - Raw CP2K inputs, outputs, and timing summaries for the Spark CPU/GPU SKALA-through-GauXC timing diagnostic.
+  - Raw CP2K inputs, outputs, and timing summaries for the preliminary Spark CPU/GPU SKALA-through-GauXC timing diagnostic.
+- `raw/spark/skala-gauxc-gpu-timing-20260613-master-fine-robust/`
+  - Raw CP2K inputs, outputs, and timing summaries for the updated Spark CPU/GPU SKALA-through-GauXC timing diagnostic reported in the manuscript.
 - `processed/`
   - Machine-readable summaries extracted from raw CP2K outputs, including the small-molecule force/virial checks and the BEGDB water-hexamer binding and relative-energy tables.  The top-level water-hexamer tables are the QZVPP all-electron GAPW values reported in the main manuscript; the previous TZVPP set is retained in a `tzvpp/` subfolder, and the complementary GPW/GTH protocol check is retained in a `gth/` subfolder.
 - `scripts/`
@@ -145,14 +147,19 @@ This rerun uses closed-shell H2O, TPSS and r2SCAN, both the native CP2K and GauX
 
 ## CPU/GPU SKALA timing diagnostic
 
-The Spark timing diagnostic is stored in
+The updated Spark timing diagnostic reported in the manuscript is stored in
+
+```text
+raw/spark/skala-gauxc-gpu-timing-20260613-master-fine-robust/
+processed/gpu_timing_summary_20260613.tsv
+```
+
+It uses CP2K source revision `9dda3dd524`, isolated GPW water clusters with one SCF Kohn-Sham matrix build, the SKALA 1.1 OneDFT model through GauXC, a deliberately lightweight GauXC `FINE`/`ROBUST` molecular quadrature, \(E_{\mathrm{cut}}=150\) Ry, and \(E_{\mathrm{rel}}=30\) Ry.  The protocol uses one warm-up and three measured repeats per size and backend, and the processed table reports medians.  These runs are intended only as a performance diagnostic on the Spark workstation, not as production-quality energy benchmarks.  The one-water `SUPERFINE`/`UNPRUNED` CUDA test was at the memory limit of the NVIDIA GB10, so the reported timing protocol uses the smaller grid to obtain reproducible CPU/GPU timings.  The earlier preliminary timing diagnostic is retained for provenance in
 
 ```text
 raw/spark/skala-gauxc-gpu-timing-20260524/
 processed/gpu_timing_summary_20260524.tsv
 ```
-
-It uses isolated GPW water clusters with one SCF Kohn-Sham matrix build, the SKALA 1.1 OneDFT model through GauXC, a deliberately lightweight GauXC `FINE`/`ROBUST` molecular quadrature, \(E_{\mathrm{cut}}=150\) Ry, and \(E_{\mathrm{rel}}=30\) Ry.  These runs are intended only as a performance diagnostic on the Spark workstation, not as production-quality energy benchmarks.  The one-water `SUPERFINE`/`UNPRUNED` CUDA test was at the memory limit of the NVIDIA GB10, so the reported timing protocol uses the smaller grid to obtain reproducible CPU/GPU timings.
 
 ## Checksums
 
