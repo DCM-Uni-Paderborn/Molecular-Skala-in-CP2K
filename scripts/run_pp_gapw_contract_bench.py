@@ -60,6 +60,33 @@ SYSTEMS = {
         "basis": {"H": "TZV2P-MOLOPT-PBE-GTH-q1"},
         "potential": {"H": "GTH-PBE-q1"},
     },
+    "NH3_GTH": {
+        "basis_file": "BASIS_MOLOPT_UZH",
+        "potential_file": "POTENTIAL_UZH",
+        "cell": 12.0,
+        "coords": [
+            ("N", 6.000000, 6.000000, 6.000000),
+            ("H", 6.000000, 6.937700, 5.618000),
+            ("H", 5.187900, 5.531150, 5.618000),
+            ("H", 6.812100, 5.531150, 5.618000),
+        ],
+        "fd_component": (1, 2),
+        "basis": {"N": "TZV2P-MOLOPT-PBE-GTH-q5", "H": "TZV2P-MOLOPT-PBE-GTH-q1"},
+        "potential": {"N": "GTH-PBE-q5", "H": "GTH-PBE-q1"},
+    },
+    "H2O_GTH": {
+        "basis_file": "BASIS_MOLOPT_UZH",
+        "potential_file": "POTENTIAL_UZH",
+        "cell": 12.0,
+        "coords": [
+            ("O", 6.000000, 6.000000, 6.000000),
+            ("H", 6.000000, 6.756950, 6.585880),
+            ("H", 6.000000, 5.243050, 6.585880),
+        ],
+        "fd_component": (1, 1),
+        "basis": {"O": "TZV2P-MOLOPT-PBE-GTH-q6", "H": "TZV2P-MOLOPT-PBE-GTH-q1"},
+        "potential": {"O": "GTH-PBE-q6", "H": "GTH-PBE-q1"},
+    },
     "HCl_ECP": {
         "basis_file": None,
         "potential_file": str(ROOT / "tests/QS/regtest-ecp/ECP_BASIS_POT"),
@@ -448,7 +475,7 @@ def write_summary(results):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--systems", default="H2_GTH,HCl_ECP")
+    parser.add_argument("--systems", default="H2_GTH,NH3_GTH,H2O_GTH,HCl_ECP")
     parser.add_argument("--methods", default="GPWTYPE,PAW")
     parser.add_argument("--paths", default="native_pbe,gauxc_pbe,skala")
     parser.add_argument("--fd-dx", type=float, default=1.0e-3)
@@ -481,7 +508,6 @@ def main():
         for s in systems
         for m in methods
         for p in paths
-        if not (METHODS[m].get("gapw_one_center") and p != "skala")
     ]
     results = {}
     if RESULTS.exists() and not args.clean:
