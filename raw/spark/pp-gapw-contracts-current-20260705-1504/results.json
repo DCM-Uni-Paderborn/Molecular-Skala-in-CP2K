@@ -1,0 +1,290 @@
+{
+  "H2_GTH/GPWTYPE/gauxc_pbe": {
+    "base": {
+      "energy": -1.165609843077746,
+      "forces": [
+        [
+          "A1",
+          -3.15326364e-16,
+          -5.46418631e-16,
+          -0.00607001184
+        ],
+        [
+          "A2",
+          -1.87025783e-15,
+          -1.56199267e-15,
+          0.00607001184
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "H2_GTH_GPWTYPE_gauxc_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.00607001184,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -7.597545842391931e-07,
+      "dx_angstrom": 0.001,
+      "fd": 0.0060707715945842395
+    },
+    "virial_fd": {
+      "analytic": -0.0028294294557852985,
+      "diff": 3.411105670061282e-09,
+      "dx": 0.0001,
+      "fd": -0.0028294328668909685
+    }
+  },
+  "H2_GTH/GPWTYPE/native_pbe": {
+    "base": {
+      "energy": -1.165610017177661,
+      "forces": [
+        [
+          "A1",
+          -1.33713432e-15,
+          -1.36868321e-15,
+          -0.00606810281
+        ],
+        [
+          "A2",
+          -1.87789165e-15,
+          -2.12160577e-15,
+          0.00606810281
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "H2_GTH_GPWTYPE_native_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": 0.00606810281,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -7.614211832594406e-07,
+      "dx_angstrom": 0.001,
+      "fd": 0.006068864231183259
+    },
+    "virial_fd": {
+      "analytic": -0.0028285395949651953,
+      "diff": 2.02151896394262e-09,
+      "dx": 0.0001,
+      "fd": -0.0028285416164841592
+    }
+  },
+  "H2_GTH/GPWTYPE/skala": {
+    "base": {
+      "energy": -1.173260784566943,
+      "forces": [
+        [
+          "A1",
+          -2.04135618e-11,
+          2.69935073e-11,
+          0.00169683268
+        ],
+        [
+          "A2",
+          2.04117716e-11,
+          -2.69946893e-11,
+          -0.00169683268
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "H2_GTH_GPWTYPE_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.00169683268,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -3.481268497959166e-07,
+      "dx_angstrom": 0.001,
+      "fd": -0.001696484553150204
+    },
+    "virial_fd": {
+      "analytic": 0.0007909487646619006,
+      "diff": 3.3312031208650433e-06,
+      "dx": 0.0001,
+      "fd": 0.0007876175615410356
+    }
+  },
+  "H2_GTH/PAW/skala": {
+    "base": {
+      "energy": -1.173265151689595,
+      "forces": [
+        [
+          "A1",
+          8.88495946e-11,
+          1.23420835e-11,
+          0.00178123514
+        ],
+        [
+          "A2",
+          -8.88507706e-11,
+          -1.23432227e-11,
+          -0.00178123514
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "H2_GTH_PAW_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.00178123514,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -1.2698023099237156e-06,
+      "dx_angstrom": 0.001,
+      "fd": -0.0017799653376900763
+    },
+    "virial_fd": {
+      "analytic": 0.0008302914896449115,
+      "diff": 8.389163527671795e-07,
+      "dx": 0.0001,
+      "fd": 0.0008294525732921443
+    }
+  },
+  "HCl_ECP/GPWTYPE/gauxc_pbe": {
+    "base": {
+      "energy": -15.532317130970958,
+      "forces": [
+        [
+          "A1",
+          -1.08365964e-14,
+          -1.03719358e-14,
+          0.00345416583
+        ],
+        [
+          "A2",
+          -8.66199413e-16,
+          -5.10398831e-16,
+          -0.00345426121
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "HCl_ECP_GPWTYPE_gauxc_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.00345426121,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -5.856050018485277e-07,
+      "dx_angstrom": 0.001,
+      "fd": -0.0034536756049981516
+    },
+    "virial_fd": {
+      "analytic": 0.0028285909303832468,
+      "diff": 8.31780368019952e-09,
+      "dx": 0.0001,
+      "fd": 0.0028285826125795666
+    }
+  },
+  "HCl_ECP/GPWTYPE/native_pbe": {
+    "base": {
+      "energy": -15.5323389472189,
+      "forces": [
+        [
+          "A1",
+          -1.34466143e-14,
+          -1.29750679e-14,
+          0.00343444705
+        ],
+        [
+          "A2",
+          -1.1238842e-15,
+          -3.17068768e-16,
+          -0.00343455705
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "HCl_ECP_GPWTYPE_native_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.00343455705,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -5.970981808265004e-07,
+      "dx_angstrom": 0.001,
+      "fd": -0.0034339599518191737
+    },
+    "virial_fd": {
+      "analytic": 0.0028124495757901693,
+      "diff": 8.365499459817016e-09,
+      "dx": 0.0001,
+      "fd": 0.0028124412102907095
+    }
+  },
+  "HCl_ECP/GPWTYPE/skala": {
+    "base": {
+      "energy": -15.546708806650658,
+      "forces": [
+        [
+          "A1",
+          1.57160524e-11,
+          2.04364319e-10,
+          0.0107371097
+        ],
+        [
+          "A2",
+          -1.57275446e-11,
+          -2.04375655e-10,
+          -0.0107372051
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "HCl_ECP_GPWTYPE_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.0107372051,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": 9.962724642723075e-06,
+      "dx_angstrom": 0.001,
+      "fd": -0.010747167824642722
+    },
+    "virial_fd": {
+      "analytic": 0.008792457635837568,
+      "diff": -2.9968148491030244e-06,
+      "dx": 0.0001,
+      "fd": 0.008795454450686671
+    }
+  },
+  "HCl_ECP/PAW/skala": {
+    "base": {
+      "energy": -15.546708806650658,
+      "forces": [
+        [
+          "A1",
+          1.57160524e-11,
+          2.04364319e-10,
+          0.0107371097
+        ],
+        [
+          "A2",
+          -1.57275446e-11,
+          -2.04375655e-10,
+          -0.0107372051
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "HCl_ECP_PAW_skala_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.0107372051,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": 9.962724642723075e-06,
+      "dx_angstrom": 0.001,
+      "fd": -0.010747167824642722
+    },
+    "virial_fd": {
+      "analytic": 0.008792457635837568,
+      "diff": -2.9968148491030244e-06,
+      "dx": 0.0001,
+      "fd": 0.008795454450686671
+    }
+  }
+}
