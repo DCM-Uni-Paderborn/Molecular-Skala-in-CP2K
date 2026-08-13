@@ -347,10 +347,6 @@ Figure~\ref{fig:cp2k-pyscf-diet-si} gives the direct reaction-by-reaction cross-
 \revision{The accelerator benefit grows with system size: the GPU is slower for the monomer because fixed initialization costs dominate, but reaches wall-time and Kohn--Sham-matrix speedups of 3.28 and 3.83, respectively, for the octamer.  The CPU/GPU energy difference remains below \(1.5\times10^{-7}\)~hartree for all four clusters.  The median peak host resident-set sizes for CPU/GPU execution are 1.94/2.84, 3.34/2.96, 5.77/3.06, and 9.95/3.09~GiB for \(n=1,2,4,8\), respectively.  The unified-memory GB10 platform does not expose a separate device-memory counter through \texttt{nvidia-smi}; consequently, only host resident-set size is reported.  These measurements quantify the single-rank hardware paths but do not constitute an MPI-scaling benchmark.}
 \endgroup
 
-\section{Data Package}
-
-\revision{The companion repository \texttt{DCM-Uni-Paderborn/Molecular-Skala-in-CP2K} contains the molecular structures, \CPtwoK{} inputs, selected raw outputs, processed tables, checksums, and extraction scripts needed to reproduce the numerical results.  The CPU/GPU diagnostic is provided as run summaries, source and model metadata, and the processed table \path{processed/gpu_timing_current_comparison_20260813.tsv}.}
-
 \bibliographystyle{unsrt}
 \bibliography{references}
 

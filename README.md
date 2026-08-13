@@ -147,14 +147,22 @@ This rerun uses closed-shell H2O, TPSS and r2SCAN, both the native CP2K and GauX
 
 ## CPU/GPU SKALA timing diagnostic
 
-The updated Spark timing diagnostic reported in the manuscript is stored in
+The current Spark timing comparison reported in the manuscript is summarized in
+
+```text
+processed/gpu_timing_current_comparison_20260813.tsv
+```
+
+The supporting raw runs are organized below `raw/spark/` in the
+`skala-gauxc-current-fine-robust-150-30-*` directories. The earlier timing
+diagnostics are retained for provenance in
 
 ```text
 raw/spark/skala-gauxc-gpu-timing-20260613-master-fine-robust/
 processed/gpu_timing_summary_20260613.tsv
 ```
 
-It uses CP2K source revision `9dda3dd524`, isolated GPW water clusters with one SCF Kohn-Sham matrix build, the SKALA 1.1 OneDFT model through GauXC, a deliberately lightweight GauXC `FINE`/`ROBUST` molecular quadrature, \(E_{\mathrm{cut}}=150\) Ry, and \(E_{\mathrm{rel}}=30\) Ry.  The protocol uses one warm-up and three measured repeats per size and backend, and the processed table reports medians.  These runs are intended only as a performance diagnostic on the Spark workstation, not as production-quality energy benchmarks.  The one-water `SUPERFINE`/`UNPRUNED` CUDA test was at the memory limit of the NVIDIA GB10, so the reported timing protocol uses the smaller grid to obtain reproducible CPU/GPU timings.  The earlier preliminary timing diagnostic is retained for provenance in
+The diagnostic uses isolated GPW water clusters with one SCF Kohn-Sham matrix build, the SKALA 1.1 model through GauXC, a deliberately lightweight GauXC `FINE`/`ROBUST` molecular quadrature, \(E_{\mathrm{cut}}=150\) Ry, and \(E_{\mathrm{rel}}=30\) Ry. The protocol uses one warm-up and three measured repeats per size and backend, and the processed table reports medians. These runs are intended only as a performance diagnostic on the Spark workstation, not as production-quality energy benchmarks. The preliminary 20260524 timing diagnostic is retained in
 
 ```text
 raw/spark/skala-gauxc-gpu-timing-20260524/
