@@ -43,7 +43,7 @@ Author affiliations are given in the main manuscript.
 
 The molecular interface covers three density representations.  The Gaussian and plane waves (\GPW{}) method with \GTH{} separable dual-space pseudopotentials (\GPWGTH{}) supplies the AO valence density of the pseudopotential Hamiltonian.  All-electron Gaussian augmented plane wave calculations (\GAPWAE{}), selected with \texttt{POTENTIAL ALL}, supply the full AO density.  Pseudopotential \GAPW{} calculations with either a \GTH{} potential or a molecular effective-core potential (ECP) supply the AO valence density of the corresponding Hamiltonian.  In every case, \CPtwoK{} passes the geometry, Gaussian basis, spin-resolved AO density matrix, and communicator to \GauXC{}, which returns the XC energy, AO XC matrix, and available nuclear derivatives.
 
-The direct molecular \GauXC{} route does not include a nonlinear core correction (NLCC), because the frozen-core density and its derivatives are not part of the AO density-matrix interface.  Higher XC response kernels are likewise outside the present scope.
+The direct molecular \GauXC{} route does not include a nonlinear core correction (NLCC), because the frozen-core density and its derivatives are not part of the AO density-matrix interface.  \revision{For the nonlocal \Skala{} model, this omission cannot be repaired by a separate additive core-energy correction: the core contributions to \(\rho\) and \(\nabla\rho\) would have to enter before feature construction and differentiation, while \(\tau\) remains valence-only.}  Higher XC response kernels are likewise outside the present scope.
 \endgroup
 
 \section{{Small-Molecule Computational Details}}
@@ -59,7 +59,7 @@ Within each native-PBE/PBE-through-\GauXC{} pair, the geometry, basis, effective
 
 \begingroup
 
-\CPtwoK{} stores AO matrices in DBCSR form.  For a \GauXC{} evaluation, each MPI rank expands its local blocks, an all-reduction constructs the replicated dense density matrix, and \GauXC{} returns a dense XC matrix.  The latter is symmetrized before insertion into a DBCSR matrix with the full upper-triangular block structure, since a quadrature-generated XC matrix need not share the thresholded sparsity pattern of the input density.
+\CPtwoK{} stores AO matrices in DBCSR form.\revision{\cite{Schuett2016DBCSR}}  For a \GauXC{} evaluation, each MPI rank expands its local blocks, an all-reduction constructs the replicated dense density matrix, and \GauXC{} returns a dense XC matrix.  The latter is symmetrized before insertion into a DBCSR matrix with the full upper-triangular block structure, since a quadrature-generated XC matrix need not share the thresholded sparsity pattern of the input density.
 
 For unrestricted calculations the spin-channel matrices are transformed as
 {\color{blue}
