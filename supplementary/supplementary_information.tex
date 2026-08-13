@@ -62,13 +62,15 @@ Within each native-PBE/PBE-through-\GauXC{} pair, the geometry, basis, effective
 \CPtwoK{} stores AO matrices in DBCSR form.  For a \GauXC{} evaluation, each MPI rank expands its local blocks, an all-reduction constructs the replicated dense density matrix, and \GauXC{} returns a dense XC matrix.  The latter is symmetrized before insertion into a DBCSR matrix with the full upper-triangular block structure, since a quadrature-generated XC matrix need not share the thresholded sparsity pattern of the input density.
 
 For unrestricted calculations the spin-channel matrices are transformed as
+{\color{blue}
 \begin{equation}
-  P^{s}=P^{\alpha}+P^{\beta},
+  \mathbf P^{s}=\mathbf P^{\alpha}+\mathbf P^{\beta},
   \qquad
-  P^{z}=P^{\alpha}-P^{\beta},
+  \mathbf P^{z}=\mathbf P^{\alpha}-\mathbf P^{\beta},
   \label{eq:si_spin_transform}
 \end{equation}
-and the returned derivatives are transformed back with \(V^{\alpha}=V^{s}+V^{z}\) and \(V^{\beta}=V^{s}-V^{z}\).
+and the returned derivatives are transformed back with \(\mathbf V^{\alpha}=\mathbf V^{s}+\mathbf V^{z}\) and \(\mathbf V^{\beta}=\mathbf V^{s}-\mathbf V^{z}\).
+}
 
 \revision{For a conventional restricted \GauXC{} kernel, \CPtwoK{} stores the spin-summed scalar density, whereas the \GauXC{} restricted-spin contract consumes a one-spin density and accounts for double occupation internally.  The interface therefore constructs a private half-density for both the energy/potential and nuclear-gradient evaluations without modifying the caller-owned density matrix.  The \Skala{} path instead receives the spin-summed scalar density together with zero collinear magnetization and is not halved.  Keeping these normalizations separate makes repeated evaluations independent of call order.}
 
