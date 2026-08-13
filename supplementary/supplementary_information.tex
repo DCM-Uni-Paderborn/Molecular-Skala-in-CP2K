@@ -3,108 +3,77 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{array}
+\usepackage{graphicx}
 \usepackage{bm}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{xcolor}
 
 \newcommand{\Skala}{\textsc{Skala}}
+\newcommand{\PySCF}{\textsc{PySCF}}
 \newcommand{\GauXC}{\textsc{GauXC}}
 \newcommand{\CPtwoK}{\textsc{CP2K}}
 \newcommand{\GPW}{\textsc{GPW}}
 \newcommand{\GAPW}{\textsc{GAPW}}
 \newcommand{\GTH}{\textsc{GTH}}
-\newcommand{\OneDFT}{\textsc{OneDFT}}
+\newcommand{\GPWGTH}{\GPW{}-\GTH{}}
+\newcommand{\GAPWAE}{\GAPW{}-AE}
+\newcommand{\GAPWGTH}{\GAPW{}-\GTH{}}
+\newcommand{\GAPWECP}{\GAPW{}-ECP}
+\newcommand{\SITableFont}{\normalsize}
 
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
+\setlength{\belowcaptionskip}{6pt}
 
 \begin{document}
 
 \begin{center}
 {\large Supplementary Information: Molecular \Skala{} in \CPtwoK{}}\\[1ex]
-Franz P\"oschel, Johann Pototschnig, Frederick Stein, Andreas Kn\"upfer, Sebastian Ehlert, J\"urg Hutter, and Thomas D. K\"uhne\\[0.5ex]
+Franz P\"oschel, Johann Pototschnig, Frederick Stein, Andreas Kn\"upfer, Thijs Vogels, Stefano Battaglia, Sebastian Ehlert, J\"urg Hutter, and Thomas D. K\"uhne\\[0.5ex]
 Franz P\"oschel and Johann Pototschnig contributed equally to this work.\\[0.5ex]
 Author affiliations are given in the main manuscript.
 \end{center}
 
-\section{Implementation Scope}
+\section{{Molecular Density Representations}}
 
-The implementation described in the main manuscript is deliberately molecular.  It supports isolated \GPW{} calculations with \GTH{} pseudopotentials and isolated all-electron \GAPW{} calculations with \texttt{POTENTIAL ALL}.  In both cases, \CPtwoK{} supplies the molecular geometry, Gaussian basis, spin-resolved AO density matrix, and communicator to \GauXC{}, and receives the XC energy, AO XC matrix, and the available nuclear derivatives.  RKS and UKS calculations, CDFT checks, CDFT-CI checks, force checks, and molecular virial checks are included in this scope.
+\begingroup
 
-Cases that would require a different density contract are kept outside the present implementation.  In particular, \GAPW{} with \GTH{} pseudopotentials and the native \texttt{GAPW\_XC} correction are not enabled for \Skala{}, because the smooth, hard, soft, and compensation density terms cannot be replaced by a single external nonlocal AO-density evaluation without an additional derivation.  Periodic \(\Gamma\)-point calculations, k-point sampling, analytical periodic stress, and higher XC response kernels are likewise left for future work.
+The molecular interface covers three density representations.  \GPWGTH{} supplies the AO valence density of the \GTH{} pseudopotential Hamiltonian.  \GAPWAE{}, selected with \texttt{POTENTIAL ALL}, supplies the full AO density.  \GAPWGTH{} and \GAPWECP{} supply the AO valence density of the corresponding effective Hamiltonian.  In every case, \CPtwoK{} passes the geometry, Gaussian basis, spin-resolved AO density matrix, and communicator to \GauXC{}, which returns the XC energy, AO XC matrix, and available nuclear derivatives.
 
-\section{Computational Protocol}
+The direct molecular \GauXC{} route does not include a nonlinear core correction (NLCC), because the frozen-core density and its derivatives are not part of the AO density-matrix interface.  Higher XC response kernels are likewise outside the present scope.
+\endgroup
 
-All validation calculations use isolated molecular boundary conditions.  The main-manuscript calculations use all-electron \GAPW{} with \texttt{POTENTIAL ALL} and all-electron \textsc{MOLOPT\_UZH} basis sets.  The small-molecule validation table and the water-hexamer application use QZVPP-quality all-electron \textsc{MOLOPT\_UZH} basis sets.  The complementary pseudopotential checks reported below use \GPW{} with PBE-optimized UZH molecularly optimized basis sets for \GTH{} calculations combined with matching analytic PBE \GTH{} pseudopotentials.
+\section{{Small-Molecule Computational Details}}
 
-For native \CPtwoK{} PBE references in all-electron \GAPW{}, \texttt{GAPW\_ACCURATE\_XCINT} is enabled.  This option evaluates the augmented XC contribution with the hard all-electron and soft compensation one-center density terms explicitly included in the XC integration.  It therefore makes the native \CPtwoK{} PBE reference consistent with the all-electron density represented by the AO density matrix passed to \GauXC{}.  Without this setting, one would compare the external all-electron AO-density path to a cheaper native \GAPW{} XC approximation rather than to the most complete native all-electron reference.
+\begingroup
 
-The PBE-through-\GauXC{} validation runs use the same molecular geometry, basis, density-matrix spin convention, SCF thresholds, and numerical grids as the corresponding native \CPtwoK{} PBE runs.  The only intended difference is the source of the XC energy and AO XC matrix.  \Skala{} calculations then reuse the same interface with the learned model selected inside \GauXC{}.  Unless stated otherwise, diagnostic energy differences are reported in hartree, force errors in hartree/bohr, and molecular-virial errors in hartree.
+All small-molecule validation calculations use isolated molecular boundary conditions in \textsc{Quickstep}.  They follow the \textsc{MOLOPT\_UZH} protocol\cite{Mirhosseini2026UZH} with \(E_{\mathrm{cut}}=600\) Ry and \(E_{\mathrm{rel}}=60\) Ry.  \GPWGTH{} uses TZV2P molecularly optimized basis sets and matching analytic PBE \GTH{} pseudopotentials.  \GAPWAE{} uses QZVPP all-electron \textsc{MOLOPT\_UZH} basis sets, \texttt{POTENTIAL ALL}, and \texttt{GAPW\_ACCURATE\_XCINT} for the native PBE reference.  \GAPWGTH{} and \GAPWECP{} use the AO valence density of their corresponding effective Hamiltonians; HCl provides the \GAPWECP{} diagnostic.
 
-{\color{blue}
-\section{CPU/GPU Timing Diagnostic}
+Within each native-PBE/PBE-through-\GauXC{} pair, the geometry, basis, effective Hamiltonian, spin convention, SCF threshold, and numerical grid are identical.  Unless stated otherwise, energy differences are reported in hartree, force errors in hartree/bohr, and molecular-virial errors in hartree.
+\endgroup
 
-The \CPtwoK{}--\GauXC{}--\Skala{} interface is suitable for a focused CPU/GPU timing comparison because the learned model evaluation remains inside the \GauXC{}/LibTorch layer.  The validation runs in the main manuscript use the host path to keep the AO density-matrix, force, and molecular-virial checks independent of device-specific effects.  The timings below are therefore reported as a performance diagnostic of the same interface, not as additional production-quality energy benchmarks.
+\section{{AO Matrices and Parallel Execution}}
 
-The updated measurements were run on the Spark workstation with an NVIDIA GB10 device, using a fresh \CPtwoK{} master build at source revision \texttt{9dda3dd524}.  They use isolated molecular \GPW{}+\GTH{} water clusters, the SKALA 1.1 checkpoint through \GauXC{}, one SCF Kohn--Sham matrix build from an atomic guess, \(E_{\mathrm{cut}}=150\) Ry, \(E_{\mathrm{rel}}=30\) Ry, and the \GauXC{} \texttt{FINE}/\texttt{ROBUST} molecular quadrature.  One warm-up run and three measured runs were performed for each size and backend, and Table~\ref{tab:si_gpu_timing} reports medians over the measured runs.  This deliberately lightweight grid was chosen because the \texttt{SUPERFINE}/\texttt{UNPRUNED} one-water CUDA run already reached the memory limit of the 120 GB GPU.  Thus the table is a hardware-path diagnostic; the grid-converged validation and water-hexamer energetics remain the main manuscript benchmarks.
+\begingroup
 
-The useful quantities are the total wall time, the KS-matrix construction time, and the speedups
+\CPtwoK{} stores AO matrices in DBCSR form.  For a \GauXC{} evaluation, each MPI rank expands its local blocks, an all-reduction constructs the replicated dense density matrix, and \GauXC{} returns a dense XC matrix.  The latter is symmetrized before insertion into a DBCSR matrix with the full upper-triangular block structure, since a quadrature-generated XC matrix need not share the thresholded sparsity pattern of the input density.
+
+For unrestricted calculations the spin-channel matrices are transformed as
 \begin{equation}
-  S_{\mathrm{XC}}
-  =
-  \frac{t_{\mathrm{XC}}^{\mathrm{CPU}}}
-       {t_{\mathrm{XC}}^{\mathrm{GPU}}},
+  P^{s}=P^{\alpha}+P^{\beta},
   \qquad
-  S_{\mathrm{SCF}}
-  =
-  \frac{t_{\mathrm{SCF}}^{\mathrm{CPU}}}
-       {t_{\mathrm{SCF}}^{\mathrm{GPU}}}.
+  P^{z}=P^{\alpha}-P^{\beta},
+  \label{eq:si_spin_transform}
 \end{equation}
-Here \(S_{\mathrm{XC}}\) is approximated by the \texttt{qs\_ks\_build\_kohn\_sham\_matrix} timing-tree entry, which contains the GauXC/SKALA energy-and-potential evaluation together with the surrounding KS-matrix insertion work.  The end-to-end wall-time speedup is more conservative because it includes process start-up, CUDA context initialization, model loading, and the remaining \CPtwoK{} setup.  The raw summaries also retain the \CPtwoK{} timing-tree total for each run.
+and the returned derivatives are transformed back with \(V^{\alpha}=V^{s}+V^{z}\) and \(V^{\beta}=V^{s}-V^{z}\).
 
-\begin{table}[htbp]
-\centering
-\scriptsize
-\caption{Updated Spark CPU/GPU SKALA-through-\GauXC{} timing diagnostic for isolated \((\mathrm{H}_2\mathrm{O})_n\) clusters.  Times are in seconds and are medians over three measured runs after one warm-up run.  The CPU reference uses host \GauXC{}/LibTorch; the GPU run uses device load-balancer and integrator execution.}
-\label{tab:si_gpu_timing}
-\begin{tabular}{rrrrrrrrr}
-\hline
-\(n\) & Atoms & \(t_{\mathrm{wall}}^{\mathrm{CPU}}\) & \(t_{\mathrm{wall}}^{\mathrm{GPU}}\) & \(S_{\mathrm{wall}}\) & \(t_{\mathrm{KS}}^{\mathrm{CPU}}\) & \(t_{\mathrm{KS}}^{\mathrm{GPU}}\) & \(S_{\mathrm{KS}}\) & \(\Delta E\) (Ha)\\
-\hline
-1 & 3  & 4.07  & 2.87  & 1.42 & 3.26  & 1.81  & 1.80 & \(1.07{\times}10^{-8}\)\\
-2 & 6  & 7.42  & 3.77  & 1.97 & 6.50  & 2.52  & 2.58 & \(3.47{\times}10^{-8}\)\\
-4 & 12 & 16.68 & 4.91  & 3.40 & 15.63 & 3.55  & 4.40 & \(8.14{\times}10^{-8}\)\\
-8 & 24 & 48.94 & 12.41 & 3.94 & 47.82 & 10.96 & 4.36 & \(1.55{\times}10^{-7}\)\\
-\hline
-\end{tabular}
-\end{table}
+The \GauXC{} runtime is created on the communicator that owns the current force evaluation.  This distinction matters for CDFT and CDFT-CI calculations, where diabatic states can occupy disjoint MPI subgroups.  Communicator-local grid and integrator objects prevent collectives for one subgroup from using counts or displacements belonging to another.  The current implementation caches compatible \GauXC{} objects across repeated SCF evaluations and rebuilds them only when the basis, geometry, quadrature, execution space, or communicator changes.
+\endgroup
 
-The timing trend is consistent with the expected division of labor.  In the updated run, the GPU is faster already for the one-water diagnostic, and the wall-time speedup increases from \(1.4\times\) for one water molecule to \(3.9\times\) for \((\mathrm{H}_2\mathrm{O})_8\).  The KS-matrix timing-tree entry gives \(1.8\times\) to \(4.4\times\) speedups, showing that the device backend accelerates the GauXC/SKALA-dominated portion while the remaining host-side setup, matrix handling, and SCF orchestration reduce the end-to-end gain.  Compared with the earlier preliminary Spark timing, the absolute GPU wall times are substantially lower and the end-to-end speedups are larger; the KS-only speedups are not uniformly larger because the current CPU baseline is also faster.  The CPU/GPU energies agree to better than \(2{\times}10^{-7}\) Ha for all tested clusters, confirming that the timing diagnostic exercises the same molecular SKALA energy path on both backends.
-\par}
+\section{{Finite-Difference Checks}}
 
-\section{Meta-GGA Grid Sensitivity}
-
-Table~\ref{tab:si_tau_mgga_600_60} gives the closed-shell H$_2$O kinetic-energy-density diagnostic at the original \(E_{\mathrm{cut}}=600\) Ry and \(E_{\mathrm{rel}}=60\) Ry grid settings.  The main manuscript reports the corresponding \(1200/80\) Ry rerun, for which the \GPW{}+\GTH{} energy mismatches are smaller while the force and molecular-virial finite-difference checks remain at the \(10^{-7}\) hartree/bohr and hartree level.  This behavior is consistent with the generally slower grid convergence of meta-GGA functionals, where the Kohn--Sham kinetic-energy density is a functional ingredient in addition to the density and its gradient.  The comparison illustrates that the residual TPSS and r$^2$SCAN energy differences are dominated by grid sensitivity in the kinetic-energy-density ingredients rather than by a failure of the AO matrix or derivative path.
-
-\begin{table}[htbp]
-\centering
-\scriptsize
-\caption{Closed-shell H$_2$O meta-GGA kinetic-energy-density diagnostic at \(E_{\mathrm{cut}}=600\) Ry and \(E_{\mathrm{rel}}=60\) Ry.  \(\Delta E=E^{\GauXC{}}-E^{\CPtwoK{}}\) is given in hartree.  Force errors are absolute analytical-minus-finite-difference differences in hartree/bohr; molecular virial errors are in hartree.}
-\label{tab:si_tau_mgga_600_60}
-\begin{tabular}{llrrrrrr}
-\hline
-Method & Functional & \(\Delta E\) & \(|\Delta F|_{\CPtwoK{}}\) & \(|\Delta F|_{\GauXC{}}\) & \(|\Delta W|_{\CPtwoK{}}\) & \(|\Delta W|_{\GauXC{}}\) & \(|\Delta W_{\mathrm{xc}}|_{\GauXC{}}\)\\
-\hline
-\GPW{}+\GTH{} & TPSS & \(-7.019{\times}10^{-4}\) & \(1.29{\times}10^{-5}\) & \(4.84{\times}10^{-7}\) & \(7.38{\times}10^{-5}\) & \(4.44{\times}10^{-7}\) & \(1.05{\times}10^{-8}\)\\
-\GPW{}+\GTH{} & r$^2$SCAN & \(-1.805{\times}10^{-4}\) & \(1.23{\times}10^{-5}\) & \(4.88{\times}10^{-7}\) & \(5.46{\times}10^{-5}\) & \(1.78{\times}10^{-7}\) & \(9.92{\times}10^{-9}\)\\
-\GAPW{} all-electron & TPSS & \(-5.222{\times}10^{-4}\) & \(5.14{\times}10^{-7}\) & \(5.19{\times}10^{-7}\) & \(3.35{\times}10^{-7}\) & \(3.21{\times}10^{-7}\) & \(1.15{\times}10^{-8}\)\\
-\GAPW{} all-electron & r$^2$SCAN & \(+9.28{\times}10^{-5}\) & \(5.30{\times}10^{-7}\) & \(5.22{\times}10^{-7}\) & \(4.13{\times}10^{-8}\) & \(3.04{\times}10^{-8}\) & \(1.18{\times}10^{-8}\)\\
-\hline
-\end{tabular}
-\end{table}
-
-\section{Finite-Difference Checks}
+\begingroup
 
 Forces are validated against central finite differences of the total energy,
 \begin{equation}
@@ -114,80 +83,183 @@ Forces are validated against central finite differences of the total energy,
   \frac{E(R_{A,i}+\delta)-E(R_{A,i}-\delta)}{2\delta}.
   \label{eq:si_force_fd}
 \end{equation}
-The displacement \(\delta\) is chosen small enough to probe the local derivative but large enough to avoid SCF and quadrature noise.  The reported values in the main manuscript are absolute differences between the analytical force component printed by \CPtwoK{} and Eq.~(S1).
+The displacement is chosen small enough to probe the local derivative and large enough to remain above SCF and quadrature noise.
 
-The molecular virial diagnostic is not a periodic cell stress.  It is obtained from an affine scaling of all molecular coordinates around a fixed center,
+For the molecular virial, coordinates are deformed affinely around a fixed center \(\mathbf R_0\),
 \begin{equation}
-  \mathbf R_A(\lambda)
+  R_{A,k}^{(\pm;ij)}
   =
-  \mathbf R_\mathrm c
+  R_{0,k}
   +
-  (1+\lambda)
-  \left(\mathbf R_A-\mathbf R_\mathrm c\right),
+  (R_{A,k}-R_{0,k})
+  \pm
+  \delta\,\delta_{ki}(R_{A,j}-R_{0,j}),
   \label{eq:si_affine}
 \end{equation}
-and the finite-difference scalar
+and each tensor component is checked as
 \begin{equation}
-  W^{\mathrm{FD}}
+  \Xi_{ij}^{\mathrm{FD}}
   =
-  -
-  \left.
-  \frac{\partial E[\{\mathbf R_A(\lambda)\}]}{\partial \lambda}
-  \right|_{\lambda=0}
-  \simeq
-  -
-  \frac{E(+\lambda)-E(-\lambda)}{2\lambda}.
-  \label{eq:si_virial_fd}
+  \frac{E^{(+;ij)}-E^{(-;ij)}}{2\delta}.
+  \label{eq:si_virial_tensor_fd}
 \end{equation}
-This check is useful for molecular forces and coordinate scaling, but it omits the additional cell, grid, image, reciprocal-space, and Pulay derivatives needed for a true periodic stress tensor.
+The scalar values tabulated below use the corresponding isotropic coordinate scaling.  These are molecular coordinate-scaling diagnostics and must not be interpreted as periodic cell stresses.
+\endgroup
 
-\section{Water-Hexamer Benchmark Details}
+\section{{Complete Small-Molecule Validation}}
 
-The water-hexamer application uses structures and reference binding energies from the updated water-cluster subset of BEGDB.  The selected neutral hexamer isomers are prism, cage, book 1, book 2, bag, cyclic chair, cyclic boat 1, and cyclic boat 2.  The reference values in the main manuscript are the BEGDB CCSD(T)/CBS no-counterpoise binding energies converted to relative energies without zero-point corrections.
+\begingroup
 
-All production calculations in this section use all-electron \GAPW{}, \texttt{POTENTIAL ALL}, QZVPP-quality \textsc{MOLOPT\_UZH} basis sets, and \texttt{GAPW\_ACCURATE\_XCINT}.  The latter option is retained for the native PBE reference so that the one-center augmented XC terms include the hard all-electron and soft compensation density contributions.  This is the appropriate native \CPtwoK{} comparison for the all-electron AO-density matrix evaluated by \GauXC{}.
-
-The PBE-D3(BJ) values are direct native \CPtwoK{} calculations with the Becke--Johnson damped D3 correction.  The \Skala{}-D3(BJ) values add a separate B3LYP5-D3(BJ) binding-energy correction to the \Skala{} XC binding energies, following the public \Skala{} 1.1 model metadata.  This additive treatment is used because direct combinations of \texttt{XC\_FUNCTIONAL/\allowbreak GAUXC} and \texttt{VDW\_POTENTIAL} are deliberately rejected in the present \CPtwoK{} interface until the combined energy, force, and stress contract has been validated.
-
-Each method is referenced to its own lowest-energy isomer,
-\begin{equation}
-  \Delta E_i
-  =
-  E_i
-  -
-  \min_j E_j.
-  \label{eq:si_relative_energy}
-\end{equation}
-This avoids mixing absolute-energy offsets and focuses the comparison on the relative ordering within a fixed Hamiltonian and density representation.  The structures, input files, raw outputs, and processed binding and relative energies are included in the accompanying data package.
-
-Table~\ref{tab:si_hexamer_sensitivity} summarizes the auxiliary water-hexamer data sets.  The QZVPP all-electron \GAPW{} protocol is the main-manuscript data set.  The TZVPP all-electron \GAPW{} protocol probes basis-set sensitivity, and the \GPW{}+\GTH{} protocol probes the same workflow in the pseudopotential representation.  The maximum PBE mismatch is the largest absolute difference between \GauXC{}-PBE and native \CPtwoK{} PBE relative energies for the eight isomers.
+Table~\ref{tab:si_validation_full} collects the complete molecular diagnostics used to construct the compact main-manuscript table.  It gives the PBE interface comparison and the PBE and \Skala{} finite-difference errors for the H$_2$, NH$_3$, H$_2$O, and HCl calculations.  Individual \GAPWGTH{} and \GAPWECP{} total energies are not compared across effective Hamiltonians because their energy zero depends on the chosen pseudopotential or ECP; the transferable validation quantities are matched native/external-library energy differences and derivatives.
 
 \begin{table}[htbp]
 \centering
-\scriptsize
-\caption{Water-hexamer protocol sensitivity.  All entries except the maximum PBE mismatch are mean unsigned relative-energy errors in kcal mol\(^{-1}\) with respect to the BEGDB reference.}
-\label{tab:si_hexamer_sensitivity}
+\caption{{Complete small-molecule validation.  \(\Delta E_{\mathrm{PBE}}=E_{\mathrm{PBE}}^{\GauXC{}}-E_{\mathrm{PBE}}^{\CPtwoK{}}\) is in hartree.  Force errors are in hartree/bohr and molecular-virial errors in hartree.}}
+\label{tab:si_validation_full}
+\SITableFont
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llrrrrr@{}}
+\hline
+System & Method & \(\Delta E_{\mathrm{PBE}}\) & \(|\Delta F_{\mathrm{PBE}}|\) & \(|\Delta W_{\mathrm{PBE}}|\) & \(|\Delta F_{\Skala{}-1.1}|\) & \(|\Delta W_{\Skala{}-1.1}|\)\\
+\hline
+H$_2$ & \GPWGTH{} & \(1.27\times10^{-7}\) & \(7.60\times10^{-7}\) & \(3.41\times10^{-9}\) & \(2.60\times10^{-7}\) & \(3.01\times10^{-6}\)\\
+NH$_3$ & \GPWGTH{} & \(1.08\times10^{-5}\) & \(7.60\times10^{-8}\) & \(1.97\times10^{-7}\) & \(9.86\times10^{-8}\) & \(5.07\times10^{-6}\)\\
+H$_2$O & \GPWGTH{} & \(8.93\times10^{-5}\) & \(4.69\times10^{-7}\) & \(4.69\times10^{-7}\) & \(9.17\times10^{-7}\) & \(1.09\times10^{-5}\)\\
+H$_2$ & \GAPWGTH{} & \(1.74\times10^{-7}\) & \(7.60\times10^{-7}\) & \(3.41\times10^{-9}\) & \(6.44\times10^{-7}\) & \(3.21\times10^{-6}\)\\
+NH$_3$ & \GAPWGTH{} & \(5.76\times10^{-6}\) & \(1.23\times10^{-7}\) & \(2.03\times10^{-7}\) & \(5.27\times10^{-8}\) & \(6.45\times10^{-6}\)\\
+H$_2$O & \GAPWGTH{} & \(1.13\times10^{-4}\) & \(4.69\times10^{-7}\) & \(1.43\times10^{-7}\) & \(2.41\times10^{-6}\) & \(1.24\times10^{-5}\)\\
+H$_2$ & \GAPWAE{} & \(1.11\times10^{-6}\) & \(7.65\times10^{-7}\) & \(3.56\times10^{-9}\) & \(9.47\times10^{-7}\) & \(1.63\times10^{-6}\)\\
+NH$_3$ & \GAPWAE{} & \(-1.47\times10^{-5}\) & \(7.52\times10^{-8}\) & \(1.73\times10^{-7}\) & \(8.23\times10^{-6}\) & \(3.40\times10^{-5}\)\\
+H$_2$O & \GAPWAE{} & \(-2.94\times10^{-5}\) & \(4.70\times10^{-7}\) & \(3.78\times10^{-7}\) & \(1.99\times10^{-5}\) & \(7.25\times10^{-6}\)\\
+HCl & \GAPWECP{} & \(2.26\times10^{-5}\) & \(5.38\times10^{-7}\) & \(8.13\times10^{-9}\) & \(9.96\times10^{-6}\) & \(3.00\times10^{-6}\)\\
+\hline
+\end{tabular}
+\end{table}
+\endgroup
+
+\section{{Meta-GGA Kinetic-Energy-Density Validation}}
+
+\begingroup
+
+The \Skala{} descriptor path depends explicitly on the KS kinetic-energy density \(\tau\).  We therefore validate this ingredient independently with closed-shell H$_2$O using TPSS\cite{Tao2003TPSS} and r$^2$SCAN.\cite{Furness2020R2SCAN}  Table~\ref{tab:si_tau_mgga_convergence} compares the standard \(600/60\) Ry grid with a tighter \(1200/80\) Ry grid.  For \GPWGTH{}, tightening the grid reduces the native-\CPtwoK{} force and molecular-virial finite-difference errors by approximately two orders of magnitude, whereas the corresponding \GauXC{} derivative errors and XC-only virial residuals are already stable.  The \GAPWAE{} derivatives show substantially weaker grid sensitivity.  The comparison therefore identifies the dominant effect as the slower native-grid convergence of the GPW representation for \(\tau\)-dependent functionals; it does not imply monotonic convergence of every \GAPWAE{} energy difference.
+
+\begin{table}[htbp]
+\centering
+\SITableFont
+\setlength{\tabcolsep}{2pt}
+\caption{{Closed-shell H$_2$O meta-GGA kinetic-energy-density convergence diagnostic.  \(\Delta E=E^{\GauXC{}}-E^{\CPtwoK{}}\) is in hartree; force errors are in hartree/bohr and molecular-virial errors in hartree.}}
+\label{tab:si_tau_mgga_convergence}
+\begin{tabular}{@{}llrrrrrr@{}}
+\hline
+Method & Functional & \(\Delta E\) & \(|\Delta F|_{\CPtwoK{}}\) & \(|\Delta F|_{\GauXC{}}\) & \(|\Delta W|_{\CPtwoK{}}\) & \(|\Delta W|_{\GauXC{}}\) & \(|\Delta W_{\mathrm{xc}}|_{\GauXC{}}\)\\
+\hline
+\multicolumn{8}{l}{(a) Standard grid: \(E_{\mathrm{cut}}=600\) Ry and \(E_{\mathrm{rel}}=60\) Ry}\\
+\hline
+\GPWGTH{} & TPSS & \(-7.019{\times}10^{-4}\) & \(1.29{\times}10^{-5}\) & \(4.84{\times}10^{-7}\) & \(7.38{\times}10^{-5}\) & \(4.44{\times}10^{-7}\) & \(1.05{\times}10^{-8}\)\\
+\GPWGTH{} & r$^2$SCAN & \(-1.805{\times}10^{-4}\) & \(1.23{\times}10^{-5}\) & \(4.88{\times}10^{-7}\) & \(5.46{\times}10^{-5}\) & \(1.78{\times}10^{-7}\) & \(9.92{\times}10^{-9}\)\\
+\GAPWAE{} & TPSS & \(-5.222{\times}10^{-4}\) & \(5.14{\times}10^{-7}\) & \(5.19{\times}10^{-7}\) & \(3.35{\times}10^{-7}\) & \(3.21{\times}10^{-7}\) & \(1.15{\times}10^{-8}\)\\
+\GAPWAE{} & r$^2$SCAN & \(+9.28{\times}10^{-5}\) & \(5.30{\times}10^{-7}\) & \(5.22{\times}10^{-7}\) & \(4.13{\times}10^{-8}\) & \(3.04{\times}10^{-8}\) & \(1.18{\times}10^{-8}\)\\
+\hline
+\multicolumn{8}{l}{(b) Tight grid: \(E_{\mathrm{cut}}=1200\) Ry and \(E_{\mathrm{rel}}=80\) Ry}\\
+\hline
+\GPWGTH{} & TPSS & \(-3.309{\times}10^{-4}\) & \(4.76{\times}10^{-7}\) & \(4.85{\times}10^{-7}\) & \(4.42{\times}10^{-7}\) & \(4.46{\times}10^{-7}\) & \(1.06{\times}10^{-8}\)\\
+\GPWGTH{} & r$^2$SCAN & \(-8.230{\times}10^{-5}\) & \(5.02{\times}10^{-7}\) & \(4.89{\times}10^{-7}\) & \(9.52{\times}10^{-8}\) & \(1.80{\times}10^{-7}\) & \(9.82{\times}10^{-9}\)\\
+\GAPWAE{} & TPSS & \(-4.064{\times}10^{-4}\) & \(5.14{\times}10^{-7}\) & \(5.18{\times}10^{-7}\) & \(3.40{\times}10^{-7}\) & \(3.22{\times}10^{-7}\) & \(1.18{\times}10^{-8}\)\\
+\GAPWAE{} & r$^2$SCAN & \(+1.164{\times}10^{-4}\) & \(5.17{\times}10^{-7}\) & \(5.22{\times}10^{-7}\) & \(5.55{\times}10^{-8}\) & \(3.15{\times}10^{-8}\) & \(1.19{\times}10^{-8}\)\\
+\hline
+\end{tabular}
+\end{table}
+\endgroup
+
+\section{Water-Hexamer Benchmark Details}
+
+\begingroup
+
+The water-hexamer calculations provide a complementary many-body stress test rather than a second broad benchmark.  The low-lying prism, cage, book, bag, cyclic-chair, and cyclic-boat isomers probe small relative-energy splittings controlled by cooperative polarization, many-body exchange repulsion, charge redistribution, and dispersion-like nonlocal correlation.\cite{Xantheas2002,Santra2008,Bates2009,Manna2017WaterClusters}  The structures and CCSD(T)/CBS no-counterpoise reference binding energies are taken from the updated water-cluster subset of the Benchmark Energy and Geometry Database (BEGDB) and are used without zero-point corrections.\cite{Rezac2008BEGDB,Manna2017WaterClusters}
+
+The primary protocol uses \GAPWAE{}, selected with \texttt{POTENTIAL ALL}, QZVPP-quality \textsc{MOLOPT\_UZH} basis sets,\cite{Mirhosseini2026UZH} and \texttt{GAPW\_ACCURATE\_XCINT}.  The latter option retains the hard all-electron and soft compensation one-center contributions in the native PBE XC integration and therefore provides the appropriate native \CPtwoK{} comparison for the all-electron AO density evaluated by \GauXC{}.  PBE-through-\GauXC{} and native PBE use the same structures, basis, spin convention, SCF thresholds, and numerical grids.
+
+The PBE-D3(BJ) values are native \CPtwoK{} calculations with the Becke--Johnson damped D3 correction.\cite{Grimme2010DFTD3,Grimme2011D3BJ}  Following the public \Skala{}-1.1 model metadata, the \Skala{}-1.1-D3(BJ) values add the B3LYP5-D3(BJ) binding contribution as a separate post-SCF correction because the present interface keeps \texttt{XC\_FUNCTIONAL/\allowbreak GAUXC} and \texttt{VDW\_POTENTIAL} separate.
+
+For isomer \(i\), the binding energy, relative energy, and \Skala{} relative-energy error are
+\begin{align}
+  E_{b,i}
+  &=
+  E_i^{(\mathrm H_2\mathrm O)_6}
+  -
+  6E^{\mathrm H_2\mathrm O},
+  \label{eq:si_hexamer_binding}\\
+  \Delta E_i^{\mathrm{hex}}
+  &=
+  E_{b,i}
+  -
+  \min_j E_{b,j},
+  \label{eq:si_hexamer_relative}\\
+  \delta_i^{\mathrm{hex}}
+  &=
+  \Delta E_{i,\Skala}^{\mathrm{hex}}
+  -
+  \Delta E_{i,\mathrm{ref}}^{\mathrm{hex}}.
+  \label{eq:si_water_error}
+\end{align}
+Referencing each method to its own lowest-energy isomer removes absolute-energy offsets and focuses the comparison on the ordering within a fixed Hamiltonian and density representation.
+
+\begin{table}[htbp]
+\centering
+\SITableFont
+\setlength{\tabcolsep}{2pt}
+\caption{Primary \GAPWAE{} water-hexamer relative binding energies without zero-point corrections.  All values are in kcal mol\(^{-1}\) relative to the lowest isomer within the respective method.  The reference column reports the BEGDB CCSD(T)/CBS no-counterpoise values.  The calculations use \texttt{POTENTIAL ALL}, QZVPP-quality \textsc{MOLOPT\_UZH} basis sets, and \texttt{GAPW\_ACCURATE\_XCINT}.}
+\label{tab:si_hexamer_qzvpp}
 \begin{tabular}{lrrrrrr}
 \hline
-Protocol & Max. PBE mismatch & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{} XC & \Skala{}-D3(BJ)\\
+Isomer & Ref. & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{}-1.1 & \Skala{}-1.1-D3(BJ)\\
 \hline
-\GPW{}+\GTH{} PBE & 0.125 & 6.11 & 6.08 & 6.94 & 5.62 & 6.97\\
-\GAPW{} AE TZVPP & 0.008 & 5.83 & 5.83 & 6.66 & 5.17 & 6.41\\
-\GAPW{} AE QZVPP & 0.009 & 6.11 & 6.10 & 6.97 & 5.44 & 6.79\\
+Prism & 0.00 & 0.55 & 0.54 & 0.33 & 0.37 & 0.06\\
+Cage & 0.21 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+Book 1 & 0.63 & 10.26 & 10.25 & 11.10 & 9.82 & 11.13\\
+Book 2 & 1.00 & 5.17 & 5.16 & 5.93 & 4.86 & 6.06\\
+Cyclic chair & 1.54 & 16.21 & 16.21 & 17.90 & 14.92 & 17.52\\
+Bag & 1.55 & 1.90 & 1.90 & 2.48 & 1.70 & 2.66\\
+Cyclic boat 1 & 2.57 & 9.20 & 9.20 & 10.83 & 7.82 & 10.34\\
+Cyclic boat 2 & 2.63 & 15.28 & 15.28 & 16.90 & 13.71 & 16.22\\
+\hline
+MUE & -- & 6.11 & 6.10 & 6.97 & 5.44 & 6.79\\
 \hline
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:si_gpw_hexamer} gives the complementary \GPW{}+\GTH{} pseudopotential check for the same water-hexamer workflow.  The calculations use PBE-optimized molecular basis sets for \GTH{} calculations and PBE \GTH{} pseudopotentials throughout.  They are not used as the primary benchmark in the main manuscript, but they document that the same \CPtwoK{}--\GauXC{} interface behaves consistently in the pseudopotential representation.
+The \GauXC{}-PBE and native PBE columns agree at the level expected from the residual difference between the atom-centered \GauXC{} quadrature and the native augmented XC integration.  \Skala{}-1.1 reduces the mean unsigned relative-energy error from 6.10 to 5.44~kcal mol\(^{-1}\), but it still overstabilizes the compact cage and prism family relative to the book and cyclic structures.  Adding the B3LYP5-D3(BJ) contribution improves the prism--cage splitting but increases the mean unsigned error over all eight isomers to 6.79~kcal mol\(^{-1}\).  These results are therefore interpreted as a demanding many-body stress test rather than as evidence of uniform improvement for hydrogen-bonded networks.
+
+Table~\ref{tab:si_hexamer_sensitivity} summarizes the protocol sensitivity.  The QZVPP \GAPWAE{} row corresponds to the primary data in Table~\ref{tab:si_hexamer_qzvpp}; the TZVPP \GAPWAE{} protocol probes basis-set sensitivity, and the \GPWGTH{} protocol probes the same workflow in a pseudopotential representation.  The maximum PBE mismatch is the largest absolute difference between \GauXC{}-PBE and native \CPtwoK{} PBE relative energies over the eight isomers.
 
 \begin{table}[htbp]
 \centering
-\scriptsize
-\caption{Complementary \GPW{}+\GTH{} water-hexamer relative binding energies with PBE-optimized molecular basis sets and PBE \GTH{} pseudopotentials.  All values are in kcal mol\(^{-1}\), relative to the lowest isomer within the respective method.}
+\SITableFont
+\setlength{\tabcolsep}{3pt}
+\caption{Water-hexamer protocol sensitivity.  All entries except the maximum PBE mismatch are mean unsigned relative-energy errors in kcal mol\(^{-1}\) with respect to the BEGDB reference.}
+\label{tab:si_hexamer_sensitivity}
+\begin{tabular}{lrrrrrr}
+\hline
+Protocol & \(\max|\Delta E_{\mathrm{PBE}}|\) & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{}-1.1 & \Skala{}-1.1-D3(BJ)\\
+\hline
+\GPWGTH{} PBE & 0.125 & 6.11 & 6.08 & 6.94 & 5.62 & 6.97\\
+\GAPWAE{} TZVPP & 0.008 & 5.83 & 5.83 & 6.66 & 5.17 & 6.41\\
+\GAPWAE{} QZVPP & 0.009 & 6.11 & 6.10 & 6.97 & 5.44 & 6.79\\
+\hline
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:si_gpw_hexamer} gives the complementary \GPWGTH{} calculation using PBE-optimized molecular basis sets and matching PBE \GTH{} pseudopotentials.  It documents the numerical behavior of the same \CPtwoK{}--\GauXC{} interface with an effective valence Hamiltonian.
+
+\begin{table}[htbp]
+\centering
+\SITableFont
+\setlength{\tabcolsep}{3pt}
+\caption{Complementary \GPWGTH{} water-hexamer relative binding energies with PBE-optimized molecular basis sets and PBE \GTH{} pseudopotentials.  All values are in kcal mol\(^{-1}\), relative to the lowest isomer within the respective method.}
 \label{tab:si_gpw_hexamer}
 \begin{tabular}{lrrrrrr}
 \hline
-Isomer & Ref. & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{} XC & \Skala{}-D3(BJ)\\
+Isomer & Ref. & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{}-1.1 & \Skala{}-1.1-D3(BJ)\\
 \hline
 Prism & 0.00 & 1.18 & 1.11 & 0.90 & 0.92 & 0.61\\
 Cage & 0.21 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
@@ -203,16 +275,17 @@ MUE & -- & 6.11 & 6.08 & 6.94 & 5.62 & 6.97\\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:si_gapw_tzvpp_hexamer} gives the all-electron \GAPW{} TZVPP basis-set sensitivity check.  The headline benchmark in the main manuscript uses QZVPP-quality \textsc{MOLOPT\_UZH} basis sets; the present auxiliary table keeps the smaller TZVPP basis to document basis-set sensitivity.  The same qualitative pattern is obtained: \GauXC{}-PBE and native PBE agree closely, \Skala{} XC reduces the mean unsigned relative-energy error compared with PBE, and the additive D3(BJ) correction does not uniformly improve the water-hexamer ordering.
+Table~\ref{tab:si_gapw_tzvpp_hexamer} gives the \GAPWAE{} TZVPP basis-set check.  It reproduces the same qualitative pattern as the QZVPP protocol: close \GauXC{}-PBE/native-PBE agreement, a moderate reduction of the mean unsigned error from \Skala{}-1.1, and no uniform improvement from the additive D3(BJ) correction.
 
 \begin{table}[htbp]
 \centering
-\scriptsize
-\caption{Auxiliary all-electron \GAPW{} TZVPP water-hexamer relative binding energies for basis-set sensitivity.  All values are in kcal mol\(^{-1}\), relative to the lowest isomer within the respective method.}
+\SITableFont
+\setlength{\tabcolsep}{3pt}
+\caption{Auxiliary \GAPWAE{} TZVPP water-hexamer relative binding energies for basis-set sensitivity.  All values are in kcal mol\(^{-1}\), relative to the lowest isomer within the respective method.}
 \label{tab:si_gapw_tzvpp_hexamer}
 \begin{tabular}{lrrrrrr}
 \hline
-Isomer & Ref. & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{} XC & \Skala{}-D3(BJ)\\
+Isomer & Ref. & \GauXC{}-PBE & PBE & PBE-D3(BJ) & \Skala{}-1.1 & \Skala{}-1.1-D3(BJ)\\
 \hline
 Prism & 0.00 & 0.78 & 0.77 & 0.56 & 0.64 & 0.33\\
 Cage & 0.21 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
@@ -227,9 +300,61 @@ MUE & -- & 5.83 & 5.83 & 6.66 & 5.17 & 6.41\\
 \hline
 \end{tabular}
 \end{table}
+\endgroup
+
+
+
+\section{{Computational Details for the dietGMTKN55 Validation}}
+
+Single-point energies were evaluated at the fixed dietGMTKN55 geometries.  The same \Skala{}-1.1 model was used in the reference \PySCF{} implementation and, after conversion to the \GauXC{} model format, in \CPtwoK{}.  The calculations used spherical def2-TZVP basis functions~\cite{Weigend2005}; the minimally augmented ma-def2-TZVP basis~\cite{Zheng2011} was selected for the dietGMTKN55 subsets that included anions.  All \Skala{} calculations included the Becke--Johnson damped D3 correction with B3LYP5 settings~\cite{Grimme2010DFTD3,Grimme2011D3BJ}.
+
+The \CPtwoK{} calculations used \CPtwoK{} 2026.2~\cite{CP2K2020}, with \GAPWAE{} for the light-element systems and \GAPWECP{} for the heavy-element cases specified below.  The \GauXC{} quadrature used the \texttt{FINE} grid, \texttt{ROBUST} pruning, and the Mura--Knowles radial quadrature.  The plane-wave cutoff and relative cutoff were 500 and 50~Ry, respectively, with four multigrid levels. \texttt{EPS\_SCF} and \texttt{EPS\_DEFAULT} were \(10^{-5}\) and \(10^{-10}\), respectively, with a maximum of 100 SCF iterations.  The SCF equations were solved by diagonalization using direct density-matrix mixing with a mixing factor of 0.4 and two previous densities.  Each molecule was centered in a non-periodic orthorhombic cell with at least \(15~\text{\AA}\) between the nearest atom and every cell face.  All calculations used the analytic Poisson solver.  Four reactions, comprising eight unique molecules containing Bi, Te, or I, used the corresponding def2 effective-core potentials~\cite{Metz2000,Peterson2003}.
+
+The reference calculations used \PySCF{} 2.10.0~\cite{Sun2020} with its level-3 Treutler--Ahlrichs atom-centered grid, original Becke partitioning without an atomic-radius adjustment, NWChem pruning, and a small-density cutoff of \(10^{-8}\).  The SCF energy and gradient thresholds were \(5\times10^{-6}~E_\mathrm{h}\) and \(10^{-3}\), respectively, with a maximum of 60 iterations.
+
+Figure~\ref{fig:cp2k-pyscf-diet-si} gives the direct reaction-by-reaction cross-code verification.  The mean absolute difference between the \CPtwoK{}/\GauXC{} and \PySCF{} reaction energies is 0.108~\(\mathrm{kcal\,mol^{-1}}\), and the mean signed difference \(E_{\mathrm{CP2K}}-E_{\mathrm{PySCF}}\) is \(-0.040~\mathrm{kcal\,mol^{-1}}\).  With the exception of the RC21 diethyl-ether radical-cation cleavage (A) and the BH76 chloride identity-\(\mathrm{S_N2}\) barrier (B), all absolute cross-code differences are smaller than 0.7~\(\mathrm{kcal\,mol^{-1}}\).  The two exceptions are 2.739 and 0.969~\(\mathrm{kcal\,mol^{-1}}\), respectively.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.48\textwidth]{cp2k_vs_pyscf_energy_difference.png}
+  \hfill
+  \includegraphics[width=0.48\textwidth]{cp2k_vs_pyscf_energy_loglog.png}
+  \caption{Reaction-by-reaction verification of the dietGMTKN55 energies.  Left: signed \CPtwoK{}/\GauXC{}--\PySCF{} reaction-energy differences plotted against the reference reaction energies, using a symmetric logarithmic horizontal axis.  Right: absolute reaction energies from the two implementations on logarithmic axes.  A denotes the RC21 diethyl-ether radical-cation cleavage and B the BH76 chloride identity-\(\mathrm{S_N2}\) barrier.}
+  \label{fig:cp2k-pyscf-diet-si}
+\end{figure}
+
+\section{{CPU/GPU Timing Diagnostic}}
+
+\begingroup
+
+Table~\ref{tab:si_gpu_timing} retains the initial molecular \GauXC{}/\Skala{} hardware-path diagnostic so that the previously reported measurements remain traceable.  It used source revision \texttt{9dda3dd524}, an NVIDIA GB10 device, isolated \GPWGTH{} water clusters, one SCF Kohn--Sham matrix build from an atomic guess, \(E_{\mathrm{cut}}=150\) Ry, \(E_{\mathrm{rel}}=30\) Ry, and the \GauXC{} \texttt{FINE}/\texttt{ROBUST} quadrature.  One warm-up run and three measured runs were performed for each size and backend.
+
+\begin{table}[htbp]
+\centering
+\SITableFont
+\setlength{\tabcolsep}{2pt}
+\caption{{Initial Spark CPU/GPU \Skala{}-through-\GauXC{} timing diagnostic for isolated \((\mathrm{H}_2\mathrm{O})_n\) clusters.  Times are in seconds and are medians over three measured runs after one warm-up run.}}
+\label{tab:si_gpu_timing}
+\begin{tabular}{@{}rrrrrrrrr@{}}
+\hline
+\(n\) & Atoms & \(t_{\mathrm{wall}}^{\mathrm{CPU}}\) & \(t_{\mathrm{wall}}^{\mathrm{GPU}}\) & \(S_{\mathrm{wall}}\) & \(t_{\mathrm{KS}}^{\mathrm{CPU}}\) & \(t_{\mathrm{KS}}^{\mathrm{GPU}}\) & \(S_{\mathrm{KS}}\) & \(\Delta E\) (Ha)\\
+\hline
+1 & 3  & 4.07  & 2.87  & 1.42 & 3.26  & 1.81  & 1.80 & \(1.07{\times}10^{-8}\)\\
+2 & 6  & 7.42  & 3.77  & 1.97 & 6.50  & 2.52  & 2.58 & \(3.47{\times}10^{-8}\)\\
+4 & 12 & 16.68 & 4.91  & 3.40 & 15.63 & 3.55  & 4.40 & \(8.14{\times}10^{-8}\)\\
+8 & 24 & 48.94 & 12.41 & 3.94 & 47.82 & 10.96 & 4.36 & \(1.55{\times}10^{-7}\)\\
+\hline
+\end{tabular}
+\end{table}
+
+These values predate persistent \GauXC{} object caching, explicit device and CUTLASS runtime controls, communicator-correct subgroup collectives, and the optimized \Skala{}-1.1 Rev1 model artifacts with device-aware selection.  A replacement benchmark must therefore use the current software stack and report CPU and GPU wall time, repeated-SCF timing, peak host and device memory, MPI scaling, and energy agreement under one common production quadrature.  Until that benchmark is complete, Table~\ref{tab:si_gpu_timing} should be interpreted only as an initial interface diagnostic.
+\endgroup
 
 \section{Data Package}
 
-{\color{blue}The companion repository \texttt{DCM-Uni-Paderborn/Molecular-Skala-in-CP2K} contains the molecular structures, \CPtwoK{} inputs, selected raw outputs, processed tables, checksums, and short extraction scripts needed to reproduce the numerical tables in the manuscript.  The updated Spark CPU/GPU timing diagnostic reported above is included there as raw \CPtwoK{} outputs, run summaries, and the processed table \path{processed/gpu_timing_summary_20260613.tsv}; the earlier 20260524 timing summary is retained for provenance.}  Diagnostic development files that are not required for reproducing the published tables are kept out of the Supplementary Information and, where retained for provenance, are clearly separated in the repository.
+{The companion repository \texttt{DCM-Uni-Paderborn/Molecular-Skala-in-CP2K} contains the molecular structures, \CPtwoK{} inputs, selected raw outputs, processed tables, checksums, and short extraction scripts needed to reproduce the numerical tables in the manuscript.  The initial Spark CPU/GPU timing diagnostic reported above is included there as raw \CPtwoK{} outputs, run summaries, and the processed table \path{processed/gpu_timing_summary_20260613.tsv}; the earlier 20260524 timing summary is retained for provenance.  Diagnostic development files that are not required for reproducing the published tables are kept out of the Supplementary Information and, where retained for provenance, are clearly separated in the repository.}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
 
 \end{document}
