@@ -21,15 +21,17 @@
 \newcommand{\GAPWGTH}{\GAPW{}-\GTH{}}
 \newcommand{\GAPWECP}{\GAPW{}-ECP}
 \newcommand{\SITableFont}{\normalsize}
+\newcommand{\revision}[1]{\textcolor{blue}{#1}}
 
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thefigure}{S\arabic{figure}}
 \setlength{\belowcaptionskip}{6pt}
 
 \begin{document}
 
 \begin{center}
-{\large Supplementary Information: Molecular \Skala{} in \CPtwoK{}}\\[1ex]
+{\large \revision{Supplementary Information for: Molecular \Skala{} in \CPtwoK{} through \GauXC{}: Atomic-Orbital Density-Matrix Integration and Validation}}\\[1ex]
 Franz P\"oschel, Johann Pototschnig, Frederick Stein, Andreas Kn\"upfer, Thijs Vogels, Stefano Battaglia, Sebastian Ehlert, J\"urg Hutter, and Thomas D. K\"uhne\\[0.5ex]
 Franz P\"oschel and Johann Pototschnig contributed equally to this work.\\[0.5ex]
 Author affiliations are given in the main manuscript.
@@ -39,7 +41,7 @@ Author affiliations are given in the main manuscript.
 
 \begingroup
 
-The molecular interface covers three density representations.  \GPWGTH{} supplies the AO valence density of the \GTH{} pseudopotential Hamiltonian.  \GAPWAE{}, selected with \texttt{POTENTIAL ALL}, supplies the full AO density.  \GAPWGTH{} and \GAPWECP{} supply the AO valence density of the corresponding effective Hamiltonian.  In every case, \CPtwoK{} passes the geometry, Gaussian basis, spin-resolved AO density matrix, and communicator to \GauXC{}, which returns the XC energy, AO XC matrix, and available nuclear derivatives.
+\revision{The molecular interface covers three density representations.  The Gaussian and plane waves (\GPW{}) method with \GTH{} separable dual-space pseudopotentials (\GPWGTH{}) supplies the AO valence density of the pseudopotential Hamiltonian.  All-electron Gaussian augmented plane wave calculations (\GAPWAE{}), selected with \texttt{POTENTIAL ALL}, supply the full AO density.  Pseudopotential \GAPW{} calculations with either a \GTH{} potential or a molecular effective-core potential (ECP) supply the AO valence density of the corresponding Hamiltonian.  In every case, \CPtwoK{} passes the geometry, Gaussian basis, spin-resolved AO density matrix, and communicator to \GauXC{}, which returns the XC energy, AO XC matrix, and available nuclear derivatives.}
 
 The direct molecular \GauXC{} route does not include a nonlinear core correction (NLCC), because the frozen-core density and its derivatives are not part of the AO density-matrix interface.  Higher XC response kernels are likewise outside the present scope.
 \endgroup
@@ -67,6 +69,8 @@ For unrestricted calculations the spin-channel matrices are transformed as
   \label{eq:si_spin_transform}
 \end{equation}
 and the returned derivatives are transformed back with \(V^{\alpha}=V^{s}+V^{z}\) and \(V^{\beta}=V^{s}-V^{z}\).
+
+\revision{For a conventional restricted \GauXC{} kernel, \CPtwoK{} stores the spin-summed scalar density, whereas the \GauXC{} restricted-spin contract consumes a one-spin density and accounts for double occupation internally.  The interface therefore constructs a private half-density for both the energy/potential and nuclear-gradient evaluations without modifying the caller-owned density matrix.  The \Skala{} path instead receives the spin-summed scalar density together with zero collinear magnetization and is not halved.  Keeping these normalizations separate makes repeated evaluations independent of call order.}
 
 The \GauXC{} runtime is created on the communicator that owns the current force evaluation.  This distinction matters for CDFT and CDFT-CI calculations, where diabatic states can occupy disjoint MPI subgroups.  Communicator-local grid and integrator objects prevent collectives for one subgroup from using counts or displacements belonging to another.  The current implementation caches compatible \GauXC{} objects across repeated SCF evaluations and rebuilds them only when the basis, geometry, quadrature, execution space, or communicator changes.
 \endgroup
@@ -327,13 +331,13 @@ Figure~\ref{fig:cp2k-pyscf-diet-si} gives the direct reaction-by-reaction cross-
 
 \begingroup
 
-Table~\ref{tab:si_gpu_timing} reports a controlled molecular \GauXC{}/\Skala{} hardware-path diagnostic using \CPtwoK{} source revision \texttt{21ef8686db}, the optimized \Skala{}-1.1 Rev1 host and CUDA model artifacts, and an NVIDIA GB10 system.  The isolated \GPWGTH{} water clusters were evaluated with one MPI rank and ten OpenMP threads, one SCF Kohn--Sham matrix build from an atomic guess, \(E_{\mathrm{cut}}=150\) Ry, \(E_{\mathrm{rel}}=30\) Ry, and the \GauXC{} \texttt{FINE}/\texttt{ROBUST} quadrature.  The deliberately lightweight numerical settings isolate the host/device execution paths and are not the production-accuracy protocol used for the molecular validation.  One warm-up run and three measured runs were performed for each size and backend.
+\revision{Table~\ref{tab:si_gpu_timing} reports a controlled molecular \GauXC{}/\Skala{} hardware-path diagnostic using \CPtwoK{} source revision \texttt{21ef8686db}, the \Skala{}-1.1 Rev1 host and CUDA models, and an NVIDIA GB10 system.  The isolated \GPWGTH{} water clusters were evaluated with one MPI rank and ten OpenMP threads, one SCF Kohn--Sham matrix build from an atomic guess, \(E_{\mathrm{cut}}=150\) Ry, \(E_{\mathrm{rel}}=30\) Ry, and the \GauXC{} \texttt{FINE}/\texttt{ROBUST} quadrature.  These deliberately lightweight numerical settings isolate the host/device execution paths and are not the production-accuracy protocol used for molecular validation.  One warm-up run and three measured runs were performed for each size and backend.}
 
 \begin{table}[htbp]
 \centering
 \SITableFont
 \setlength{\tabcolsep}{2pt}
-\caption{{Current Spark CPU/GPU \Skala{}-through-\GauXC{} timing diagnostic for isolated \((\mathrm{H}_2\mathrm{O})_n\) clusters.  Times are in seconds and are medians over three measured runs after one warm-up run.  The energy difference is \(E_{\mathrm{GPU}}-E_{\mathrm{CPU}}\).}}
+\caption{\revision{Single-rank CPU/GPU \Skala{}-through-\GauXC{} timing diagnostic for isolated \((\mathrm{H}_2\mathrm{O})_n\) clusters on an NVIDIA GB10 system.  Times are in seconds and are medians over three measured runs after one warm-up run.  The energy difference is \(E_{\mathrm{GPU}}-E_{\mathrm{CPU}}\).}}
 \label{tab:si_gpu_timing}
 \begin{tabular}{@{}rrrrrrrrr@{}}
 \hline
@@ -347,12 +351,12 @@ Table~\ref{tab:si_gpu_timing} reports a controlled molecular \GauXC{}/\Skala{} h
 \end{tabular}
 \end{table}
 
-The accelerator benefit grows with system size: the GPU is slower for the monomer because fixed initialization costs dominate, but reaches wall-time and Kohn--Sham-matrix speedups of 3.28 and 3.83, respectively, for the octamer.  Relative to the earlier measurement with the same diagnostic protocol, current CPU wall times are 15--25\% lower.  GPU wall time is essentially unchanged for the octamer, while the smaller systems expose a larger fixed startup contribution.  A same-build comparison with the original model artifacts changes GPU wall times by no more than approximately 3\%, with a 2--3\% reduction for the larger clusters; the Rev1 artifacts therefore do not cause the reduced small-system speedup.  The median peak host resident-set sizes for CPU/GPU execution are 1.94/2.84, 3.34/2.96, 5.77/3.06, and 9.95/3.09~GiB for \(n=1,2,4,8\), respectively.  The unified-memory GB10 platform does not expose a separate device-memory counter through \texttt{nvidia-smi}; consequently, only host resident-set size is reported.  These single-rank, single-build measurements quantify the current hardware paths but do not constitute an MPI-scaling benchmark.
+\revision{The accelerator benefit grows with system size: the GPU is slower for the monomer because fixed initialization costs dominate, but reaches wall-time and Kohn--Sham-matrix speedups of 3.28 and 3.83, respectively, for the octamer.  The CPU/GPU energy difference remains below \(1.5\times10^{-7}\)~hartree for all four clusters.  The median peak host resident-set sizes for CPU/GPU execution are 1.94/2.84, 3.34/2.96, 5.77/3.06, and 9.95/3.09~GiB for \(n=1,2,4,8\), respectively.  The unified-memory GB10 platform does not expose a separate device-memory counter through \texttt{nvidia-smi}; consequently, only host resident-set size is reported.  These measurements quantify the single-rank hardware paths but do not constitute an MPI-scaling benchmark.}
 \endgroup
 
 \section{Data Package}
 
-{The companion repository \texttt{DCM-Uni-Paderborn/Molecular-Skala-in-CP2K} contains the molecular structures, \CPtwoK{} inputs, selected raw outputs, processed tables, checksums, and short extraction scripts needed to reproduce the numerical tables in the manuscript.  The current Spark CPU/GPU timing diagnostic reported above is included there as raw run summaries, source and model metadata, and the processed comparison table \path{processed/gpu_timing_current_comparison_20260813.tsv}; the earlier timing summaries are retained for provenance.  Diagnostic development files that are not required for reproducing the published tables are kept out of the Supplementary Information and, where retained for provenance, are clearly separated in the repository.}
+\revision{The companion repository \texttt{DCM-Uni-Paderborn/Molecular-Skala-in-CP2K} contains the molecular structures, \CPtwoK{} inputs, selected raw outputs, processed tables, checksums, and extraction scripts needed to reproduce the numerical results.  The CPU/GPU diagnostic is provided as run summaries, source and model metadata, and the processed table \path{processed/gpu_timing_current_comparison_20260813.tsv}.}
 
 \bibliographystyle{unsrt}
 \bibliography{references}
