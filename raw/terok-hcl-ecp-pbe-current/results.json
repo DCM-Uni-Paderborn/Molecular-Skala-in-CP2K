@@ -1,0 +1,74 @@
+{
+  "HCl_ECP/GPWTYPE/gauxc_pbe": {
+    "base": {
+      "energy": -15.532308852972697,
+      "forces": [
+        [
+          "A1",
+          -3.1104685e-11,
+          6.64246297e-12,
+          0.00345593093
+        ],
+        [
+          "A2",
+          3.1085324e-11,
+          -6.66247934e-12,
+          -0.00345593086
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "HCl_ECP_GPWTYPE_gauxc_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.00345593086,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -5.376191424804472e-07,
+      "dx_angstrom": 0.001,
+      "fd": -0.0034553932408575194
+    },
+    "virial_fd": {
+      "analytic": 0.0028299972566919536,
+      "diff": 8.130688139255937e-09,
+      "dx": 0.0001,
+      "fd": 0.0028299891260038144
+    }
+  },
+  "HCl_ECP/GPWTYPE/native_pbe": {
+    "base": {
+      "energy": -15.532331471068883,
+      "forces": [
+        [
+          "A1",
+          -1.91052285e-14,
+          -1.86422927e-14,
+          0.00343602441
+        ],
+        [
+          "A2",
+          1.67279155e-15,
+          2.01742503e-15,
+          -0.0034360925
+        ]
+      ],
+      "gauxc_virial_fd": null,
+      "label": "HCl_ECP_GPWTYPE_native_pbe_base",
+      "returncode": 0
+    },
+    "force_fd_component": {
+      "analytic": -0.0034360925,
+      "atom_index_1based": 2,
+      "axis": "z",
+      "diff": -5.760907172930145e-07,
+      "dx_angstrom": 0.001,
+      "fd": -0.003435516409282707
+    },
+    "virial_fd": {
+      "analytic": 0.0028137240867726295,
+      "diff": 8.358213218762067e-09,
+      "dx": 0.0001,
+      "fd": 0.0028137157285594108
+    }
+  }
+}

@@ -1,0 +1,3 @@
+system	method	path	returncode	energy_ha	force_fd_diff_ha_bohr	virial_fd_diff_ha	gauxc_xc_virial_diff_ha
+HCl_ECP	GPWTYPE	gauxc_pbe	0	-15.532308852972697	-5.376191424804472e-07	8.130688139255937e-09	
+HCl_ECP	GPWTYPE	native_pbe	0	-15.532331471068883	-5.760907172930145e-07	8.358213218762067e-09	
