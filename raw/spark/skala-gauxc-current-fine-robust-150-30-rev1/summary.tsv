@@ -1,0 +1,33 @@
+nwater	natoms	profile	execution_space	mpi_ranks	omp_threads	devices	repeat	returncode	program_ended	wall_s	cp2k_total_s	ks_matrix_total_s	ks_matrix_calls	energy_ha	peak_host_rss_kib	gpu_baseline_mib	peak_gpu_memory_mib	peak_gpu_delta_mib	run_dir
+1	3	cpu	HOST	1	10		0	0	1	5.2444016999797896	2.542	2.002	1	-17.042112623828245	1993248				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_cpu_r0
+1	3	cpu	HOST	1	10		1	0	1	3.3988052470376715	2.288	1.95	1	-17.042112623828245	2033088				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_cpu_r1
+1	3	cpu	HOST	1	10		2	0	1	3.287787407054566	2.176	1.871	1	-17.042112623828245	2039856				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_cpu_r2
+1	3	cpu	HOST	1	10		3	0	1	3.436412930022925	2.344	1.954	1	-17.042112623828245	2033480				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_cpu_r3
+1	3	gpu1	DEVICE	1	10	0	0	0	1	4.064611576963216	2.814	2.315	1	-17.042112611455902	3022652				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_gpu1_r0
+1	3	gpu1	DEVICE	1	10	0	1	0	1	3.7297998750582337	2.455	1.933	1	-17.042112611455902	2984188				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_gpu1_r1
+1	3	gpu1	DEVICE	1	10	0	2	0	1	3.826375794946216	2.483	1.999	1	-17.042112611455902	2972332				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_gpu1_r2
+1	3	gpu1	DEVICE	1	10	0	3	0	1	3.6416431351099163	2.373	1.878	1	-17.042112611455902	3011268				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o001_gpu1_r3
+2	6	cpu	HOST	1	10		0	0	1	5.4004258828936145	4.335	3.874	1	-34.08251019375822	3505668				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_cpu_r0
+2	6	cpu	HOST	1	10		1	0	1	5.534068409935571	4.417	3.927	1	-34.08251019375822	3504740				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_cpu_r1
+2	6	cpu	HOST	1	10		2	0	1	5.681889562983997	4.571	4.049	1	-34.08251019375822	3508100				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_cpu_r2
+2	6	cpu	HOST	1	10		3	0	1	5.496061835903674	4.4	3.923	1	-34.08251019375822	3509252				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_cpu_r3
+2	6	gpu1	DEVICE	1	10	0	0	0	1	4.688202038989402	3.366	2.738	1	-34.08251016433651	3100472				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_gpu1_r0
+2	6	gpu1	DEVICE	1	10	0	1	0	1	4.550316311069764	3.241	2.615	1	-34.08251016433651	3070692				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_gpu1_r1
+2	6	gpu1	DEVICE	1	10	0	2	0	1	4.553970186971128	3.26	2.623	1	-34.08251016433651	3101624				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_gpu1_r2
+2	6	gpu1	DEVICE	1	10	0	3	0	1	4.479245129972696	3.222	2.614	1	-34.08251016433651	3079620				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o002_gpu1_r3
+4	12	cpu	HOST	1	10		0	0	1	13.453189314925112	12.237	11.665	1	-68.22925255370919	6050484				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_cpu_r0
+4	12	cpu	HOST	1	10		1	0	1	13.167615879909135	11.956	11.362	1	-68.22925255370919	6048792				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_cpu_r1
+4	12	cpu	HOST	1	10		2	0	1	12.153427239041775	11.092	10.522	1	-68.22925255370919	5898272				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_cpu_r2
+4	12	cpu	HOST	1	10		3	0	1	12.992243097978644	11.807	11.224	1	-68.22925255370919	5895024				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_cpu_r3
+4	12	gpu1	DEVICE	1	10	0	0	0	1	5.887046910007484	4.447	3.686	1	-68.22925247820189	3120156				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_gpu1_r0
+4	12	gpu1	DEVICE	1	10	0	1	0	1	5.572990168002434	4.228	3.476	1	-68.22925247820189	3201628				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_gpu1_r1
+4	12	gpu1	DEVICE	1	10	0	2	0	1	5.627749053994194	4.295	3.533	1	-68.22925247820189	3165288				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_gpu1_r2
+4	12	gpu1	DEVICE	1	10	0	3	0	1	5.744307967019267	4.369	3.651	1	-68.22925247820189	3194676				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o004_gpu1_r3
+8	24	cpu	HOST	1	10		0	0	1	41.99467577098403	40.877	40.198	1	-136.42284479142913	10457924				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_cpu_r0
+8	24	cpu	HOST	1	10		1	0	1	41.83185467205476	40.691	40.02	1	-136.42284479142913	10475044				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_cpu_r1
+8	24	cpu	HOST	1	10		2	0	1	41.62065364501905	40.505	39.836	1	-136.42284479142916	10479740				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_cpu_r2
+8	24	cpu	HOST	1	10		3	0	1	40.85009834903758	39.625	38.993	1	-136.42284479142913	10665076				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_cpu_r3
+8	24	gpu1	DEVICE	1	10	0	0	0	1	12.336941835004836	10.993	10.241	1	-136.42284464307158	3238256				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_gpu1_r0
+8	24	gpu1	DEVICE	1	10	0	1	0	1	12.66404430998955	11.141	10.327	1	-136.42284464307158	3239056				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_gpu1_r1
+8	24	gpu1	DEVICE	1	10	0	2	0	1	12.484704043949023	11.101	10.334	1	-136.42284464307158	3246644				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_gpu1_r2
+8	24	gpu1	DEVICE	1	10	0	3	0	1	12.474404987995513	11.114	10.358	1	-136.42284464307158	3239660				/home/kuehne88/work/molecular-skala-paper-current/spark-current-fine-robust-150-30/runs/h2o008_gpu1_r3

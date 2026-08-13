@@ -1,0 +1,46 @@
+{
+  "cp2k": "/home/kuehne88/work/cp2k-gauxc-paper-current/build-gauxc/bin/cp2k.psmp",
+  "cp2k_version": "CP2K version 2026.2 (Development Version)\n Source code revision 13c72f534\n cp2kflags: omp libint fftw3 libxc gauxc gauxc_mpi gauxc_onedft gauxc_host gauxc_device gauxc_cuda parallel scalapack spglib openblas libtorch libtorch_cuda\n compiler: GCC version 13.3.0\n compiler options:\n   -I /home/kuehne88/work/cp2k-gauxc-paper-current/build-gauxc/src/star\n   t -I /usr/local/cuda-13.0/include -I /home/kuehne88/work/cp2k-gauxc-\n   paper-current/src -I /home/kuehne88/work/cp2k-gauxc-paper-current/bu\n   ild-gauxc/src -I /home/kuehne88/work/cp2k-gauxc-paper-current/src/ba\n   se -I /home/kuehne88/work/cp2k-gauxc-paper-current/src/common -I /ho\n   me/kuehne88/work/cp2k-gauxc-paper-current/src/motion -I /home/kuehne\n   88/work/cp2k-gauxc-paper-current/src/dbm -I /home/kuehne88/work/cp2k\n   -gauxc-paper-current/build-gauxc/src/mod_files -I /home/kuehne88/cp2\n   k-gpu-work/cp2k-toolchain-gpu-systemmpi/libint-v2.13.1-cp2k-lmax-5/i\n   nclude -I /home/kuehne88/cp2k-gpu-work/cp2k-toolchain-gpu-systemmpi/\n   spglib-2.7.0/include -I /home/kuehne88/cp2k-gpu-work/cp2k-toolchain-\n   gpu-systemmpi/libxc-7.0.0/include -I /home/kuehne88/cp2k-gauxc-skala\n   -toolchain/gauxc-skala-gpu-torch-cu130-20260524/include/gauxc/module\n   s -I /home/kuehne88/cp2k-gauxc-skala-toolchain/gauxc-skala-gpu-torch\n   -cu130-20260524/include -I /usr/local/cuda-13.0/targets/sbsa-linux/i\n   nclude -I /home/kuehne88/cp2k-gauxc-skala-toolchain/pytorch-cu130-ve\n   nv/lib/python3.12/site-packages/torch/include -I /home/kuehne88/cp2k\n   -gauxc-skala-toolchain/pytorch-cu130-venv/lib/python3.12/site-packag\n   es/torch/include/torch/csrc/api/include -I /usr/include -I /home/kue\n   hne88/cp2k-gpu-work/cp2k-toolchain-gpu-systemmpi/openblas-0.3.33/inc\n   lude -I /home/kuehne88/cp2k-gpu-work/cp2k-toolchain-gpu-systemmpi/ff\n   tw-3.3.11/include -I /home/kuehne88/cp2k-gpu-work/cp2k-toolchain-gpu\n   -systemmpi/dbcsr-2.9.1-cuda/include -I /usr/lib/aarch64-linux-gnu/op\n   enmpi/lib/../../fortran/gfortran-mod-15/openmpi -I /usr/lib/aarch64-\n   linux-gnu/openmpi/lib -mlittle-endian -mabi=lp64 -g -O3 -O3 -O3 -Wno\n   -deprecated-declarations -Wno-maybe-uninitialized -Wuninitialized -W\n   use-without-only -std=f2008 -fPIE -ffree-form -fimplicit-none -fno-o\n   mit-frame-pointer -fbacktrace -fallow-argument-mismatch -funroll-loo\n   ps -fopenmp -fpreprocessed -J src -fpre-include=/usr/include/finclud\n   e/aarch64-linux-gnu/math-vector-fortran.h",
+  "cpu_model": "/home/kuehne88/skala-cpu.fun",
+  "cpu_model_sha256": "0c8432ac3f03c8f1276372df9aca5b7ee7f8939d47a8789eb158976e89aa0606",
+  "created_utc": "2026-08-13T19:28:42Z",
+  "data_dir": "/home/kuehne88/work/cp2k-gauxc-paper-current/data",
+  "gpu_model": "/home/kuehne88/skala-gpu.fun",
+  "gpu_model_sha256": "08888eeaff5fd989ec0b48ed3e27d2e671bf652cf09007acd95a883f56f8e3ef",
+  "hostname": "spark-c86c",
+  "nvidia_smi": "GPU 0: NVIDIA GB10 (UUID: GPU-882a8d5b-a57c-5410-78e8-e89fb821b980)",
+  "platform": "Linux-6.17.0-1029-nvidia-aarch64-with-glibc2.39",
+  "profiles": [
+    {
+      "devices": [],
+      "execution_space": "HOST",
+      "label": "cpu",
+      "mpi_ranks": 1,
+      "omp_threads": 10
+    },
+    {
+      "devices": [
+        0
+      ],
+      "execution_space": "DEVICE",
+      "label": "gpu1",
+      "mpi_ranks": 1,
+      "omp_threads": 10
+    }
+  ],
+  "settings": {
+    "batch_size": 512,
+    "cutoff": 150,
+    "eps_default": "1.0E-8",
+    "eps_scf": "1.0E-4",
+    "grid": "FINE",
+    "max_scf": 1,
+    "ngrids": 4,
+    "omp_stacksize": "128M",
+    "pruning": "ROBUST",
+    "rel_cutoff": 30,
+    "repeats": 3,
+    "timeout": 600,
+    "warmups": 1
+  }
+}
