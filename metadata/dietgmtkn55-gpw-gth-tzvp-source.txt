@@ -1,0 +1,21 @@
+Dataset: dietGMTKN55 GPW/GTH TZVP calculation
+Retrieved: 2026-08-19
+Source archive: dietgmtkn55-molopt-tzvp.zip
+Source archive size: 19540460 bytes
+Source archive SHA256: 4de4fa47b441b5435f859a7bf23695330cd97dfb9ad0ce7cdb323660885c6d08
+
+Curation:
+- The source archive root was replaced by the neutral protocol-based path
+  raw/dietgmtkn55/gpw-gth-tzvp/.
+- No calculation files were modified.
+- The archive contains 269 combined CP2K input/output files in 100 reaction
+  directories: 75 fully converged and 25 containing at least one unconverged
+  molecular calculation.
+- Across the reaction directories, 226 files are marked converged and 43 are
+  marked unconverged. After identical repeated molecules are counted once,
+  these correspond to 200 converged and 36 unconverged molecular calculations,
+  or 236 distinct molecular calculations in total.
+- The accompanying analysis was copied to
+  processed/dietgmtkn55/gpw-gth-tzvp/analysis.md. Its missing comparison-image
+  reference was converted to a textual figure description, and the retained
+  SCF-failure image was given a protocol-neutral filename.

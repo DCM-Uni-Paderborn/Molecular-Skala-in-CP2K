@@ -6,7 +6,7 @@ This repository contains the curated companion data for the manuscript
 
 It contains CP2K input files, selected raw CP2K outputs, extraction scripts, processed benchmark tables, regression-test inputs, and Supplementary Information files used for the molecular GPW/GAPW + GauXC/SKALA validation reported in the manuscript.
 
-The working copy is versioned in the private companion repository
+The working copy is versioned in the public companion repository
 `DCM-Uni-Paderborn/Molecular-Skala-in-CP2K`.
 
 ## Folder layout
@@ -17,6 +17,8 @@ The working copy is versioned in the private companion repository
   - Raw CP2K inputs and outputs for the small MOLOPT-UZH H2 validation set.
 - `raw/spark/tau-mgga-gauxc-bench-1200-80/`
   - Raw `results.json` and `summary.tsv` from the closed-shell H2O TPSS/r2SCAN kinetic-energy-density diagnostic rerun with \(E_{\mathrm{cut}}=1200\) Ry and \(E_{\mathrm{rel}}=80\) Ry.
+- `raw/dietgmtkn55/gpw-gth-tzvp/`
+  - Combined CP2K inputs and outputs for the GPW/GTH dietGMTKN55 calculation with TZVP-MOLOPT-SCAN-GTH basis sets and GTH-SCAN pseudopotentials.
 - `raw/spark/skala-gauxc-gpu-timing-20260524/`
   - Raw CP2K inputs, outputs, and timing summaries for the preliminary Spark CPU/GPU SKALA-through-GauXC timing diagnostic.
 - `raw/spark/skala-gauxc-gpu-timing-20260613-master-fine-robust/`
@@ -88,6 +90,37 @@ processed/pr5319-final-regtest-gauxc-summary.tsv
 ```
 
 It completed `QS/regtest-gauxc` with 58 correct tests, no failed or wrong tests, and no slow tests flagged.  The retained summary table includes the SKALA, UKS, CDFT, and CDFT-CI smoke checks.
+
+## dietGMTKN55 GPW/GTH calculation
+
+The collaborator-provided GPW/GTH calculation is stored under the neutral,
+protocol-based path
+
+```text
+raw/dietgmtkn55/gpw-gth-tzvp/
+```
+
+Each `.out` file contains the complete CP2K input followed by the CP2K output.
+The bundle contains 100 reaction directories and 269 molecular outputs.  Of
+the 100 reactions, 75 have all required molecular calculations converged.  In
+total, 200 of the 236 distinct molecular calculations converged; repeated
+molecular outputs retained in different reaction directories account for the
+larger file count.  The calculation uses CP2K 2026.2, TZVP-MOLOPT-SCAN-GTH
+basis sets, GTH-SCAN pseudopotentials, a 1000 Ry plane-wave cutoff, and a 60 Ry
+relative cutoff.
+
+The numerical analysis supplied with the raw data is retained in
+
+```text
+processed/dietgmtkn55/gpw-gth-tzvp/analysis.md
+```
+
+It documents the common 75- and 74-reaction subsets, the ozone sensitivity,
+and representative SCF failures used in the Supplementary Information.  The
+source archive checksum and curation details are recorded in
+`metadata/dietgmtkn55-gpw-gth-tzvp-source.txt`.  This bundle contains the
+GPW/GTH calculations only; the all-electron GAPW and PySCF reference data used
+for the full 100-reaction comparison are separate source data.
 
 ## Water-hexamer application benchmark
 

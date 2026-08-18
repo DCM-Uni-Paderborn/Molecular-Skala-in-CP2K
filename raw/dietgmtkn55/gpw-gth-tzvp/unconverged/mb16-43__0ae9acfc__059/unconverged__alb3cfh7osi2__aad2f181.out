@@ -1,0 +1,1801 @@
+&GLOBAL
+  PRINT_LEVEL MEDIUM
+  PROJECT_NAME aad2f181530bb027fc2a83fcabd9a608efe0bce4
+  RUN_TYPE ENERGY
+&END GLOBAL
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT_UZH
+    POTENTIAL_FILE_NAME POTENTIAL_UZH
+    CHARGE 0
+    MULTIPLICITY 1
+    UKS FALSE
+    &MGRID
+      CUTOFF 1000
+      REL_CUTOFF 60
+      NGRIDS 4
+    &END MGRID
+    &POISSON
+      PERIODIC NONE
+      POISSON_SOLVER ANALYTIC
+    &END POISSON
+    &QS
+      EPS_DEFAULT 1e-10
+    &END QS
+    &SCF
+      EPS_SCF 1e-05
+      MAX_SCF 100
+      SCF_GUESS ATOMIC
+      &DIAGONALIZATION
+      &END DIAGONALIZATION
+      &MIXING
+        METHOD DIRECT_P_MIXING
+        ALPHA 0.4
+        NMIXING 2
+      &END MIXING
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL
+        &GAUXC
+          FUNCTIONAL PBE
+          MODEL aug-s0-funv2-cpu.fun
+          GRID FINE
+          PRUNING_SCHEME ROBUST
+          RADIAL_QUADRATURE MURAKNOWLES
+        &END GAUXC
+      &END XC_FUNCTIONAL
+    &END XC
+    &PRINT
+      &MO
+        ENERGIES T
+        OCCNUMS  T
+        &EACH
+          QS_SCF 0
+        &END
+      &END
+    &END
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 35.0000 36.0000 37.0000
+      ALPHA_BETA_GAMMA 90.0000 90.0000 90.0000
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      &CENTER_COORDINATES
+      &END
+    &END TOPOLOGY
+    &COORD
+      H        -0.7119800017        1.5131599979        1.6467100010
+      B        -0.1920600002        2.2012899986        0.7218700010
+      H        -1.7794499979        2.6085899981       -1.9001999981
+      F         2.0010499982       -2.6309699977        0.8414100004
+      B         1.8215700009       -1.8336200010        1.9160600000
+      H         0.9997099974        1.8102500007        0.6819600008
+      H        -0.1732899999       -2.2739300008       -1.8803300024
+      Si       -1.8985199980       -0.7382499989       -0.5841900025
+      H        -0.2087100002        3.3435400003        1.0536199998
+      H         2.2986200019       -2.1828700013        2.9519100016
+      C        -0.7385699976       -1.3780299986       -2.1333799992
+      Al        0.1152999988        0.1514000024        0.6865099987
+      Si       -1.0583599989        1.6111999982       -1.0614100017
+      O         1.1262699982       -0.6886800010        1.7889899994
+      H        -1.3145399995       -1.4900599997       -3.0524499991
+      B        -0.2870300001       -0.0230100010       -1.6770699983
+    &END COORD
+    &KIND Al
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q3
+      POTENTIAL GTH-SCAN-q3
+    &END KIND
+    &KIND B
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q3
+      POTENTIAL GTH-SCAN-q3
+    &END KIND
+    &KIND C
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q4
+      POTENTIAL GTH-SCAN-q4
+    &END KIND
+    &KIND F
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q7
+      POTENTIAL GTH-SCAN-q7
+    &END KIND
+    &KIND H
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q1
+      POTENTIAL GTH-SCAN-q1
+    &END KIND
+    &KIND O
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q6
+      POTENTIAL GTH-SCAN-q6
+    &END KIND
+    &KIND Si
+      BASIS_SET TZVP-MOLOPT-SCAN-GTH-q4
+      POTENTIAL GTH-SCAN-q4
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
+
+================================================================================
+=== END OF CP2K INPUT / START OF CP2K OUTPUT ===
+================================================================================
+
+ DBCSR| CPU Multiplication driver                                           BLAS (U)
+ DBCSR| Multrec recursion limit                                              512 (U)
+ DBCSR| Multiplication stack size                                           1000 (D)
+ DBCSR| Maximum elements for images                                    UNLIMITED (U)
+ DBCSR| Multiplicative factor virtual images                                   1 (U)
+ DBCSR| Use multiplication densification                                       T (D)
+ DBCSR| Multiplication size stacks                                             3 (U)
+ DBCSR| Use memory pool for CPU allocation                                     F (U)
+ DBCSR| Number of 3D layers                                               SINGLE (U)
+ DBCSR| Use MPI memory allocation                                              F (U)
+ DBCSR| Use RMA algorithm                                                      F (U)
+ DBCSR| Use Communication thread                                               T (U)
+ DBCSR| Communication thread load                                             87 (D)
+ DBCSR| MPI: My process id                                                     0
+ DBCSR| MPI: Number of processes                                              16
+ DBCSR| OMP: Current number of threads                                         1
+ DBCSR| OMP: Max number of threads                                             1
+ DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
+
+
+  **** **** ******  **  PROGRAM STARTED AT               2026-08-13 12:53:48.221
+ ***** ** ***  *** **   PROGRAM STARTED ON        eb3791e2ef3243b6944400b65b9622
+ **    ****   ******    PROGRAM STARTED BY                             <unknown>
+ ***** **    ** ** **   PROGRAM PROCESS ID                                   963
+  **** **  *******  **  PROGRAM STARTED IN                    /tmp/cp2k_vdj3ax_n
+
+ CP2K| version string:                                       CP2K version 2026.2
+ CP2K| source code revision number:                                  git:c92cc08
+ CP2K| cp2kflags: omp libint fftw3 libxc gauxc gauxc_mpi gauxc_onedft gauxc_host
+ CP2K|             parallel scalapack mpi_f08 spglib sirius libtorch hdf5
+ CP2K| is freely available from                            https://www.cp2k.org/
+ CP2K| Program compiled at                                   2026-08-13 02:05:42
+ CP2K| Program compiled on                                                      
+ CP2K| Program compiled for                                               x86_64
+ CP2K| Data directory path                             /opt/cp2k/share/cp2k/data
+ CP2K| Input file name                                            cp2k_input.inp
+
+ GLOBAL| Force Environment number                                              1
+ GLOBAL| Basis set file name                                    BASIS_MOLOPT_UZH
+ GLOBAL| Potential file name                                       POTENTIAL_UZH
+ GLOBAL| MM Potential file name                                     MM_POTENTIAL
+ GLOBAL| Coordinate file name                                      __STD_INPUT__
+ GLOBAL| Method name                                                        CP2K
+ GLOBAL| Project name                   aad2f181530bb027fc2a83fcabd9a608efe0bce4
+ GLOBAL| Run type                                                         ENERGY
+ GLOBAL| FFT library                                                       FFTW3
+ GLOBAL| Diagonalization library                                       ScaLAPACK
+ GLOBAL| Cholesky decomposition library                                ScaLAPACK
+ GLOBAL| DGEMM library                                                      BLAS
+ GLOBAL| Direct generalized diagonalization requested                          F
+ GLOBAL| Orthonormality check for eigenvectors                          DISABLED
+ GLOBAL| Matrix multiplication library                                 ScaLAPACK
+ GLOBAL| All-to-all communication in single precision                          F
+ GLOBAL| FFTs using library dependent lengths                                  F
+ GLOBAL| Grid backend                                                       AUTO
+ GLOBAL| Global print level                                               MEDIUM
+ GLOBAL| MPI I/O enabled                                                       T
+ GLOBAL| Total number of message passing processes                            16
+ GLOBAL| Number of distributed systems (nodes)                                 1
+ GLOBAL| Number of threads for this process                                    1
+ GLOBAL| This output is from process                                           0
+ GLOBAL| OpenMP stack size per thread (OMP_STACKSIZE)                        16M
+ GLOBAL| CPU model name                          AMD EPYC 9V74 80-Core Processor
+ GLOBAL| CPUID                                                              1002
+
+ MEMORY| system memory details [Kb]
+ MEMORY|                        rank 0           min           max       average
+ MEMORY| MemTotal            263924012     263924012     263924012     263924012
+ MEMORY| MemFree             237230472     237230472     237230472     237230472
+ MEMORY| Buffers                407024        407024        407024        407024
+ MEMORY| Cached               18404660      18404660      18404660      18404660
+ MEMORY| Slab                  1579424       1579424       1579424       1579424
+ MEMORY| SReclaimable          1230836       1230836       1230836       1230836
+ MEMORY| MemLikelyFree       257272992     257272992     257272992     257272992
+
+
+ *** Fundamental physical constants (SI units) ***
+
+ *** Literature: B. J. Mohr and B. N. Taylor,
+ ***             CODATA recommended values of the fundamental physical
+ ***             constants: 2006, Web Version 5.1
+ ***             http://physics.nist.gov/constants
+
+ Speed of light in vacuum [m/s]                             2.99792458000000E+08
+ Magnetic constant or permeability of vacuum [N/A**2]       1.25663706143592E-06
+ Electric constant or permittivity of vacuum [F/m]          8.85418781762039E-12
+ Planck constant (h) [J*s]                                  6.62606896000000E-34
+ Planck constant (h-bar) [J*s]                              1.05457162825177E-34
+ Elementary charge [C]                                      1.60217648700000E-19
+ Electron mass [kg]                                         9.10938215000000E-31
+ Electron g factor [ ]                                     -2.00231930436220E+00
+ Proton mass [kg]                                           1.67262163700000E-27
+ Fine-structure constant                                    7.29735253760000E-03
+ Rydberg constant [1/m]                                     1.09737315685270E+07
+ Avogadro constant [1/mol]                                  6.02214179000000E+23
+ Boltzmann constant [J/K]                                   1.38065040000000E-23
+ Atomic mass unit [kg]                                      1.66053878200000E-27
+ Bohr radius [m]                                            5.29177208590000E-11
+
+ *** Conversion factors ***
+
+ [u] -> [a.u.]                                              1.82288848426455E+03
+ [Angstrom] -> [Bohr] = [a.u.]                              1.88972613288564E+00
+ [a.u.] = [Bohr] -> [Angstrom]                              5.29177208590000E-01
+ [a.u.] -> [s]                                              2.41888432650478E-17
+ [a.u.] -> [fs]                                             2.41888432650478E-02
+ [a.u.] -> [J]                                              4.35974393937059E-18
+ [a.u.] -> [N]                                              8.23872205491840E-08
+ [a.u.] -> [K]                                              3.15774647902944E+05
+ [a.u.] -> [kJ/mol]                                         2.62549961709828E+03
+ [a.u.] -> [kcal/mol]                                       6.27509468713739E+02
+ [a.u.] -> [Pa]                                             2.94210107994716E+13
+ [a.u.] -> [bar]                                            2.94210107994716E+08
+ [a.u.] -> [atm]                                            2.90362800883016E+08
+ [a.u.] -> [eV]                                             2.72113838565563E+01
+ [a.u.] -> [Hz]                                             6.57968392072181E+15
+ [a.u.] -> [1/cm] (wave numbers)                            2.19474631370540E+05
+ [a.u./Bohr**2] -> [1/cm]                                   5.14048714338585E+03
+ 
+
+ CELL| Volume [angstrom^3]:                                         46620.000000
+ CELL| Vector a [angstrom]:      35.000     0.000     0.000   |a| =    35.000000
+ CELL| Vector b [angstrom]:       0.000    36.000     0.000   |b| =    36.000000
+ CELL| Vector c [angstrom]:       0.000     0.000    37.000   |c| =    37.000000
+ CELL| Angle (b,c), alpha [degree]:                                    90.000000
+ CELL| Angle (a,c), beta  [degree]:                                    90.000000
+ CELL| Angle (a,b), gamma [degree]:                                    90.000000
+ CELL| Numerically orthorhombic:                                             YES
+ CELL| Periodicity                                                          NONE
+
+ CELL_REF| Volume [angstrom^3]:                                     46620.000000
+ CELL_REF| Vector a [angstrom    35.000     0.000     0.000   |a| =    35.000000
+ CELL_REF| Vector b [angstrom     0.000    36.000     0.000   |b| =    36.000000
+ CELL_REF| Vector c [angstrom     0.000     0.000    37.000   |c| =    37.000000
+ CELL_REF| Angle (b,c), alpha [degree]:                                90.000000
+ CELL_REF| Angle (a,c), beta  [degree]:                                90.000000
+ CELL_REF| Angle (a,b), gamma [degree]:                                90.000000
+ CELL_REF| Numerically orthorhombic:                                         YES
+ CELL_REF| Periodicity                                                      NONE
+
+ GENERATE|  Preliminary Number of Bonds generated:                             0
+ GENERATE|  Achieved consistency in connectivity generation.
+
+ *******************************************************************************
+ *******************************************************************************
+ **                                                                           **
+ **     #####                         ##              ##                      **
+ **    ##   ##            ##          ##              ##                      **
+ **   ##     ##                       ##            ######                    **
+ **   ##     ##  ##   ##  ##   #####  ##  ##   ####   ##    #####    #####    **
+ **   ##     ##  ##   ##  ##  ##      ## ##   ##      ##   ##   ##  ##   ##   **
+ **   ##  ## ##  ##   ##  ##  ##      ####     ###    ##   ######   ######    **
+ **    ##  ###   ##   ##  ##  ##      ## ##      ##   ##   ##       ##        **
+ **     #######   #####   ##   #####  ##  ##  ####    ##    #####   ##        **
+ **           ##                                                    ##        **
+ **                                                                           **
+ **                                                ... make the atoms dance   **
+ **                                                                           **
+ **            Copyright (C) by CP2K developers group (2000-2026)             **
+ **                      J. Chem. Phys. 152, 194103 (2020)                    **
+ **                                                                           **
+ *******************************************************************************
+
+ DFT| Spin restricted Kohn-Sham (RKS) calculation                            RKS
+ DFT| Multiplicity                                                             1
+ DFT| Number of spin states                                                    1
+ DFT| Charge                                                                   0
+ DFT| Self-interaction correction (SIC)                                       NO
+ DFT| Cutoffs: density                                              1.000000E-10
+ DFT|          gradient                                             1.000000E-10
+ DFT|          tau                                                  1.000000E-10
+ DFT|          cutoff_smoothing_range                               0.000000E+00
+ DFT| XC density smoothing                                                  NONE
+ DFT| XC derivatives                                                          PW
+
+ FUNCTIONAL| GAUXC:
+ FUNCTIONAL| Functional computed by GauXC Skala model aug-s0-funv2-cpu.fun      
+
+
+ QS| Method:                                                                 GPW
+ QS| Density plane wave grid type                        NON-SPHERICAL FULLSPACE
+ QS| Number of grid levels:                                                    4
+ QS| Density cutoff [a.u.]:                                                500.0
+ QS| Multi grid cutoff [a.u.]: 1) grid level                               500.0
+ QS|                           2) grid level                               166.7
+ QS|                           3) grid level                                55.6
+ QS|                           4) grid level                                18.5
+ QS| Grid level progression factor:                                          3.0
+ QS| Relative density cutoff [a.u.]:                                        30.0
+ QS| Interaction thresholds: eps_pgf_orb:                                1.0E-05
+ QS|                         eps_filter_matrix:                          0.0E+00
+ QS|                         eps_core_charge:                            1.0E-12
+ QS|                         eps_rho_gspace:                             1.0E-10
+ QS|                         eps_rho_rspace:                             1.0E-10
+ QS|                         eps_gvg_rspace:                             1.0E-05
+ QS|                         eps_ppl:                                    1.0E-02
+ QS|                         eps_ppnl:                                   1.0E-07
+
+
+ ATOMIC KIND INFORMATION
+
+  1. Atomic kind: H                                     Number of atoms:       7
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q1
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               4
+       Number of primitive Cartesian functions:                                5
+       Number of Cartesian basis functions:                                    6
+       Number of spherical basis functions:                                    6
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s                9.168765       0.095357
+                                                         2.161194       0.125778
+                                                         0.619868       0.162183
+                                                         0.161316       0.074849
+                                                         0.412255       0.090962
+
+                          1       2    3s                9.168765      -0.435739
+                                                         2.161194      -0.868971
+                                                         0.619868      -0.406683
+                                                         0.161316      -0.142964
+                                                         0.412255       0.978336
+
+                          1       3    4s                9.168765       0.385896
+                                                         2.161194       1.113624
+                                                         0.619868       0.043366
+                                                         0.161316      -0.067676
+                                                         0.412255       0.053421
+
+                          1       4    3px               9.168765      -1.788640
+                                                         2.161194       0.906920
+                                                         0.619868       0.273605
+                                                         0.161316       0.091389
+                                                         0.412255       0.008094
+                          1       4    3py               9.168765      -1.788640
+                                                         2.161194       0.906920
+                                                         0.619868       0.273605
+                                                         0.161316       0.091389
+                                                         0.412255       0.008094
+                          1       4    3pz               9.168765      -1.788640
+                                                         2.161194       0.906920
+                                                         0.619868       0.273605
+                                                         0.161316       0.091389
+                                                         0.412255       0.008094
+
+       Atomic covalent radius [Angstrom]:                                  0.320
+
+       Atomic van der Waals radius [Angstrom]:                             1.090
+
+     GTH Potential information for                                   GTH-SCAN-q1
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:              12.429142
+       Electronic configuration (s p d ...):                       1   0   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.200569   -4.177243    0.723816
+
+  2. Atomic kind: B                                     Number of atoms:       3
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q3
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               7
+       Number of primitive Cartesian functions:                                5
+       Number of Cartesian basis functions:                                   18
+       Number of spherical basis functions:                                   17
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s                3.659887      -0.244714
+                                                         1.279727      -0.176607
+                                                         0.546167       0.172142
+                                                         0.223705       0.137695
+                                                         0.081716       0.028822
+
+                          1       2    3s                3.659887       0.360876
+                                                         1.279727       0.163052
+                                                         0.546167      -0.173138
+                                                         0.223705      -0.046078
+                                                         0.081716       0.134791
+
+                          1       3    4s                3.659887      -1.179765
+                                                         1.279727      -0.344696
+                                                         0.546167       0.126891
+                                                         0.223705      -0.122153
+                                                         0.081716       0.017480
+
+                          1       4    3px               3.659887      -0.435152
+                                                         1.279727      -0.280457
+                                                         0.546167      -0.224938
+                                                         0.223705      -0.088445
+                                                         0.081716      -0.017232
+                          1       4    3py               3.659887      -0.435152
+                                                         1.279727      -0.280457
+                                                         0.546167      -0.224938
+                                                         0.223705      -0.088445
+                                                         0.081716      -0.017232
+                          1       4    3pz               3.659887      -0.435152
+                                                         1.279727      -0.280457
+                                                         0.546167      -0.224938
+                                                         0.223705      -0.088445
+                                                         0.081716      -0.017232
+
+                          1       5    4px               3.659887       0.679943
+                                                         1.279727       0.601476
+                                                         0.546167       0.270188
+                                                         0.223705       0.041334
+                                                         0.081716      -0.059015
+                          1       5    4py               3.659887       0.679943
+                                                         1.279727       0.601476
+                                                         0.546167       0.270188
+                                                         0.223705       0.041334
+                                                         0.081716      -0.059015
+                          1       5    4pz               3.659887       0.679943
+                                                         1.279727       0.601476
+                                                         0.546167       0.270188
+                                                         0.223705       0.041334
+                                                         0.081716      -0.059015
+
+                          1       6    5px               3.659887       1.058691
+                                                         1.279727       1.620514
+                                                         0.546167       0.222847
+                                                         0.223705      -0.172432
+                                                         0.081716       0.017020
+                          1       6    5py               3.659887       1.058691
+                                                         1.279727       1.620514
+                                                         0.546167       0.222847
+                                                         0.223705      -0.172432
+                                                         0.081716       0.017020
+                          1       6    5pz               3.659887       1.058691
+                                                         1.279727       1.620514
+                                                         0.546167       0.222847
+                                                         0.223705      -0.172432
+                                                         0.081716       0.017020
+
+                          1       7    4dx2              3.659887      -1.323917
+                                                         1.279727       0.762645
+                                                         0.546167       0.174489
+                                                         0.223705       0.065210
+                                                         0.081716       0.001874
+                          1       7    4dxy              3.659887      -2.293092
+                                                         1.279727       1.320939
+                                                         0.546167       0.302224
+                                                         0.223705       0.112947
+                                                         0.081716       0.003247
+                          1       7    4dxz              3.659887      -2.293092
+                                                         1.279727       1.320939
+                                                         0.546167       0.302224
+                                                         0.223705       0.112947
+                                                         0.081716       0.003247
+                          1       7    4dy2              3.659887      -1.323917
+                                                         1.279727       0.762645
+                                                         0.546167       0.174489
+                                                         0.223705       0.065210
+                                                         0.081716       0.001874
+                          1       7    4dyz              3.659887      -2.293092
+                                                         1.279727       1.320939
+                                                         0.546167       0.302224
+                                                         0.223705       0.112947
+                                                         0.081716       0.003247
+                          1       7    4dz2              3.659887      -1.323917
+                                                         1.279727       0.762645
+                                                         0.546167       0.174489
+                                                         0.223705       0.065210
+                                                         0.081716       0.001874
+
+       Atomic covalent radius [Angstrom]:                                  0.820
+
+       Atomic van der Waals radius [Angstrom]:                             1.920
+
+     GTH Potential information for                                   GTH-SCAN-q3
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:               2.962771
+       Electronic configuration (s p d ...):                       2   1   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.410805   -5.916795    0.866086
+
+       Parameters of the non-local part of the GTH pseudopotential:
+
+                   l      r(l)      h(i,j,l)
+
+                   0    0.373210    6.278067
+
+  3. Atomic kind: F                                     Number of atoms:       1
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q7
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               7
+       Number of primitive Cartesian functions:                                5
+       Number of Cartesian basis functions:                                   18
+       Number of spherical basis functions:                                   17
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s               13.166455       0.444811
+                                                         4.678636       0.203936
+                                                         1.681884      -0.373508
+                                                         0.583935      -0.259331
+                                                         0.185712      -0.056029
+
+                          1       2    3s               13.166455      -0.502454
+                                                         4.678636      -0.252806
+                                                         1.681884       0.335842
+                                                         0.583935       0.215045
+                                                         0.185712      -0.274623
+
+                          1       3    4s               13.166455      -1.864888
+                                                         4.678636      -0.601328
+                                                         1.681884      -0.730395
+                                                         0.583935       0.164047
+                                                         0.185712       0.000360
+
+                          1       4    3px              13.166455      -2.113946
+                                                         4.678636      -1.829886
+                                                         1.681884      -0.958916
+                                                         0.583935      -0.297662
+                                                         0.185712      -0.047232
+                          1       4    3py              13.166455      -2.113946
+                                                         4.678636      -1.829886
+                                                         1.681884      -0.958916
+                                                         0.583935      -0.297662
+                                                         0.185712      -0.047232
+                          1       4    3pz              13.166455      -2.113946
+                                                         4.678636      -1.829886
+                                                         1.681884      -0.958916
+                                                         0.583935      -0.297662
+                                                         0.185712      -0.047232
+
+                          1       5    4px              13.166455       2.123544
+                                                         4.678636       1.392986
+                                                         1.681884       1.011036
+                                                         0.583935       0.232948
+                                                         0.185712      -0.186088
+                          1       5    4py              13.166455       2.123544
+                                                         4.678636       1.392986
+                                                         1.681884       1.011036
+                                                         0.583935       0.232948
+                                                         0.185712      -0.186088
+                          1       5    4pz              13.166455       2.123544
+                                                         4.678636       1.392986
+                                                         1.681884       1.011036
+                                                         0.583935       0.232948
+                                                         0.185712      -0.186088
+
+                          1       6    5px              13.166455      -6.630251
+                                                         4.678636     -13.203252
+                                                         1.681884       5.460045
+                                                         0.583935      -0.856136
+                                                         0.185712       0.026241
+                          1       6    5py              13.166455      -6.630251
+                                                         4.678636     -13.203252
+                                                         1.681884       5.460045
+                                                         0.583935      -0.856136
+                                                         0.185712       0.026241
+                          1       6    5pz              13.166455      -6.630251
+                                                         4.678636     -13.203252
+                                                         1.681884       5.460045
+                                                         0.583935      -0.856136
+                                                         0.185712       0.026241
+
+                          1       7    4dx2             13.166455      -1.218712
+                                                         4.678636       0.786429
+                                                         1.681884       1.464728
+                                                         0.583935       0.453678
+                                                         0.185712       0.002884
+                          1       7    4dxy             13.166455      -2.110871
+                                                         4.678636       1.362135
+                                                         1.681884       2.536984
+                                                         0.583935       0.785794
+                                                         0.185712       0.004996
+                          1       7    4dxz             13.166455      -2.110871
+                                                         4.678636       1.362135
+                                                         1.681884       2.536984
+                                                         0.583935       0.785794
+                                                         0.185712       0.004996
+                          1       7    4dy2             13.166455      -1.218712
+                                                         4.678636       0.786429
+                                                         1.681884       1.464728
+                                                         0.583935       0.453678
+                                                         0.185712       0.002884
+                          1       7    4dyz             13.166455      -2.110871
+                                                         4.678636       1.362135
+                                                         1.681884       2.536984
+                                                         0.583935       0.785794
+                                                         0.185712       0.004996
+                          1       7    4dz2             13.166455      -1.218712
+                                                         4.678636       0.786429
+                                                         1.681884       1.464728
+                                                         0.583935       0.453678
+                                                         0.185712       0.002884
+
+       Atomic covalent radius [Angstrom]:                                  0.720
+
+       Atomic van der Waals radius [Angstrom]:                             1.470
+
+     GTH Potential information for                                   GTH-SCAN-q7
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:              10.972099
+       Electronic configuration (s p d ...):                       2   5   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.213472  -21.468222    3.125912
+
+       Parameters of the non-local part of the GTH pseudopotential:
+
+                   l      r(l)      h(i,j,l)
+
+                   0    0.195665   23.648584
+
+  4. Atomic kind: Si                                    Number of atoms:       2
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q4
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               7
+       Number of primitive Cartesian functions:                                4
+       Number of Cartesian basis functions:                                   18
+       Number of spherical basis functions:                                   17
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s                1.216446      -0.038800
+                                                         0.423729       0.012286
+                                                         0.168790      -0.118260
+                                                         0.049081      -0.032419
+
+                          1       2    3s                1.216446      -1.082535
+                                                         0.423729       0.416470
+                                                         0.168790       0.158843
+                                                         0.049081      -0.074133
+
+                          1       3    4s                1.216446      -0.718969
+                                                         0.423729       0.062528
+                                                         0.168790      -0.100256
+                                                         0.049081       0.065253
+
+                          1       4    3px               1.216446       0.165950
+                                                         0.423729      -0.266417
+                                                         0.168790      -0.084079
+                                                         0.049081      -0.001268
+                          1       4    3py               1.216446       0.165950
+                                                         0.423729      -0.266417
+                                                         0.168790      -0.084079
+                                                         0.049081      -0.001268
+                          1       4    3pz               1.216446       0.165950
+                                                         0.423729      -0.266417
+                                                         0.168790      -0.084079
+                                                         0.049081      -0.001268
+
+                          1       5    4px               1.216446       0.199186
+                                                         0.423729      -0.338029
+                                                         0.168790       0.102334
+                                                         0.049081       0.023456
+                          1       5    4py               1.216446       0.199186
+                                                         0.423729      -0.338029
+                                                         0.168790       0.102334
+                                                         0.049081       0.023456
+                          1       5    4pz               1.216446       0.199186
+                                                         0.423729      -0.338029
+                                                         0.168790       0.102334
+                                                         0.049081       0.023456
+
+                          1       6    5px               1.216446      -1.660648
+                                                         0.423729       0.095224
+                                                         0.168790      -0.061358
+                                                         0.049081       0.023083
+                          1       6    5py               1.216446      -1.660648
+                                                         0.423729       0.095224
+                                                         0.168790      -0.061358
+                                                         0.049081       0.023083
+                          1       6    5pz               1.216446      -1.660648
+                                                         0.423729       0.095224
+                                                         0.168790      -0.061358
+                                                         0.049081       0.023083
+
+                          1       7    4dx2              1.216446       0.430800
+                                                         0.423729       0.205344
+                                                         0.168790       0.028687
+                                                         0.049081       0.000332
+                          1       7    4dxy              1.216446       0.746167
+                                                         0.423729       0.355666
+                                                         0.168790       0.049687
+                                                         0.049081       0.000576
+                          1       7    4dxz              1.216446       0.746167
+                                                         0.423729       0.355666
+                                                         0.168790       0.049687
+                                                         0.049081       0.000576
+                          1       7    4dy2              1.216446       0.430800
+                                                         0.423729       0.205344
+                                                         0.168790       0.028687
+                                                         0.049081       0.000332
+                          1       7    4dyz              1.216446       0.746167
+                                                         0.423729       0.355666
+                                                         0.168790       0.049687
+                                                         0.049081       0.000576
+                          1       7    4dz2              1.216446       0.430800
+                                                         0.423729       0.205344
+                                                         0.168790       0.028687
+                                                         0.049081       0.000332
+
+       Atomic covalent radius [Angstrom]:                                  1.110
+
+       Atomic van der Waals radius [Angstrom]:                             2.100
+
+     GTH Potential information for                                   GTH-SCAN-q4
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:               2.565716
+       Electronic configuration (s p d ...):                       2   2   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.441449   -6.125207
+
+       Parameters of the non-local part of the GTH pseudopotential:
+
+                   l      r(l)      h(i,j,l)
+
+                   0    0.435533    8.953533   -2.706271
+                                   -2.706271    3.510709
+                   1    0.495410    2.431366
+
+  5. Atomic kind: C                                     Number of atoms:       1
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q4
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               7
+       Number of primitive Cartesian functions:                                5
+       Number of Cartesian basis functions:                                   18
+       Number of spherical basis functions:                                   17
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s                5.623460      -0.349209
+                                                         2.098559      -0.253875
+                                                         0.820511       0.248209
+                                                         0.317331       0.216287
+                                                         0.111116       0.012850
+
+                          1       2    3s                5.623460       0.160090
+                                                         2.098559       0.144150
+                                                         0.820511      -0.103023
+                                                         0.317331       0.001075
+                                                         0.111116       0.142208
+
+                          1       3    4s                5.623460      -1.207693
+                                                         2.098559      -1.266789
+                                                         0.820511       0.734368
+                                                         0.317331      -0.329587
+                                                         0.111116       0.046451
+
+                          1       4    3px               5.623460      -0.717953
+                                                         2.098559      -0.559659
+                                                         0.820511      -0.405261
+                                                         0.317331      -0.145150
+                                                         0.111116      -0.020126
+                          1       4    3py               5.623460      -0.717953
+                                                         2.098559      -0.559659
+                                                         0.820511      -0.405261
+                                                         0.317331      -0.145150
+                                                         0.111116      -0.020126
+                          1       4    3pz               5.623460      -0.717953
+                                                         2.098559      -0.559659
+                                                         0.820511      -0.405261
+                                                         0.317331      -0.145150
+                                                         0.111116      -0.020126
+
+                          1       5    4px               5.623460       0.831730
+                                                         2.098559       0.877901
+                                                         0.820511       0.415963
+                                                         0.317331       0.032156
+                                                         0.111116      -0.090730
+                          1       5    4py               5.623460       0.831730
+                                                         2.098559       0.877901
+                                                         0.820511       0.415963
+                                                         0.317331       0.032156
+                                                         0.111116      -0.090730
+                          1       5    4pz               5.623460       0.831730
+                                                         2.098559       0.877901
+                                                         0.820511       0.415963
+                                                         0.317331       0.032156
+                                                         0.111116      -0.090730
+
+                          1       6    5px               5.623460       1.619151
+                                                         2.098559       2.412091
+                                                         0.820511       0.659876
+                                                         0.317331      -0.314050
+                                                         0.111116       0.028213
+                          1       6    5py               5.623460       1.619151
+                                                         2.098559       2.412091
+                                                         0.820511       0.659876
+                                                         0.317331      -0.314050
+                                                         0.111116       0.028213
+                          1       6    5pz               5.623460       1.619151
+                                                         2.098559       2.412091
+                                                         0.820511       0.659876
+                                                         0.317331      -0.314050
+                                                         0.111116       0.028213
+
+                          1       7    4dx2              5.623460      -2.005729
+                                                         2.098559       1.064556
+                                                         0.820511       0.464044
+                                                         0.317331       0.120863
+                                                         0.111116       0.003311
+                          1       7    4dxy              5.623460      -3.474025
+                                                         2.098559       1.843865
+                                                         0.820511       0.803748
+                                                         0.317331       0.209340
+                                                         0.111116       0.005735
+                          1       7    4dxz              5.623460      -3.474025
+                                                         2.098559       1.843865
+                                                         0.820511       0.803748
+                                                         0.317331       0.209340
+                                                         0.111116       0.005735
+                          1       7    4dy2              5.623460      -2.005729
+                                                         2.098559       1.064556
+                                                         0.820511       0.464044
+                                                         0.317331       0.120863
+                                                         0.111116       0.003311
+                          1       7    4dyz              5.623460      -3.474025
+                                                         2.098559       1.843865
+                                                         0.820511       0.803748
+                                                         0.317331       0.209340
+                                                         0.111116       0.005735
+                          1       7    4dz2              5.623460      -2.005729
+                                                         2.098559       1.064556
+                                                         0.820511       0.464044
+                                                         0.317331       0.120863
+                                                         0.111116       0.003311
+
+       Atomic covalent radius [Angstrom]:                                  0.770
+
+       Atomic van der Waals radius [Angstrom]:                             1.700
+
+     GTH Potential information for                                   GTH-SCAN-q4
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:               4.454624
+       Electronic configuration (s p d ...):                       2   2   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.335027   -8.822616    1.299117
+
+       Parameters of the non-local part of the GTH pseudopotential:
+
+                   l      r(l)      h(i,j,l)
+
+                   0    0.303798    9.625763
+
+  6. Atomic kind: Al                                    Number of atoms:       1
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q3
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               7
+       Number of primitive Cartesian functions:                                4
+       Number of Cartesian basis functions:                                   18
+       Number of spherical basis functions:                                   17
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s                0.957917       0.067931
+                                                         0.339610       0.029082
+                                                         0.152174      -0.126353
+                                                         0.053370      -0.034414
+
+                          1       2    3s                0.957917      -0.971845
+                                                         0.339610       0.445850
+                                                         0.152174       0.126740
+                                                         0.053370      -0.098405
+
+                          1       3    4s                0.957917      -0.527485
+                                                         0.339610      -0.041502
+                                                         0.152174      -0.070550
+                                                         0.053370       0.037922
+
+                          1       4    3px               0.957917       0.119074
+                                                         0.339610      -0.193193
+                                                         0.152174      -0.071308
+                                                         0.053370      -0.002788
+                          1       4    3py               0.957917       0.119074
+                                                         0.339610      -0.193193
+                                                         0.152174      -0.071308
+                                                         0.053370      -0.002788
+                          1       4    3pz               0.957917       0.119074
+                                                         0.339610      -0.193193
+                                                         0.152174      -0.071308
+                                                         0.053370      -0.002788
+
+                          1       5    4px               0.957917      -0.097740
+                                                         0.339610       0.199566
+                                                         0.152174      -0.057295
+                                                         0.053370      -0.031696
+                          1       5    4py               0.957917      -0.097740
+                                                         0.339610       0.199566
+                                                         0.152174      -0.057295
+                                                         0.053370      -0.031696
+                          1       5    4pz               0.957917      -0.097740
+                                                         0.339610       0.199566
+                                                         0.152174      -0.057295
+                                                         0.053370      -0.031696
+
+                          1       6    5px               0.957917      -1.388214
+                                                         0.339610       0.250808
+                                                         0.152174      -0.134104
+                                                         0.053370       0.036255
+                          1       6    5py               0.957917      -1.388214
+                                                         0.339610       0.250808
+                                                         0.152174      -0.134104
+                                                         0.053370       0.036255
+                          1       6    5pz               0.957917      -1.388214
+                                                         0.339610       0.250808
+                                                         0.152174      -0.134104
+                                                         0.053370       0.036255
+
+                          1       7    4dx2              0.957917       0.299321
+                                                         0.339610       0.125328
+                                                         0.152174       0.022679
+                                                         0.053370       0.001303
+                          1       7    4dxy              0.957917       0.518439
+                                                         0.339610       0.217075
+                                                         0.152174       0.039282
+                                                         0.053370       0.002257
+                          1       7    4dxz              0.957917       0.518439
+                                                         0.339610       0.217075
+                                                         0.152174       0.039282
+                                                         0.053370       0.002257
+                          1       7    4dy2              0.957917       0.299321
+                                                         0.339610       0.125328
+                                                         0.152174       0.022679
+                                                         0.053370       0.001303
+                          1       7    4dyz              0.957917       0.518439
+                                                         0.339610       0.217075
+                                                         0.152174       0.039282
+                                                         0.053370       0.002257
+                          1       7    4dz2              0.957917       0.299321
+                                                         0.339610       0.125328
+                                                         0.152174       0.022679
+                                                         0.053370       0.001303
+
+       Atomic covalent radius [Angstrom]:                                  1.180
+
+       Atomic van der Waals radius [Angstrom]:                             1.840
+
+     GTH Potential information for                                   GTH-SCAN-q3
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:               2.468284
+       Electronic configuration (s p d ...):                       2   1   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.450078   -7.508375
+
+       Parameters of the non-local part of the GTH pseudopotential:
+
+                   l      r(l)      h(i,j,l)
+
+                   0    0.486969    6.953807   -1.888834
+                                   -1.888834    2.444963
+                   1    0.557859    1.850538
+
+  7. Atomic kind: O                                     Number of atoms:       1
+
+     Orbital Basis Set                                   TZVP-MOLOPT-SCAN-GTH-q6
+
+       Number of orbital shell sets:                                           1
+       Number of orbital shells:                                               7
+       Number of primitive Cartesian functions:                                5
+       Number of Cartesian basis functions:                                   18
+       Number of spherical basis functions:                                   17
+       Norm type:                                                              2
+
+       Normalised Cartesian orbitals:
+
+                        Set   Shell   Orbital            Exponent    Coefficient
+
+                          1       1    2s               10.257817      -0.419073
+                                                         3.644287      -0.215759
+                                                         1.402225       0.311285
+                                                         0.522057       0.263821
+                                                         0.168189       0.045116
+
+                          1       2    3s               10.257817       0.362459
+                                                         3.644287       0.180656
+                                                         1.402225      -0.203664
+                                                         0.522057      -0.159611
+                                                         0.168189       0.244682
+
+                          1       3    4s               10.257817      -2.413417
+                                                         3.644287      -0.850901
+                                                         1.402225       0.170654
+                                                         0.522057      -0.131214
+                                                         0.168189       0.003984
+
+                          1       4    3px              10.257817      -1.672017
+                                                         3.644287      -1.345385
+                                                         1.402225      -0.751048
+                                                         0.522057      -0.276645
+                                                         0.168189      -0.033014
+                          1       4    3py              10.257817      -1.672017
+                                                         3.644287      -1.345385
+                                                         1.402225      -0.751048
+                                                         0.522057      -0.276645
+                                                         0.168189      -0.033014
+                          1       4    3pz              10.257817      -1.672017
+                                                         3.644287      -1.345385
+                                                         1.402225      -0.751048
+                                                         0.522057      -0.276645
+                                                         0.168189      -0.033014
+
+                          1       5    4px              10.257817       1.559903
+                                                         3.644287       0.989060
+                                                         1.402225       0.672543
+                                                         0.522057       0.141420
+                                                         0.168189      -0.167208
+                          1       5    4py              10.257817       1.559903
+                                                         3.644287       0.989060
+                                                         1.402225       0.672543
+                                                         0.522057       0.141420
+                                                         0.168189      -0.167208
+                          1       5    4pz              10.257817       1.559903
+                                                         3.644287       0.989060
+                                                         1.402225       0.672543
+                                                         0.522057       0.141420
+                                                         0.168189      -0.167208
+
+                          1       6    5px              10.257817       5.420840
+                                                         3.644287       0.742781
+                                                         1.402225       2.786765
+                                                         0.522057      -0.733751
+                                                         0.168189       0.023040
+                          1       6    5py              10.257817       5.420840
+                                                         3.644287       0.742781
+                                                         1.402225       2.786765
+                                                         0.522057      -0.733751
+                                                         0.168189       0.023040
+                          1       6    5pz              10.257817       5.420840
+                                                         3.644287       0.742781
+                                                         1.402225       2.786765
+                                                         0.522057      -0.733751
+                                                         0.168189       0.023040
+
+                          1       7    4dx2             10.257817      -1.249026
+                                                         3.644287       1.475740
+                                                         1.402225       0.993741
+                                                         0.522057       0.395456
+                                                         0.168189      -0.006736
+                          1       7    4dxy             10.257817      -2.163376
+                                                         3.644287       2.556057
+                                                         1.402225       1.721210
+                                                         0.522057       0.684950
+                                                         0.168189      -0.011667
+                          1       7    4dxz             10.257817      -2.163376
+                                                         3.644287       2.556057
+                                                         1.402225       1.721210
+                                                         0.522057       0.684950
+                                                         0.168189      -0.011667
+                          1       7    4dy2             10.257817      -1.249026
+                                                         3.644287       1.475740
+                                                         1.402225       0.993741
+                                                         0.522057       0.395456
+                                                         0.168189      -0.006736
+                          1       7    4dyz             10.257817      -2.163376
+                                                         3.644287       2.556057
+                                                         1.402225       1.721210
+                                                         0.522057       0.684950
+                                                         0.168189      -0.011667
+                          1       7    4dz2             10.257817      -1.249026
+                                                         3.644287       1.475740
+                                                         1.402225       0.993741
+                                                         0.522057       0.395456
+                                                         0.168189      -0.006736
+
+       Atomic covalent radius [Angstrom]:                                  0.730
+
+       Atomic van der Waals radius [Angstrom]:                             1.520
+
+     GTH Potential information for                                   GTH-SCAN-q6
+
+       Description:                       Goedecker-Teter-Hutter pseudopotential
+                                           Goedecker et al., PRB 54, 1703 (1996)
+                                          Hartwigsen et al., PRB 58, 3641 (1998)
+                                                      Krack, TCA 114, 145 (2005)
+
+       Gaussian exponent of the core charge distribution:               8.656553
+       Electronic configuration (s p d ...):                       2   4   0   0
+
+       Parameters of the local part of the GTH pseudopotential:
+
+                          rloc        C1          C2          C3          C4
+                        0.240333  -16.794986    2.452457
+
+       Parameters of the non-local part of the GTH pseudopotential:
+
+                   l      r(l)      h(i,j,l)
+
+                   0    0.221500   18.441562
+
+
+ MOLECULE KIND INFORMATION
+
+
+ All atoms are their own molecule, skipping detailed information
+
+
+ TOTAL NUMBERS AND MAXIMUM NUMBERS
+
+  Total number of            - Atomic kinds:                                   7
+                             - Atoms:                                         16
+                             - Shell sets:                                    16
+                             - Shells:                                        91
+                             - Primitive Cartesian functions:                 77
+                             - Cartesian basis functions:                    204
+                             - Spherical basis functions:                    195
+
+  Maximum angular momentum of- Orbital basis functions:                        2
+                             - Local part of the GTH pseudopotential:          2
+                             - Non-local part of the GTH pseudopotential:      2
+
+
+ MODULE QUICKSTEP: ATOMIC COORDINATES IN ANGSTROM
+
+   Atom Kind Element         X             Y             Z       Z(eff)     Mass
+      1    1 H     1     16.587970     19.156875     20.196980   1.0000   1.0079
+      2    2 B     5     17.107890     19.845005     19.272140   3.0000  10.8110
+      3    1 H     1     15.520500     20.252305     16.650070   1.0000   1.0079
+      4    3 F     9     19.301000     15.012745     19.391680   7.0000  18.9984
+      5    2 B     5     19.121520     15.810095     20.466330   3.0000  10.8110
+      6    1 H     1     18.299660     19.453965     19.232230   1.0000   1.0079
+      7    1 H     1     17.126660     15.369785     16.669940   1.0000   1.0079
+      8    4 Si   14     15.401430     16.905465     17.966080   4.0000  28.0855
+      9    1 H     1     17.091240     20.987255     19.603890   1.0000   1.0079
+     10    1 H     1     19.598570     15.460845     21.502180   1.0000   1.0079
+     11    5 C     6     16.561380     16.265685     16.416890   4.0000  12.0107
+     12    6 Al   13     17.415250     17.795115     19.236780   3.0000  26.9815
+     13    4 Si   14     16.241590     19.254915     17.488860   4.0000  28.0855
+     14    7 O     8     18.426220     16.955035     20.339260   6.0000  15.9994
+     15    1 H     1     15.985410     16.153655     15.497820   1.0000   1.0079
+     16    2 B     5     17.012920     17.620705     16.873200   3.0000  10.8110
+
+
+
+ SCF PARAMETERS         Density guess:                                    ATOMIC
+                        --------------------------------------------------------
+                        max_scf:                                             100
+                        max_scf_history:                                       0
+                        max_diis:                                              4
+                        --------------------------------------------------------
+                        eps_scf:                                        1.00E-05
+                        eps_scf_history:                                0.00E+00
+                        eps_diis:                                       1.00E-01
+                        eps_eigval:                                     1.00E-05
+                        --------------------------------------------------------
+                        level_shift [a.u.]:                             0.000000
+                        --------------------------------------------------------
+                        Mixing method:                           DIRECT_P_MIXING
+                        --------------------------------------------------------
+                        No outer SCF
+
+ PW_GRID| Information for grid number                                          1
+ PW_GRID| Grid distributed over                                    16 processors
+ PW_GRID| Real space group dimensions                                    16    1
+ PW_GRID| the grid is blocked:                                                NO
+ PW_GRID| Cutoff [a.u.]                                                    500.0
+ PW_GRID| spherical cutoff:                                                   NO
+ PW_GRID|   Bounds   1           -337     337                Points:         675
+ PW_GRID|   Bounds   2           -360     359                Points:         720
+ PW_GRID|   Bounds   3           -360     359                Points:         720
+ PW_GRID| Volume element (a.u.^3)  0.8991E-03     Volume (a.u.^3)    314607.3583
+ PW_GRID| Grid span                                                    FULLSPACE
+ PW_GRID|   Distribution                         Average         Max         Min
+ PW_GRID|   G-Vectors                         21870000.0    21870000    21870000
+ PW_GRID|   G-Rays                               32400.0       32400       32400
+ PW_GRID|   Real Space Points                 21870000.0    22291200    21772800
+
+ PW_GRID| Information for grid number                                          2
+ PW_GRID| Number of the reference grid                                         1
+ PW_GRID| Grid distributed over                                    16 processors
+ PW_GRID| Real space group dimensions                                    16    1
+ PW_GRID| the grid is blocked:                                                NO
+ PW_GRID| Cutoff [a.u.]                                                    166.7
+ PW_GRID| spherical cutoff:                                                   NO
+ PW_GRID|   Bounds   1           -200     199                Points:         400
+ PW_GRID|   Bounds   2           -200     199                Points:         400
+ PW_GRID|   Bounds   3           -216     215                Points:         432
+ PW_GRID| Volume element (a.u.^3)  0.4552E-02     Volume (a.u.^3)    314607.3583
+ PW_GRID| Grid span                                                    FULLSPACE
+ PW_GRID|   Distribution                         Average         Max         Min
+ PW_GRID|   G-Vectors                          4320000.0     4320800     4319200
+ PW_GRID|   G-Rays                               10800.0       10802       10798
+ PW_GRID|   Real Space Points                  4320000.0     4320000     4320000
+
+ PW_GRID| Information for grid number                                          3
+ PW_GRID| Number of the reference grid                                         1
+ PW_GRID| Grid distributed over                                    16 processors
+ PW_GRID| Real space group dimensions                                    16    1
+ PW_GRID| the grid is blocked:                                                NO
+ PW_GRID| Cutoff [a.u.]                                                     55.6
+ PW_GRID| spherical cutoff:                                                   NO
+ PW_GRID|   Bounds   1           -112     112                Points:         225
+ PW_GRID|   Bounds   2           -120     119                Points:         240
+ PW_GRID|   Bounds   3           -120     119                Points:         240
+ PW_GRID| Volume element (a.u.^3)  0.2428E-01     Volume (a.u.^3)    314607.3583
+ PW_GRID| Grid span                                                    FULLSPACE
+ PW_GRID|   Distribution                         Average         Max         Min
+ PW_GRID|   G-Vectors                           810000.0      810675      809550
+ PW_GRID|   G-Rays                                3600.0        3603        3598
+ PW_GRID|   Real Space Points                   810000.0      864000      806400
+
+ PW_GRID| Information for grid number                                          4
+ PW_GRID| Number of the reference grid                                         1
+ PW_GRID| Grid distributed over                                    16 processors
+ PW_GRID| Real space group dimensions                                    16    1
+ PW_GRID| the grid is blocked:                                                NO
+ PW_GRID| Cutoff [a.u.]                                                     18.5
+ PW_GRID| spherical cutoff:                                                   NO
+ PW_GRID|   Bounds   1            -67      67                Points:         135
+ PW_GRID|   Bounds   2            -67      67                Points:         135
+ PW_GRID|   Bounds   3            -67      67                Points:         135
+ PW_GRID| Volume element (a.u.^3)  0.1279         Volume (a.u.^3)    314607.3583
+ PW_GRID| Grid span                                                    FULLSPACE
+ PW_GRID|   Distribution                         Average         Max         Min
+ PW_GRID|   G-Vectors                           153773.4      154170      153630
+ PW_GRID|   G-Rays                                1139.1        1142        1138
+ PW_GRID|   Real Space Points                   153773.4      164025      145800
+
+ POISSON| Solver                                                        ANALYTIC
+ POISSON| Periodicity                                                       NONE
+
+ RS_GRID| Information for grid number                                          1
+ RS_GRID|   Bounds   1           -337     337                Points:         675
+ RS_GRID|   Bounds   2           -360     359                Points:         720
+ RS_GRID|   Bounds   3           -360     359                Points:         720
+ RS_GRID| Real space distribution over                                  4 groups
+ RS_GRID| Real space distribution along direction                              2
+ RS_GRID| Border size                                                         36
+ RS_GRID| Real space distribution over                                  4 groups
+ RS_GRID| Real space distribution along direction                              3
+ RS_GRID| Border size                                                         36
+ RS_GRID|   Distribution                         Average         Max         Min
+ RS_GRID|   Planes                                 252.0         252         252
+ RS_GRID|   Distribution                         Average         Max         Min
+ RS_GRID|   Planes                                 252.0         252         252
+
+ RS_GRID| Information for grid number                                          2
+ RS_GRID|   Bounds   1           -200     199                Points:         400
+ RS_GRID|   Bounds   2           -200     199                Points:         400
+ RS_GRID|   Bounds   3           -216     215                Points:         432
+ RS_GRID| Real space distribution over                                  4 groups
+ RS_GRID| Real space distribution along direction                              2
+ RS_GRID| Border size                                                         27
+ RS_GRID| Real space distribution over                                  4 groups
+ RS_GRID| Real space distribution along direction                              3
+ RS_GRID| Border size                                                         27
+ RS_GRID|   Distribution                         Average         Max         Min
+ RS_GRID|   Planes                                 154.0         154         154
+ RS_GRID|   Distribution                         Average         Max         Min
+ RS_GRID|   Planes                                 162.0         162         162
+
+ RS_GRID| Information for grid number                                          3
+ RS_GRID|   Bounds   1           -112     112                Points:         225
+ RS_GRID|   Bounds   2           -120     119                Points:         240
+ RS_GRID|   Bounds   3           -120     119                Points:         240
+ RS_GRID| Real space fully replicated
+ RS_GRID| Group size                                                           1
+
+ RS_GRID| Information for grid number                                          4
+ RS_GRID|   Bounds   1            -67      67                Points:         135
+ RS_GRID|   Bounds   2            -67      67                Points:         135
+ RS_GRID|   Bounds   3            -67      67                Points:         135
+ RS_GRID| Real space fully replicated
+ RS_GRID| Group size                                                           1
+
+ Extrapolation method: initial_guess
+
+ Atomic guess: The first density matrix is obtained in terms of atomic orbitals
+               and electronic configurations assigned to each atomic kind
+
+ Guess for atomic kind: H
+
+ Electronic structure
+    Total number of core electrons                                          0.00
+    Total number of valence electrons                                       1.00
+    Total number of electrons                                               1.00
+    Multiplicity                                                   not specified
+    S      1.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1        0.364523E-02                  -0.422484553466
+                          2        0.146100E-03                  -0.422490428911
+                          3        0.266755E-04                  -0.422490480125
+                          4        0.362968E-08                  -0.422490480723
+
+ Energy components [Hartree]           Total Energy ::           -0.422490480723
+                                        Band Energy ::           -0.192735382727
+                                     Kinetic Energy ::            0.477952444388
+                                   Potential Energy ::           -0.900442925111
+                                      Virial (-V/T) ::            1.883959242566
+                                        Core Energy ::           -0.479166166213
+                                          XC Energy ::           -0.248560768168
+                                     Coulomb Energy ::            0.305236453657
+                       Total Pseudopotential Energy ::           -0.975131101124
+                       Local Pseudopotential Energy ::           -0.975131101124
+                    Nonlocal Pseudopotential Energy ::            0.000000000000
+                                        Confinement ::            0.180124905236
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          1.000      -0.192735           -5.244596
+
+
+ Total Electron Density at R=0:                                         0.249202
+
+ Guess for atomic kind: B
+
+ Electronic structure
+    Total number of core electrons                                          2.00
+    Total number of valence electrons                                       3.00
+    Total number of electrons                                               5.00
+    Multiplicity                                                   not specified
+    S   [  2.00] 2.00
+    P      1.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1        0.316646E-01                  -2.529384606790
+                          2        0.137591E-01                  -2.530500543548
+                          3        0.258896E-03                  -2.530854993129
+                          4        0.287113E-05                  -2.530855115511
+                          5        0.856246E-08                  -2.530855115527
+
+ Energy components [Hartree]           Total Energy ::           -2.530855115527
+                                        Band Energy ::           -0.763279797743
+                                     Kinetic Energy ::            1.380412322607
+                                   Potential Energy ::           -3.911267438134
+                                      Virial (-V/T) ::            2.833405189217
+                                        Core Energy ::           -3.752414334987
+                                          XC Energy ::           -0.784170852583
+                                     Coulomb Energy ::            2.005730072042
+                       Total Pseudopotential Energy ::           -5.162535765060
+                       Local Pseudopotential Energy ::           -5.563464475473
+                    Nonlocal Pseudopotential Energy ::            0.400928710413
+                                        Confinement ::            0.297091074664
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          2.000      -0.324628           -8.833569
+
+                       1     1          1.000      -0.114024           -3.102761
+
+
+ Total Electron Density at R=0:                                         0.000031
+
+ Guess for atomic kind: F
+
+ Electronic structure
+    Total number of core electrons                                          2.00
+    Total number of valence electrons                                       7.00
+    Total number of electrons                                               9.00
+    Multiplicity                                                   not specified
+    S   [  2.00] 2.00
+    P      5.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1         1.28404                     -23.721982260823
+                          2        0.967140                     -23.745199214477
+                          3        0.177678E-01                 -23.912277605604
+                          4        0.501134E-02                 -23.912319183814
+                          5        0.565229E-04                 -23.912322958237
+                          6        0.248892E-04                 -23.912322958650
+                          7        0.375431E-07                 -23.912322958749
+
+ Energy components [Hartree]           Total Energy ::          -23.912322958749
+                                        Band Energy ::           -4.137765617489
+                                     Kinetic Energy ::           18.745855544912
+                                   Potential Energy ::          -42.658178503662
+                                      Virial (-V/T) ::            2.275605847994
+                                        Core Energy ::          -40.690899234886
+                                          XC Energy ::           -4.360074555418
+                                     Coulomb Energy ::           21.138650831555
+                       Total Pseudopotential Energy ::          -59.470866642662
+                       Local Pseudopotential Energy ::          -61.156697242738
+                    Nonlocal Pseudopotential Energy ::            1.685830600076
+                                        Confinement ::            0.341118628638
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          2.000      -1.072444          -29.182679
+
+                       1     1          5.000      -0.398576          -10.845794
+
+
+ Total Electron Density at R=0:                                         0.000006
+
+ Guess for atomic kind: Si
+
+ Electronic structure
+    Total number of core electrons                                         10.00
+    Total number of valence electrons                                       4.00
+    Total number of electrons                                              14.00
+    Multiplicity                                                   not specified
+    S   [  2.00  2.00] 2.00
+    P   [  6.00] 2.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1        0.537382E-01                  -3.661533087532
+                          2        0.227595E-01                  -3.664304527760
+                          3        0.200097E-03                  -3.665017588330
+                          4        0.821645E-06                  -3.665017641412
+
+ Energy components [Hartree]           Total Energy ::           -3.665017641412
+                                        Band Energy ::           -0.978497193520
+                                     Kinetic Energy ::            1.385169340970
+                                   Potential Energy ::           -5.050186982382
+                                      Virial (-V/T) ::            3.645898615432
+                                        Core Energy ::           -5.667721494982
+                                          XC Energy ::           -0.980982178883
+                                     Coulomb Energy ::            2.983686032453
+                       Total Pseudopotential Energy ::           -7.097886600236
+                       Local Pseudopotential Energy ::           -7.923124080011
+                    Nonlocal Pseudopotential Energy ::            0.825237479775
+                                        Confinement ::            0.449957642846
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          2.000      -0.366449           -9.971583
+
+                       1     1          2.000      -0.122800           -3.341548
+
+
+ Total Electron Density at R=0:                                         0.000021
+
+ Guess for atomic kind: C
+
+ Electronic structure
+    Total number of core electrons                                          2.00
+    Total number of valence electrons                                       4.00
+    Total number of electrons                                               6.00
+    Multiplicity                                                   not specified
+    S   [  2.00] 2.00
+    P      2.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1        0.124377                      -5.269415449983
+                          2        0.880091E-01                  -5.274432015385
+                          3        0.424095E-03                  -5.279419090830
+                          4        0.118108E-03                  -5.279419164687
+                          5        0.144057E-06                  -5.279419172500
+
+ Energy components [Hartree]           Total Energy ::           -5.279419172500
+                                        Band Energy ::           -1.313739125276
+                                     Kinetic Energy ::            3.405940495234
+                                   Potential Energy ::           -8.685359667734
+                                      Virial (-V/T) ::            2.550062069460
+                                        Core Energy ::           -8.290068838701
+                                          XC Energy ::           -1.377173731606
+                                     Coulomb Energy ::            4.387823397806
+                       Total Pseudopotential Energy ::          -11.730281123094
+                       Local Pseudopotential Energy ::          -12.376528803709
+                    Nonlocal Pseudopotential Energy ::            0.646247680614
+                                        Confinement ::            0.342717891594
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          2.000      -0.480601          -13.077809
+
+                       1     1          2.000      -0.176269           -4.796521
+
+
+ Total Electron Density at R=0:                                         0.000000
+
+ Guess for atomic kind: Al
+
+ Electronic structure
+    Total number of core electrons                                         10.00
+    Total number of valence electrons                                       3.00
+    Total number of electrons                                              13.00
+    Multiplicity                                                   not specified
+    S   [  2.00  2.00] 2.00
+    P   [  6.00] 1.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1        0.381633E-01                  -1.862658253756
+                          2        0.121661E-01                  -1.865412727842
+                          3        0.656064E-04                  -1.865712057717
+                          4        0.224083E-05                  -1.865712062711
+                          5        0.874386E-08                  -1.865712062719
+
+ Energy components [Hartree]           Total Energy ::           -1.865712062719
+                                        Band Energy ::           -0.560078653030
+                                     Kinetic Energy ::            0.694183318306
+                                   Potential Energy ::           -2.559895381025
+                                      Virial (-V/T) ::            3.687635979602
+                                        Core Energy ::           -2.748971595218
+                                          XC Energy ::           -0.604522235497
+                                     Coulomb Energy ::            1.487781767997
+                       Total Pseudopotential Energy ::           -3.498280965628
+                       Local Pseudopotential Energy ::           -3.972478316603
+                    Nonlocal Pseudopotential Energy ::            0.474197350975
+                                        Confinement ::            0.551260521043
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          2.000      -0.249124           -6.779012
+
+                       1     1          1.000      -0.061830           -1.682492
+
+
+ Total Electron Density at R=0:                                         0.000146
+
+ Guess for atomic kind: O
+
+ Electronic structure
+    Total number of core electrons                                          2.00
+    Total number of valence electrons                                       6.00
+    Total number of electrons                                               8.00
+    Multiplicity                                                   not specified
+    S   [  2.00] 2.00
+    P      4.00
+
+
+ *******************************************************************************
+                  Iteration          Convergence                     Energy [au]
+ *******************************************************************************
+                          1        0.767843                     -15.548688912140
+                          2        0.707350                     -15.552891087148
+                          3        0.233352E-01                 -15.638471141341
+                          4        0.140601E-02                 -15.638569711398
+                          5        0.207920E-04                 -15.638570020034
+                          6        0.225984E-06                 -15.638570020103
+
+ Energy components [Hartree]           Total Energy ::          -15.638570020103
+                                        Band Energy ::           -2.987115069665
+                                     Kinetic Energy ::           11.758429295155
+                                   Potential Energy ::          -27.396999315258
+                                      Virial (-V/T) ::            2.329988013497
+                                        Core Energy ::          -26.117692585696
+                                          XC Energy ::           -3.153357461230
+                                     Coulomb Energy ::           13.632480026823
+                       Total Pseudopotential Energy ::          -37.911237752663
+                       Local Pseudopotential Energy ::          -39.187422590466
+                    Nonlocal Pseudopotential Energy ::            1.276184837802
+                                        Confinement ::            0.351158718120
+
+ Orbital energies  State     L     Occupation   Energy[a.u.]          Energy[eV]
+
+                       1     0          2.000      -0.854976          -23.265087
+
+                       1     1          4.000      -0.319291           -8.688340
+
+
+ Total Electron Density at R=0:                                         0.000001
+ Re-scaling the density matrix to get the right number of electrons
+                  # Electrons              Trace(P)               Scaling factor
+                           44                44.000                        1.000
+
+ Number of electrons:                                                         44
+ Number of occupied orbitals:                                                 22
+ Number of molecular orbitals:                                                22
+
+ Number of orbital functions:                                                195
+ Number of independent orbital functions:                                    195
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 P_Mix/Diag. 0.40E+00   28.5     1.48232667       -67.8750536486 -6.79E+01
+     2 P_Mix/Diag. 0.40E+00   35.0     0.69772803       -68.1031684841 -2.28E-01
+     3 P_Mix/Diag. 0.40E+00   35.8     0.47199586       -68.2422280731 -1.39E-01
+     4 P_Mix/Diag. 0.40E+00   35.1     0.28633573       -68.3302386989 -8.80E-02
+     5 P_Mix/Diag. 0.40E+00   35.6     0.20160247       -68.3853274939 -5.51E-02
+     6 P_Mix/Diag. 0.40E+00   35.2     0.18092824       -68.4202914583 -3.50E-02
+     7 P_Mix/Diag. 0.40E+00   34.8     3.67980120       -68.4403859657 -2.01E-02
+     8 P_Mix/Diag. 0.40E+00   34.9     1.98171798       -66.7197144483  1.72E+00
+     9 P_Mix/Diag. 0.40E+00   34.5     0.71861881       -67.4528505792 -7.33E-01
+    10 P_Mix/Diag. 0.40E+00   34.1     0.39160937       -67.8598328494 -4.07E-01
+    11 P_Mix/Diag. 0.40E+00   36.3     0.25009750       -68.1006383543 -2.41E-01
+    12 P_Mix/Diag. 0.40E+00   33.9     0.16490159       -68.2462859803 -1.46E-01
+    13 P_Mix/Diag. 0.40E+00   34.0     0.13991815       -68.3338634159 -8.76E-02
+    14 P_Mix/Diag. 0.40E+00   35.1     0.08841417       -68.3888515394 -5.50E-02
+    15 P_Mix/Diag. 0.40E+00   34.1     0.09763203       -68.4205662104 -3.17E-02
+    16 P_Mix/Diag. 0.40E+00   34.1     4.42957047       -68.4261619377 -5.60E-03
+    17 P_Mix/Diag. 0.40E+00   34.3     8.21640200       -64.7788251800  3.65E+00
+    18 P_Mix/Diag. 0.40E+00   34.5    19.51314059       -58.9582071829  5.82E+00
+    19 P_Mix/Diag. 0.40E+00   33.8     9.00042183       -49.6120753986  9.35E+00
+    20 P_Mix/Diag. 0.40E+00   34.7     4.48330177       -44.7383639945  4.87E+00
+    21 P_Mix/Diag. 0.40E+00   33.9     5.12218488       -51.7665371302 -7.03E+00
+    22 P_Mix/Diag. 0.40E+00   33.8     3.77222980       -50.1860455234  1.58E+00
+    23 P_Mix/Diag. 0.40E+00   34.4     2.57297744       -52.7284468987 -2.54E+00
+    24 P_Mix/Diag. 0.40E+00   34.1     3.54009080       -49.4940167131  3.23E+00
+    25 P_Mix/Diag. 0.40E+00   34.1     3.28296689       -48.6978220669  7.96E-01
+    26 P_Mix/Diag. 0.40E+00   34.6     3.64095803       -48.1944455414  5.03E-01
+    27 P_Mix/Diag. 0.40E+00   34.0     3.34827427       -47.8451192663  3.49E-01
+    28 P_Mix/Diag. 0.40E+00   34.4     3.55421177       -47.7589024245  8.62E-02
+    29 P_Mix/Diag. 0.40E+00   33.9     7.24707641       -47.3992527039  3.60E-01
+    30 P_Mix/Diag. 0.40E+00   35.0     3.41878508       -46.5782126074  8.21E-01
+    31 P_Mix/Diag. 0.40E+00   33.8     3.43482190       -46.4265083539  1.52E-01
+    32 P_Mix/Diag. 0.40E+00   34.4     3.39846593       -46.9241679621 -4.98E-01
+    33 P_Mix/Diag. 0.40E+00   34.1     3.41865029       -47.3029219024 -3.79E-01
+    34 P_Mix/Diag. 0.40E+00   33.9     3.53202590       -47.3487619258 -4.58E-02
+    35 P_Mix/Diag. 0.40E+00   33.9     3.46436776       -46.8935365684  4.55E-01
+    36 P_Mix/Diag. 0.40E+00   33.9    12.73355594       -47.5516943764 -6.58E-01
+    37 P_Mix/Diag. 0.40E+00   33.8     5.40294534       -45.1390560555  2.41E+00
+    38 P_Mix/Diag. 0.40E+00   34.4    37.86929805       -46.9285237531 -1.79E+00
+    39 P_Mix/Diag. 0.40E+00   34.4    16.36677988       -41.6709196751  5.26E+00
+    40 P_Mix/Diag. 0.40E+00   34.6    11.89784991       -37.7655036168  3.91E+00
+    41 P_Mix/Diag. 0.40E+00   35.0     5.61800149       -39.9211489584 -2.16E+00
+    42 P_Mix/Diag. 0.40E+00   34.1     3.72394920       -44.9053704031 -4.98E+00
+    43 P_Mix/Diag. 0.40E+00   34.7     3.33450714       -47.2325048423 -2.33E+00
+    44 P_Mix/Diag. 0.40E+00   34.2     3.71396269       -46.4768107889  7.56E-01
+    45 P_Mix/Diag. 0.40E+00   34.4     3.48613931       -46.9549223803 -4.78E-01
+    46 P_Mix/Diag. 0.40E+00   35.0     4.51561187       -47.4064265358 -4.52E-01
+    47 P_Mix/Diag. 0.40E+00   34.7     3.89966607       -46.1169577045  1.29E+00
+    48 P_Mix/Diag. 0.40E+00   34.2     3.32399482       -46.6400703021 -5.23E-01
+    49 P_Mix/Diag. 0.40E+00   34.7     3.66809594       -47.3332808209 -6.93E-01
+    50 P_Mix/Diag. 0.40E+00   34.1     3.38600975       -47.2049056352  1.28E-01
+    51 P_Mix/Diag. 0.40E+00   34.0     3.55536491       -46.9986489450  2.06E-01
+    52 P_Mix/Diag. 0.40E+00   34.4     3.29909256       -47.7980828641 -7.99E-01
+    53 P_Mix/Diag. 0.40E+00   34.6    16.58780549       -47.4517299771  3.46E-01
+    54 P_Mix/Diag. 0.40E+00   33.9     4.98918247       -46.0270554457  1.42E+00
+    55 P_Mix/Diag. 0.40E+00   34.1     3.68751060       -43.1397072787  2.89E+00
+    56 P_Mix/Diag. 0.40E+00   34.4     5.00166822       -45.2836828700 -2.14E+00
+    57 P_Mix/Diag. 0.40E+00   33.8     5.39327324       -46.2177072270 -9.34E-01
+    58 P_Mix/Diag. 0.40E+00   33.9     4.79644462       -36.9315582542  9.29E+00
+    59 P_Mix/Diag. 0.40E+00   34.4    24.42148694       -41.2943457249 -4.36E+00
+    60 P_Mix/Diag. 0.40E+00   34.4    11.81445760       -39.1539320839  2.14E+00
+    61 P_Mix/Diag. 0.40E+00   34.0    12.39680177       -44.5941639801 -5.44E+00
+    62 P_Mix/Diag. 0.40E+00   34.5     7.70698182       -37.4295153299  7.16E+00
+    63 P_Mix/Diag. 0.40E+00   35.3     3.96041998       -41.2553467231 -3.83E+00
+    64 P_Mix/Diag. 0.40E+00   34.1     4.16120933       -43.6961889902 -2.44E+00
+    65 P_Mix/Diag. 0.40E+00   35.1     7.18992335       -45.4612775859 -1.77E+00
+    66 P_Mix/Diag. 0.40E+00   34.5     4.72889651       -44.7685279111  6.93E-01
+    67 P_Mix/Diag. 0.40E+00   35.0     3.65242076       -45.0902763940 -3.22E-01
+    68 P_Mix/Diag. 0.40E+00   35.1     3.45793036       -46.4695100125 -1.38E+00
+    69 P_Mix/Diag. 0.40E+00   35.0     3.57812114       -46.7092688341 -2.40E-01
+    70 P_Mix/Diag. 0.40E+00   34.1     3.66922807       -47.1849296349 -4.76E-01
+    71 P_Mix/Diag. 0.40E+00   34.2    21.80166465       -47.2308070924 -4.59E-02
+    72 P_Mix/Diag. 0.40E+00   35.6     9.60089561       -45.9584435889  1.27E+00
+    73 P_Mix/Diag. 0.40E+00   34.4     3.32051938       -46.5064550922 -5.48E-01
+    74 P_Mix/Diag. 0.40E+00   34.6     4.14951266       -46.4483888701  5.81E-02
+    75 P_Mix/Diag. 0.40E+00   34.4    59.39274611       -44.3815045098  2.07E+00
+    76 P_Mix/Diag. 0.40E+00   35.6    26.51752242       -38.5041378493  5.88E+00
+    77 P_Mix/Diag. 0.40E+00   35.0    54.58232081       -41.9161682291 -3.41E+00
+    78 P_Mix/Diag. 0.40E+00   34.5    22.81961821       -36.2797052761  5.64E+00
+    79 P_Mix/Diag. 0.40E+00   33.9    13.00635145       -40.9572026452 -4.68E+00
+    80 P_Mix/Diag. 0.40E+00   34.3     8.22651864       -42.0806935954 -1.12E+00
+    81 P_Mix/Diag. 0.40E+00   34.6     7.77918490       -41.4132048763  6.67E-01
+    82 P_Mix/Diag. 0.40E+00   34.0     4.34818504       -43.4747914066 -2.06E+00
+    83 P_Mix/Diag. 0.40E+00   34.6     3.50412270       -45.5155397343 -2.04E+00
+    84 P_Mix/Diag. 0.40E+00   34.9     3.27660722       -46.4737280850 -9.58E-01
+    85 P_Mix/Diag. 0.40E+00   33.8     3.41942124       -46.3602410608  1.13E-01
+    86 P_Mix/Diag. 0.40E+00   34.5     2.86251808       -47.2121944351 -8.52E-01
+    87 P_Mix/Diag. 0.40E+00   33.9     3.17410558       -46.7111202680  5.01E-01
+    88 P_Mix/Diag. 0.40E+00   34.3     3.65175033       -46.9853869980 -2.74E-01
+    89 P_Mix/Diag. 0.40E+00   33.9     3.36274843       -47.1479342450 -1.63E-01
+    90 P_Mix/Diag. 0.40E+00   34.8     3.43739619       -47.6292180272 -4.81E-01
+    91 P_Mix/Diag. 0.40E+00   34.5     3.39244796       -47.3849456597  2.44E-01
+    92 P_Mix/Diag. 0.40E+00   34.5     3.38597774       -47.9629026009 -5.78E-01
+    93 P_Mix/Diag. 0.40E+00   34.4     3.39104600       -47.7682813811  1.95E-01
+    94 P_Mix/Diag. 0.40E+00   34.4     3.43371385       -48.0549368132 -2.87E-01
+    95 P_Mix/Diag. 0.40E+00   34.1     3.29895038       -47.0824379013  9.72E-01
+    96 P_Mix/Diag. 0.40E+00   33.9     3.38607782       -47.3583183388 -2.76E-01
+    97 P_Mix/Diag. 0.40E+00   34.7     3.42076055       -46.7730520553  5.85E-01
+    98 P_Mix/Diag. 0.40E+00   34.4     3.41730212       -47.8435865605 -1.07E+00
+    99 P_Mix/Diag. 0.40E+00   33.8     3.44252430       -46.9404926266  9.03E-01
+   100 P_Mix/Diag. 0.40E+00   34.2     3.51854870       -47.4596550807 -5.19E-01
+
+  Leaving inner SCF loop after reaching   100 steps.
+
+
+  Electronic density on regular grids:        -43.9999999999        0.0000000001
+  Core density on regular grids:               43.9999999951       -0.0000000049
+  Total charge density on r-space grids:       -0.0000000048
+  Total charge density g-space grids:          -0.0000000048
+
+  Overlap energy of the core charge distribution:               0.00000461216737
+  Self energy of the core charge distribution:               -174.95487381251181
+  Core Hamiltonian energy:                                     56.72563105672258
+  Hartree energy:                                              86.88349546024442
+  Exchange-correlation energy:                                -16.11391239729838
+
+  Total energy:                                               -47.45965508067582
+
+ *******************************************************************************
+ *   ___                                                                       *
+ *  /   \                                                                      *
+ * [ABORT]                                                                     *
+ *  \___/     SCF run NOT converged. To continue the calculation regardless,   *
+ *    |             please set the keyword IGNORE_CONVERGENCE_FAILURE.         *
+ *  O/|                                                                        *
+ * /| |                                                                        *
+ * / \                                                            qs_scf.F:702 *
+ *******************************************************************************
+
+
+ ===== Routine Calling Stack ===== 
+
+            3 scf_env_do_scf
+            2 qs_energies
+            1 CP2K
